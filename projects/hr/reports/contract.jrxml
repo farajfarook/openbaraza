@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="contract" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1ff63088-2519-4f4f-9e99-07de49d746ef">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="style1" fill="Solid"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="filterid" class="java.lang.String">
+		<defaultValueExpression><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="entity_id" class="java.lang.String">
+		<defaultValueExpression><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="organd" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="orgwhere" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT entity_id, entity_name, employment_id, date_from, date_to, org_id,
+       employers_name, position_held, contract_text, employment_duration, contract_date, contract_close, contract_start, contract_period, contract_terms, initial_salary,
+department_role_name, contract_date, application_id, org_name,
+to_char(contract_start, 'DD Month YYYY') as start_date,
+to_char(initial_salary, '999,999,999D99') as contract_salary
+
+FROM vw_contracting
+
+WHERE (application_id = '$P!{filterid}')
+$P!{organd};]]>
+	</queryString>
+	<field name="entity_id" class="java.lang.Integer"/>
+	<field name="entity_name" class="java.lang.String"/>
+	<field name="employment_id" class="java.lang.Integer"/>
+	<field name="date_from" class="java.sql.Date"/>
+	<field name="date_to" class="java.sql.Date"/>
+	<field name="org_id" class="java.lang.Integer"/>
+	<field name="employers_name" class="java.lang.String"/>
+	<field name="position_held" class="java.lang.String"/>
+	<field name="contract_text" class="java.lang.String"/>
+	<field name="employment_duration" class="org.postgresql.util.PGInterval"/>
+	<field name="contract_date" class="java.sql.Date"/>
+	<field name="contract_close" class="java.sql.Date"/>
+	<field name="contract_start" class="java.sql.Date"/>
+	<field name="contract_period" class="java.lang.Integer"/>
+	<field name="contract_terms" class="java.lang.String"/>
+	<field name="initial_salary" class="java.lang.Float"/>
+	<field name="department_role_name" class="java.lang.String"/>
+	<field name="application_id" class="java.lang.Integer"/>
+	<field name="org_name" class="java.lang.String"/>
+	<field name="start_date" class="java.lang.String"/>
+	<field name="contract_salary" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="107" splitType="Stretch">
+			<image hAlign="Right" vAlign="Middle">
+				<reportElement x="0" y="13" width="555" height="94" uuid="6394eb2c-f103-4b75-907a-0ccc0edaf48e"/>
+				<imageExpression><![CDATA[$P{SUBREPORT_DIR} + "orgs/dewcis/dewcis-letterhead.png"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<detail>
+		<band height="13" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="306" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="276" width="555" height="20" uuid="469eab1d-2832-4b94-b3e3-81e796ec1402"/>
+				<textElement textAlignment="Justified" markup="html">
+					<font fontName="Times New Roman" size="12" pdfFontName="Times-Roman" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contract_text}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="253" width="555" height="23" uuid="855ef382-54a9-4e7f-8586-d0e72bc76ded"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true" isUnderline="true" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[GENERAL TERMS AND CONDITIONS OF EMPLOYMENT]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="2" y="50" width="527" height="20" uuid="2b031761-f980-4a0e-9406-c830517f93e1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{entity_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="82" width="541" height="20" uuid="80c03981-6997-4a08-a8c8-598e2302f33e"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font fontName="Times New Roman" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[RE: OFFER OF EMPLOYMENT]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" isPrintRepeatedValues="false" x="0" y="171" width="555" height="74" uuid="13439d8b-a713-4a25-b9bf-5f1bdb42beb7"/>
+				<textElement verticalAlignment="Middle" markup="html">
+					<font fontName="Times New Roman" size="12" pdfFontName="Times-Roman" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["<b>1. Appointment</b><br/><p>This is a term contract of " + $F{contract_period} + " months effective from " + $F{start_date} + " It is subject to termination as provided under clause 10.<br></p>"
+
++"<b>2. Reporting</b><br/><p>You will be reporting to the Managing Director.<br></p>"
+
++"<b>3. Duty Station</b><br/><p>The company's principle place of work is Nairobi but you may be required to travel from time to time. You may also be assigned duties to a specific client site on a short term or long term basis.<br></p>"
+
++"<b>4. Salary</b><br/><p>You will be paid a consolidated gross salary of KES " + $F{contract_salary} + " per month. Except for the statutory deductions which will be made from your salary, " + $F{org_name} + " will not be responsible for any other taxes that may be due on your income. The company may at its sole discretion review this salary based on performance.<br></p>"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="151" width="555" height="20" uuid="3f24f944-deae-4c65-861e-9520304eded0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[TERMS OF EMPLOYMENT]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="109" width="555" height="39" uuid="74412b5a-72fd-40a3-9ec3-720aaad8d707"/>
+				<textElement markup="html">
+					<font fontName="Times New Roman" size="12" pdfFontName="Times-Roman" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Further to the recent interviews held in our offices, I am on behalf of " + $F{org_name} + " pleased to offer you employment as a " + $F{department_role_name} + " with effect from " + $F{start_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="30" width="38" height="20" uuid="8bf066e7-71b4-401e-84f3-ace297b2841b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[Dear, ]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy" isBlankWhenNull="true">
+				<reportElement x="0" y="10" width="292" height="20" uuid="1087637f-9d5d-43b1-861f-4fecb8db2338"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{contract_date}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="368" y="10" width="187" height="20" uuid="1019153e-239f-409e-8058-a048d4ac6380"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["REF:" + $F{application_id}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

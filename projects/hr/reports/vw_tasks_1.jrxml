@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="vw_tasks_1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2fa3db1e-4a39-45be-ad50-079f88cfde9e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="filterid" class="java.lang.String">
+		<defaultValueExpression><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="organd" class="java.lang.String"><defaultValueExpression><![CDATA[""]]></defaultValueExpression></parameter>
+	<parameter name="orgwhere" class="java.lang.String"><defaultValueExpression><![CDATA[""]]></defaultValueExpression></parameter>
+	<queryString>
+		<![CDATA[
+
+SELECT project_id, client_name, project_type_name,
+       project_name, start_date, ending_date, phase_id,  phase_name,
+       phase_start_date, phase_end_date, phase_completed,
+        entity_name, task_id, task_name, task_start_date,
+       task_dead_line, task_end_date, task_completed, hours_taken, task_details
+  FROM vw_tasks
+  WHERE entity_id = '$P!{filterid}'
+	$P!{organd}
+GROUP BY project_id, project_type_name, project_name, start_date, ending_date,client_name,
+	phase_id, phase_name, phase_start_date, phase_end_date, phase_completed,
+	entity_name,
+	task_id, task_name,task_start_date, task_dead_line, task_end_date, task_completed, hours_taken, task_details
+ORDER BY project_id ASC
+]]>
+	</queryString>
+	<field name="project_id" class="java.lang.Integer"/>
+	<field name="client_name" class="java.lang.String"/>
+	<field name="project_type_name" class="java.lang.String"/>
+	<field name="project_name" class="java.lang.String"/>
+	<field name="start_date" class="java.sql.Date"/>
+	<field name="ending_date" class="java.sql.Date"/>
+	<field name="phase_id" class="java.lang.Integer"/>
+	<field name="phase_name" class="java.lang.String"/>
+	<field name="phase_start_date" class="java.sql.Date"/>
+	<field name="phase_end_date" class="java.sql.Date"/>
+	<field name="phase_completed" class="java.lang.Boolean"/>
+	<field name="entity_name" class="java.lang.String"/>
+	<field name="task_id" class="java.lang.Integer"/>
+	<field name="task_name" class="java.lang.String"/>
+	<field name="task_start_date" class="java.sql.Date"/>
+	<field name="task_dead_line" class="java.sql.Date"/>
+	<field name="task_end_date" class="java.sql.Date"/>
+	<field name="task_completed" class="java.lang.Boolean"/>
+	<field name="hours_taken" class="java.lang.Integer"/>
+	<field name="task_details" class="java.lang.String"/>
+	<variable name="project_name_1" class="java.lang.Integer" resetType="Column" calculation="Count">
+		<variableExpression><![CDATA[$F{project_name}]]></variableExpression>
+	</variable>
+	<group name="project">
+		<groupExpression><![CDATA[$F{project_id}]]></groupExpression>
+		<groupHeader>
+			<band height="52">
+				<frame>
+					<reportElement mode="Opaque" x="0" y="0" width="555" height="52" backcolor="#D6D5D5" uuid="aee99d27-0a5b-4818-a5c9-342fcc73c489"/>
+					<staticText>
+						<reportElement x="3" y="28" width="66" height="20" uuid="e49a7ed5-3d9c-45fe-ad5c-daa2fa3e85c8"/>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Times New Roman" isBold="true"/>
+						</textElement>
+						<text><![CDATA[  Client ]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="3" y="9" width="66" height="20" uuid="8f6b765b-cc63-4f8c-9656-b68aba4a2500"/>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Times New Roman" isBold="true"/>
+						</textElement>
+						<text><![CDATA[  Project ]]></text>
+					</staticText>
+					<textField isBlankWhenNull="true">
+						<reportElement x="69" y="9" width="244" height="20" uuid="be05e084-786f-4f09-bd3e-e25dfad67107"/>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Times New Roman"/>
+						</textElement>
+						<textFieldExpression><![CDATA[": " + $F{project_name}]]></textFieldExpression>
+					</textField>
+					<textField isBlankWhenNull="true">
+						<reportElement x="69" y="29" width="244" height="20" uuid="4ee3d0a2-dfe4-437d-ae77-0bd59ecd6753"/>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Times New Roman"/>
+						</textElement>
+						<textFieldExpression><![CDATA[": " +  $F{client_name}]]></textFieldExpression>
+					</textField>
+					<textField pattern="dd-MMM-yyyy" isBlankWhenNull="true">
+						<reportElement x="451" y="28" width="100" height="20" uuid="21f48bee-d0b9-46f7-80c6-57d3cd1eb021"/>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font fontName="Times New Roman"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{phase_end_date}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement x="380" y="28" width="71" height="20" uuid="a4b2ed9d-1ea9-48a4-add6-03a8642c2b2f"/>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Times New Roman" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Project End :]]></text>
+					</staticText>
+					<textField pattern="dd-MMM-yyyy" isBlankWhenNull="true">
+						<reportElement x="451" y="8" width="100" height="20" uuid="7c82aad5-15e0-45fe-b783-d8e73d017cb5"/>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font fontName="Times New Roman"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{phase_start_date}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement x="380" y="9" width="71" height="20" uuid="98e2b4af-347a-40ab-9a69-af60794187c2"/>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Times New Roman" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Project Start: ]]></text>
+					</staticText>
+				</frame>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="phase">
+		<groupExpression><![CDATA[$F{phase_id}]]></groupExpression>
+		<groupHeader>
+			<band height="56">
+				<frame>
+					<reportElement mode="Opaque" x="10" y="2" width="545" height="50" backcolor="#EFEFEF" uuid="778d53a5-5b90-490d-8dfc-6a01a937fc02"/>
+					<textField>
+						<reportElement x="66" y="27" width="100" height="20" uuid="bc8f69aa-f1bb-437d-94f9-f03f65b5f55f"/>
+						<box>
+							<bottomPen lineWidth="1.0" lineStyle="Dotted" lineColor="#D6D5D5"/>
+						</box>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Times New Roman"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{phase_completed}? ": Yes" : ": No"]]></textFieldExpression>
+					</textField>
+					<textField pattern="dd-MMM-yyyy" isBlankWhenNull="true">
+						<reportElement x="439" y="27" width="100" height="20" uuid="49b81a5e-52e0-4d0b-b4f2-fa5227f6aba1"/>
+						<box>
+							<bottomPen lineWidth="1.0" lineStyle="Dotted" lineColor="#D6D5D5"/>
+						</box>
+						<textElement textAlignment="Right" verticalAlignment="Middle">
+							<font fontName="Times New Roman"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{phase_end_date}]]></textFieldExpression>
+					</textField>
+					<staticText>
+						<reportElement x="5" y="27" width="61" height="20" uuid="156bd0ec-5e1a-4b6f-92b6-b4af9270b3b9"/>
+						<box>
+							<bottomPen lineWidth="1.0" lineStyle="Dotted" lineColor="#D6D5D5"/>
+						</box>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Times New Roman" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Completed]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="166" y="27" width="71" height="20" uuid="a7dee44d-af86-4101-b490-8263d01f690e"/>
+						<box>
+							<bottomPen lineWidth="1.0" lineStyle="Dotted" lineColor="#D6D5D5"/>
+						</box>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Times New Roman" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Phase Start : ]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="379" y="27" width="60" height="20" uuid="21d81809-2e2f-4757-ae0b-7d8c3fcb1c25"/>
+						<box>
+							<bottomPen lineWidth="1.0" lineStyle="Dotted" lineColor="#D6D5D5"/>
+						</box>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Times New Roman" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Phase End :]]></text>
+					</staticText>
+					<staticText>
+						<reportElement x="5" y="5" width="61" height="20" uuid="75ce7825-9333-412d-ae88-54af276b2c7a"/>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Times New Roman" isBold="true"/>
+						</textElement>
+						<text><![CDATA[Phase]]></text>
+					</staticText>
+					<textField pattern="dd-MMM-yyyy">
+						<reportElement x="237" y="27" width="142" height="20" uuid="df9a91aa-b9e3-413b-ab1b-3bf2010f7d5d"/>
+						<box>
+							<bottomPen lineWidth="1.0" lineStyle="Dotted" lineColor="#D6D5D5"/>
+						</box>
+						<textElement textAlignment="Left" verticalAlignment="Middle">
+							<font fontName="Times New Roman"/>
+						</textElement>
+						<textFieldExpression><![CDATA[$F{phase_start_date}]]></textFieldExpression>
+					</textField>
+					<textField>
+						<reportElement x="66" y="5" width="473" height="20" uuid="65c313b2-1743-4456-b743-8712caefb43b"/>
+						<textElement verticalAlignment="Middle">
+							<font fontName="Times New Roman"/>
+						</textElement>
+						<textFieldExpression><![CDATA[": " +  $F{phase_name}]]></textFieldExpression>
+					</textField>
+				</frame>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="67" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="47" width="555" height="20" uuid="01ea5fc7-7293-4c8f-adc5-008107d536cd"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[My Tasks]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="30">
+			<textField>
+				<reportElement x="0" y="10" width="555" height="20" uuid="60d89d4a-0535-4ce8-8bc3-48185980ab5b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{entity_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="90" splitType="Stretch">
+			<staticText>
+				<reportElement x="10" y="4" width="80" height="15" uuid="af30c5d1-5eaa-4d95-8be5-753c7e51b0f1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Task Name]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="90" y="4" width="248" height="15" uuid="7ff1e31b-2502-4bc0-a575-3a3e1a8588be"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": " + $F{task_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="389" y="4" width="80" height="15" uuid="766d809c-75b9-4d69-8062-2b69f8905c09"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Start Date: ]]></text>
+			</staticText>
+			<textField pattern="dd-MMM-yyyy">
+				<reportElement x="469" y="4" width="82" height="15" uuid="2a0b2ab4-b266-4dd1-8664-dcea79c2d330"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{task_start_date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="389" y="19" width="80" height="15" uuid="60c5353d-a8f0-4c4c-bf6a-797daa2fbdab"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[End Date :]]></text>
+			</staticText>
+			<textField pattern="dd-MMM-yyyy" isBlankWhenNull="true">
+				<reportElement x="469" y="19" width="82" height="15" uuid="619ff6e7-7da9-46f1-abee-efc3454ad5ff"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{task_end_date}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd-MMM-yyyy" isBlankWhenNull="true">
+				<reportElement x="469" y="34" width="82" height="15" uuid="0502ac98-bf8c-4cc9-911f-29b71e424091"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{task_dead_line}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="389" y="34" width="80" height="15" uuid="0c479b38-f6a8-435b-b4cb-6114bf91dd71"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DeadLine Date :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="90" y="19" width="248" height="15" uuid="e3d73cd8-fd31-4038-a3b0-c7ad6ba469f6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{task_completed}? ": Yes" : ": No"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="19" width="80" height="15" uuid="93f5f1cf-24fb-4d44-9571-426c4b3515a4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Completed ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="34" width="80" height="15" uuid="4053cc77-8d1e-4957-ae99-a13107a0ade0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Hours Taken ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="90" y="34" width="100" height="15" uuid="5f63a70e-bbd6-42cc-b8c4-a716db2f5510"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": " + $F{hours_taken}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="50" width="541" height="15" uuid="5cb8da06-4c33-4009-823b-b9daaa54699b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Details]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="10" y="66" width="541" height="20" uuid="ee45e8cd-d0b7-421e-aff5-f521d46d9b21"/>
+				<box leftPadding="10">
+					<bottomPen lineWidth="0.75" lineStyle="Dashed" lineColor="#D6D5D5"/>
+				</box>
+				<textElement markup="html">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{task_details}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="24" splitType="Stretch">
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="335" y="3" width="170" height="19" forecolor="#000000" backcolor="#FFFFFF" uuid="67b6443f-0729-447e-8ac4-53c19ea7f9a4"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER} + " of "]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="509" y="3" width="36" height="19" forecolor="#000000" backcolor="#FFFFFF" uuid="1bd09c13-ab99-4f31-a215-826e50ad54bf"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA["" + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement key="textField" x="11" y="5" width="209" height="19" forecolor="#000000" backcolor="#FFFFFF" uuid="42f54a21-ca38-4e96-95de-41b512f3a4a8"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

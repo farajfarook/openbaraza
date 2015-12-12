@@ -1,0 +1,29 @@
+#/bin/sh
+
+#rm barazakeystore.jks
+#keytool -genkey -keyalg RSA -alias barazakeystore -keystore barazakeystore.jks -storepass invent -validity 1095 -keysize 2048
+
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO activation-1.1.1.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO barbecue-1.5-beta1.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO bcprov-jdk16-1.46.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO itextpdf-5.5.0.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO iText-2.1.7.js2.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO commons-beanutils-1.8.0.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO commons-codec-1.9.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO commons-collections-2.1.1.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO commons-digester-2.1.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO commons-logging-1.1.1.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO derby.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO groovy-all-2.0.1.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO jasperreports-5.5.0.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO mail.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO mysql-connector-java-5.1.13-bin.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO ojdbc6.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO poi-3.10.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO postgresql-9.3-1101.jdbc4.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO jfreechart-1.0.12.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO jcommon-1.0.15.jar dewciskeystore
+
+
+
+

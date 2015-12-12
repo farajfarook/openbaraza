@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="employee_leave_report2" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="BlankPage" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8f5972cf-9ca4-4659-b1cf-27ba83e3d9e4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="minDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA["2011-01-01"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="maxDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA["2013-01-01"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="entity_id" class="java.lang.String">
+		<defaultValueExpression><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="approve_status" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="leave_type_id" class="java.lang.String">
+		<defaultValueExpression><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="organd" class="java.lang.String"><defaultValueExpression><![CDATA[""]]></defaultValueExpression></parameter>
+	<parameter name="orgwhere" class="java.lang.String"><defaultValueExpression><![CDATA[""]]></defaultValueExpression></parameter>
+	<queryString>
+		<![CDATA[select entity_name, leave_type_name, leave_from, leave_to, leave_days,approve_status from vw_employee_leave
+
+WHERE leave_from >='$P!{minDate}'::date AND leave_from <= '$P!{maxDate}'::date
+AND entity_id = '$P!{entity_id}'::integer
+AND approve_status = '$P!{approve_status}'
+AND vw_employee_leave.leave_type_id = '$P!{leave_type_id}'
+$P!{organd}
+ORDER BY leave_from ASC]]>
+	</queryString>
+	<field name="entity_name" class="java.lang.String"/>
+	<field name="leave_type_name" class="java.lang.String"/>
+	<field name="leave_from" class="java.sql.Date"/>
+	<field name="leave_to" class="java.sql.Date"/>
+	<field name="leave_days" class="java.lang.Float"/>
+	<field name="approve_status" class="java.lang.String"/>
+	<variable name="total_days_take" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$F{leave_days}]]></variableExpression>
+		<initialValueExpression><![CDATA[$F{leave_days}]]></initialValueExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="62" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="20" width="555" height="42" uuid="a063bf8c-670a-41f4-a3c2-427f4525e853"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Staff Vacation Balances Report]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="100">
+			<staticText>
+				<reportElement x="10" y="30" width="100" height="20" uuid="b91559a5-aea2-43e1-9792-50747c890e13"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date To:]]></text>
+			</staticText>
+			<textField pattern="dd MMMMM yyyy" isBlankWhenNull="true">
+				<reportElement x="110" y="10" width="100" height="20" uuid="36693b22-9472-4435-8ff9-ce453c216539"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{minDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="30" width="100" height="20" uuid="ee52af30-1065-4c18-a19d-5ab4ffe17e94"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{maxDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="10" width="100" height="20" uuid="e8cffb8f-f479-4fb0-b207-2bfa2805703d"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date From:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="50" width="100" height="20" uuid="c06953fd-7df9-4268-b468-ea96ac35016b"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Employee Name : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="110" y="50" width="444" height="20" uuid="ff6a6fbc-061e-4b42-914f-c90c1c66319a"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{entity_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="70" width="100" height="20" uuid="fa8d4b90-425f-469d-9f7b-d6bd0d42ead7"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Approval Status]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="110" y="70" width="100" height="20" uuid="5ecade98-731b-428c-a4aa-298a1702a02a"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{approve_status}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="20" y="14" width="69" height="47" uuid="74741b9c-e4dd-4fd4-9cff-a51cdb588a42"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Leave Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="332" y="14" width="56" height="47" uuid="087438bb-6498-40fa-b00a-bc2e86c14ef0"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Leave Days]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="388" y="14" width="61" height="47" uuid="5c4ba512-4681-4083-ad91-3eac71fad89d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Entitlement So far]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="449" y="14" width="53" height="47" uuid="b6ecc694-cb4a-4cfb-a3b6-97f84d0e5aa6"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Days taken]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="89" y="14" width="66" height="47" uuid="78074d60-0a6a-4942-874c-5e23d98a3c16"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Application Date From]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="14" width="65" height="47" uuid="1390f582-4596-4633-9a8f-dea47047a67b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Application Date To]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="281" y="14" width="51" height="47" uuid="40740f9a-a069-4736-b048-60a9a818cf1c"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Balance Carried Forward]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="14" width="20" height="47" uuid="80c7f638-0c35-4bc3-8c52-e4c3fc3a57e3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[#]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="502" y="14" width="53" height="47" uuid="62331293-100c-454f-8a52-7aa2fa722087"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Leave Balance]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="20" height="20" uuid="005693bd-d743-4097-87c0-37b82f579a20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="20" y="0" width="69" height="20" uuid="0ee8e23a-cefb-46ea-9cb2-24294669de74"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{leave_type_name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="89" y="0" width="66" height="20" uuid="fd99f0e8-8d84-44e2-931e-7d3e191a479e"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{leave_from}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="155" y="0" width="65" height="20" uuid="926629e7-d9ab-484a-83a6-0fd03067ff64"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{leave_to}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="332" y="0" width="56" height="20" uuid="3d67c5a5-ec71-4c69-a64e-97f9295a877d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{leave_days}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="449" y="0" width="53" height="20" uuid="ce84fac3-ce13-4107-9fa5-69232ea409cb"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{total_days_take}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="388" y="0" width="61" height="20" uuid="ae8f6b30-54e8-4e8d-8298-9a1043430882"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="502" y="0" width="53" height="20" uuid="db85292d-f526-47c8-8ca1-6b129ac95111"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="281" y="0" width="51" height="20" uuid="d7c2149f-c25b-420a-9e80-e0b7efae2eae"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="2" width="555" height="28" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="1dce2d7a-1222-46eb-9c0b-12195e8bc480"/>
+				<textField pattern="EEE, d MMM yyyy HH:mm:ss Z" isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="3" y="6" width="160" height="22" forecolor="#736343" uuid="72e8e909-72f3-43c2-aa4f-2e49e17c2d8a"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Transparent" x="433" y="6" width="80" height="19" forecolor="#736343" uuid="4e36572c-0998-45a4-a026-f836db2f5d48"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Report">
+					<reportElement mode="Transparent" x="514" y="6" width="40" height="19" forecolor="#736343" uuid="584265ea-1b47-482d-8d79-abd7194eb3e3"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+</jasperReport>

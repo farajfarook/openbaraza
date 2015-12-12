@@ -1,0 +1,49 @@
+icsdwphost: mail.kemsa.co.ke
+icsextendeduserprefs: ceDayHead=9
+icsextendeduserprefs: ceEnableNotifySMS=false
+icsextendeduserprefs: ceEnableNotifyPopup=false
+icsextendeduserprefs: ceDefaultCategory=Business
+icsextendeduserprefs: ceDayTail=18
+icsextendeduserprefs: ceEnableInviteNotify=false
+icsextendeduserprefs: ceIncludeWeekendInViews=true
+icsextendeduserprefs: ceWeekEndDays=1,7
+icsextendeduserprefs: ceNotifyEnable=0
+icsextendeduserprefs: ceDefaultAlarmStart=-PT0H30M
+icsextendeduserprefs: ceDefaultView=dayview
+icsfirstday: 2
+icsstatus: active
+icstimezone: Europe/Moscow
+inetcos: standardUserMailCalendarIM
+inetuserstatus: active
+mailautoreplymode: reply
+maildeferprocessing: No
+maildeliveryoption: mailbox
+mailhost: mail.kemsa.co.ke
+mailquota: -2
+mailuserstatus: active
+nswmextendeduserprefs: meDraftFolder=Drafts
+nswmextendeduserprefs: meSentFolder=Sent Items
+nswmextendeduserprefs: mePrevSent=Sent Items
+nswmextendeduserprefs: mePrevTrash=Deleted Items
+nswmextendeduserprefs: meTrashFolder=Deleted Items
+objectclass: daventity
+objectclass: inetmailUser
+objectclass: person
+objectclass: icscalendaruser
+objectclass: sunucpreferences
+objectclass: inetorgperson
+objectclass: inetsubscriber
+objectclass: organizationalperson
+objectclass: inetuser
+objectclass: iplanetpreferences
+objectclass: ipuser
+objectclass: sunimuser
+objectclass: userpresenceprofile
+objectclass: inetlocalmailrecipient
+objectclass: sunpresenceuser
+objectclass: top
+preferredlanguage: en
+psincludeingab: true
+sunimuserprivatesettings: [private_sunldapgrp]<sunldapgrp xmlns='sun:xmpp:ldapgroups'/>
+sunimuserproperties: <sunmsgr xmlns='sun:xmpp:properties'/>
+sunimuserroster: <query xmlns='jabber:iq:roster'/>

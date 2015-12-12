@@ -1,0 +1,106 @@
+Sat Jun 27 11:28:34 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Sat Jun 27 11:28:34 EAT 2015 org.baraza.server.escalation.BEscalation task
+INFO : ---------- Escalation Client Run for : Baraza Mail
+Sat Jun 27 11:28:34 EAT 2015 org.baraza.server.escalation.BEscalation task
+INFO : SELECT sys_emailed_id, sys_emails.title as emailsubject, entitys.user_name as emailaddress, entitys.entity_name, entitys.user_name, entitys.first_password, sys_emails.details FROM sys_emails, sys_emailed, entitys  WHERE (entitys.entity_id = sys_emailed.table_id) AND (sys_emails.sys_email_id = sys_emailed.sys_email_id) AND (sys_emailed.emailed = false)
+Sat Jun 27 11:28:34 EAT 2015 org.baraza.server.escalation.BEscalation task
+INFO : SELECT sys_emailed_id, get_phase_email(vw_approvals.approval_entity_id) as emailaddress, vw_approvals.phase_narrative as emailsubject, vw_approvals.advice_email FROM sys_emailed, vw_approvals  WHERE (vw_approvals.approval_id = sys_emailed.table_id) AND (sys_emailed.emailed = false)       AND (sys_emailed.table_name = 'approvals') AND (sys_emailed.email_type = 1)
+Sat Jun 27 11:28:34 EAT 2015 org.baraza.server.escalation.BEscalation task
+INFO : SELECT sys_emailed_id, vw_approvals.org_primary_email as emailaddress, vw_approvals.phase_narrative as emailsubject, vw_approvals.notice_email FROM sys_emailed, vw_approvals  WHERE (vw_approvals.approval_id = sys_emailed.table_id) AND (sys_emailed.emailed = false)      AND (sys_emailed.table_name = 'approvals') AND (sys_emailed.email_type = 2)
+Sat Jun 27 11:28:34 EAT 2015 org.baraza.server.escalation.BEscalation task
+INFO : SELECT sys_emailed_id, vw_workflow_approvals.org_primary_email as emailaddress, vw_workflow_approvals.workflow_narrative as emailsubject, vw_workflow_approvals.approve_email FROM sys_emailed, vw_workflow_approvals  WHERE (vw_workflow_approvals.table_id = sys_emailed.table_id) AND (sys_emailed.emailed = false)       AND (sys_emailed.table_name = 'vw_workflow_approvals') AND (sys_emailed.email_type = 1)
+Sat Jun 27 11:28:34 EAT 2015 org.baraza.server.escalation.BEscalation task
+INFO : SELECT sys_emailed_id, vw_workflow_approvals.org_primary_email as emailaddress, vw_workflow_approvals.workflow_narrative as emailsubject, vw_workflow_approvals.reject_email FROM sys_emailed, vw_workflow_approvals  WHERE (vw_workflow_approvals.table_id = sys_emailed.table_id) AND (sys_emailed.emailed = false)       AND (sys_emailed.table_name = 'vw_workflow_approvals') AND (sys_emailed.email_type = 2)
+Fri Jul 17 10:10:01 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Fri Jul 17 10:39:48 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Fri Jul 17 10:40:38 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Fri Jul 17 10:45:03 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Fri Jul 17 10:57:27 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Fri Jul 17 11:10:43 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Fri Jul 17 12:41:50 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Fri Jul 17 12:45:05 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Fri Jul 17 12:57:13 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Fri Jul 17 13:09:16 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Tue Jul 21 14:21:43 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Tue Jul 21 14:22:03 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Fri Jul 24 10:36:59 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Sat Jul 25 10:18:59 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Sat Jul 25 10:21:34 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Sat Jul 25 10:53:47 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Sat Jul 25 13:19:48 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Sat Jul 25 14:00:43 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Sun Jul 26 20:26:49 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Mon Jul 27 08:36:47 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Mon Jul 27 08:41:10 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Mon Jul 27 17:31:43 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Mon Jul 27 17:52:18 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Mon Jul 27 18:16:33 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Mon Jul 27 18:32:56 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Mon Jul 27 18:37:06 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Mon Jul 27 18:52:27 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Tue Jul 28 08:41:25 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Tue Jul 28 09:31:45 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Tue Jul 28 10:46:54 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Tue Jul 28 12:55:45 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Tue Jul 28 14:37:54 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Tue Jul 28 14:46:40 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Tue Jul 28 14:48:06 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Tue Jul 28 15:25:19 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Wed Jul 29 10:20:20 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Wed Jul 29 10:39:11 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Wed Jul 29 10:46:52 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Wed Jul 29 11:07:47 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Thu Jul 30 08:54:34 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Thu Jul 30 12:53:50 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Thu Jul 30 14:51:45 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Fri Jul 31 09:19:40 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Fri Jul 31 09:54:22 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Fri Jul 31 10:06:01 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started
+Fri Jul 31 11:11:02 EAT 2015 org.baraza.server.BServer <init>
+INFO : Server started

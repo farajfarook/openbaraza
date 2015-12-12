@@ -1,0 +1,57 @@
+#/bin/sh
+
+cd $(dirname $0)
+
+CLASSPATH=".:../build/lib/jasperreports-5.5.0.jar:../build/lib/mail.jar:"
+CLASSPATH+="../build/lib/poi-3.10.jar:../build/lib/ojdbc6.jar:../build/lib/itextpdf-5.5.0.jar:../build/lib/commons-codec-1.9.jar:"
+CLASSPATH+="../build/lib/javax.json-1.0.4.jar:"
+CLASSPATH+="../build/lib/server/jsch.jar:../build/lib/server/rxtxcomm.jar:"
+CLASSPATH+="../build/lib/server/tomcat-embed-core.jar:../build/lib/commons-fileupload-1.3.1.jar:"
+CLASSPATH+="../build/lib/webdav/sardine.jar:"
+
+javac -Xlint:deprecation -classpath $CLASSPATH org/baraza/*.java org/baraza/swing/*.java org/baraza/xml/*.java org/baraza/DB/*.java 
+javac -Xlint:deprecation -classpath $CLASSPATH org/baraza/app/*.java org/baraza/ide/*.java org/baraza/utils/*.java org/baraza/web/*.java 
+javac -Xlint:deprecation -classpath $CLASSPATH org/baraza/server/*.java org/baraza/reports/*.java 
+javac -Xlint:deprecation -classpath $CLASSPATH org/baraza/server/mail/*.java org/baraza/server/escalation/*.java org/baraza/server/data/*.java
+javac -Xlint:deprecation -classpath $CLASSPATH org/baraza/server/sms/*.java org/baraza/server/epp/*.java org/baraza/server/comm/*.java
+javac -Xlint:deprecation -classpath $CLASSPATH org/baraza/server/deploy/*.java org/baraza/server/export/*.java org/baraza/server/ssh/*.java
+javac -Xlint:deprecation -classpath $CLASSPATH org/baraza/server/tomcat/*.java org/baraza/server/sqlcron/*.java
+javac -Xlint:deprecation -classpath $CLASSPATH org/baraza/com/*.java
+
+#/usr/java/default/bin/wsgen -cp . org.baraza.web.service.BService
+
+CLASSES="org/baraza/*.class org/baraza/swing/*.class org/baraza/xml/*.class org/baraza/DB/*.class org/baraza/app/*.class "
+CLASSES+="org/baraza/ide/*.class org/baraza/utils/*.class org/baraza/web/*.class org/baraza/server/*.class "
+CLASSES+="org/baraza/reports/*.class org/baraza/server/mail/*.class org/baraza/server/escalation/*.class "
+CLASSES+="org/baraza/server/sms/*.class  org/baraza/server/epp/*.class org/baraza/server/comm/*.class "
+CLASSES+="org/baraza/server/deploy/*.class org/baraza/server/export/*.class org/baraza/server/ssh/*.class "
+CLASSES+="org/baraza/server/data/*.class org/baraza/server/tomcat/*.class org/baraza/server/sqlcron/*.class "
+CLASSES+="org/baraza/resources/* "
+CLASSES+="org/baraza/com/*.class "
+
+jar cmf manifest baraza.jar $CLASSES
+jar cmf manifest.app baraza.app.jar $CLASSES
+
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore ../build/lib/dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO baraza.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore ../build/lib/dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO baraza.app.jar dewciskeystore
+
+#jarsigner -keystore ../build/lib/dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO baraza.jar dewciskeystore
+#jarsigner -keystore ../build/lib/dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO baraza.app.jar dewciskeystore
+
+cp baraza.jar /opt/tomcat/webapps/hr/WEB-INF/lib/baraza.jar -f
+cp baraza.app.jar /opt/tomcat/webapps/hr/app/baraza.jar -f
+mv baraza.jar ../build/
+mv baraza.app.jar ../build/
+
+#/usr/java/default/bin/wsimport -d tmp http://localhost:9090/integration/webservice?wsdl
+
+# Java docs generation
+#export CLASSPATH=.:./build/lib/jasperreports-4.0.0.jar:./build/lib/server/tomcat-embed-core.jar:./build/lib/server/jsch.jar:./build/lib/poi-3.6.jar:
+#./build/lib/itextpdf-5.1.2.jar:./build/lib/iText-2.1.7.jar:./build/lib/commons-fileupload-1.2.jar:./build/lib/activation-1.1.1.jar:
+#./build/lib/mail.jar:./build/lib/webdav/sardine.jar:./build/lib/server/rxtxcomm.jar:./build/lib/commons-codec-1.6.jar:./build/lib/server/yu.jar:
+#./build/lib/server/metropol.jar:
+#
+#/usr/java/default/bin/javadoc -private -d /root/baraza/src/api -sourcepath /root/baraza/src -subpackages org.baraza
+#
+
+

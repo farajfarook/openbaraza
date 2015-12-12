@@ -1,0 +1,20 @@
+Samba users are normally provisioned using smbldap-tools-0.9.2a (//simba/products/System/Server Systems/File Servers/samba/smbldap-tools-0.9.1-1
+
+This are not able to work until a user has
+objectclass: posixAccount
+objectclass: shadowAccount
+Compulsory attributes are gidNumber,homeDirectory,uidNumber
+
+gidNumber can default to 512
+homeDirectory=/global/shares/homes/<userid>
+uidNumber is obtained from the object sambaDomainName=CWTKENYA,o=carlsonwagonlit.co.ke,
+dc=carlsonwagonlit,dc=co,dc=ke , attribute Uidnumber and sambaNextRID. Every addition needs to add +1 value to this attributes.
+
+Logins are:
+host: 62.24.116.61
+root p/w B4codesun
+
+base = o=carlonwagonlit.co.ke,dc=carlsonwagonlit,dc=co,dc=ke
+Bind User: cn=proxyagent,ou=profile,dc=carlsonwagonlit,dc=co,dc=ke
+Bind Password: B4codesun
+user container: ou=People,o=carlonwagonlit.co.ke,dc=carlsonwagonlit,dc=co,dc=ke

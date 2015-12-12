@@ -1,0 +1,376 @@
+<MIGRATE_ORG dbpath="jdbc:postgresql://localhost/hr" dbclass="org.postgresql.Driver" dbusername="root" dbpassword="invent">
+	<IMPORT name="Banks" keyfield="bank_id" table="banks">
+		<TEXTFIELD w="75" title="Bank ID">bank_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Org ID">org_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Bank Name">bank_name</TEXTFIELD>
+		<TEXTFIELD w="75" title="Narrative">narrative</TEXTFIELD>
+		<EXPORT name="Banks" keyfield="bank_id" table="banks">
+			<TEXTFIELD w="75" title="Bank ID">bank_id</TEXTFIELD>
+			<TEXTFIELD w="75" fnct="(1 * 1)" title="Org ID">new_org_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Bank Name">bank_name</TEXTFIELD>
+			<TEXTFIELD w="75" title="Narrative">narrative</TEXTFIELD>
+		</EXPORT>
+	</IMPORT>
+
+	<IMPORT name="Bank Branch" keyfield="bank_branch_id" table="bank_branch">
+		<TEXTFIELD w="75" title="Bank Branch ID">bank_branch_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Org ID">org_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Bank ID">bank_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Bank Branch Name">bank_branch_name</TEXTFIELD>
+		<TEXTFIELD w="75" title="Bank Branch Code">bank_branch_code</TEXTFIELD>
+		<TEXTFIELD w="75" title="Narrative">narrative</TEXTFIELD>
+		<EXPORT name="Bank Branch" keyfield="bank_branch_id" table="bank_branch">
+			<TEXTFIELD w="75" title="Bank Branch ID">bank_branch_id</TEXTFIELD>
+			<TEXTFIELD w="75" fnct="(1 * 1)" title="Org ID">new_org_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Bank ID">bank_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Bank Branch Name">bank_branch_name</TEXTFIELD>
+			<TEXTFIELD w="75" title="Bank Branch Code">bank_branch_code</TEXTFIELD>
+			<TEXTFIELD w="75" title="Narrative">narrative</TEXTFIELD>
+		</EXPORT>
+	</IMPORT>
+
+	<IMPORT name="Entitys" keyfield="entity_id" table="entitys">
+		<TEXTFIELD w="75" title="Entity ID">entity_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Org ID">org_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Entity Type ID">entity_type_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Entity Name">entity_name</TEXTFIELD>
+		<TEXTFIELD w="75" title="User Name">user_name</TEXTFIELD>
+		<TEXTFIELD w="75" title="Primary Email">primary_email</TEXTFIELD>
+		<CHECKBOX w="75" title="Super User">super_user</CHECKBOX>
+		<CHECKBOX w="75" title="Entity Leader">entity_leader</CHECKBOX>
+		<TEXTFIELD w="75" title="Function Role">function_role</TEXTFIELD>
+		<TEXTTIMESTAMP w="75" title="Date Enroled">date_enroled</TEXTTIMESTAMP>
+		<CHECKBOX w="75" title="Active">is_active</CHECKBOX>
+		<TEXTFIELD w="75" title="Entity Password">entity_password</TEXTFIELD>
+		<TEXTFIELD w="75" title="First Password">first_password</TEXTFIELD>
+		<TEXTFIELD w="75" title="Details">details</TEXTFIELD>
+		<CHECKBOX w="75" title="Picked">is_picked</CHECKBOX>
+		<EXPORT name="Entitys" keyfield="entity_id" table="entitys">
+			<TEXTFIELD w="75" title="Entity ID">entity_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Org ID">org_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Entity Type ID">entity_type_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Entity Name">entity_name</TEXTFIELD>
+			<TEXTFIELD w="75" title="User Name">user_name</TEXTFIELD>
+			<TEXTFIELD w="75" title="Primary Email">primary_email</TEXTFIELD>
+			<CHECKBOX w="75" title="Super User">super_user</CHECKBOX>
+			<CHECKBOX w="75" title="Entity Leader">entity_leader</CHECKBOX>
+			<TEXTFIELD w="75" title="Function Role">function_role</TEXTFIELD>
+			<TEXTTIMESTAMP w="75" title="Date Enroled">date_enroled</TEXTTIMESTAMP>
+			<CHECKBOX w="75" title="Active">is_active</CHECKBOX>
+			<TEXTFIELD w="75" title="Entity Password">entity_password</TEXTFIELD>
+			<TEXTFIELD w="75" title="First Password">first_password</TEXTFIELD>
+			<TEXTFIELD w="75" title="Details">details</TEXTFIELD>
+			<CHECKBOX w="75" title="Picked">is_picked</CHECKBOX>
+		</EXPORT>
+	</IMPORT>
+
+	<IMPORT name="Employees" keyfield="entity_id" table="employees">
+		<TEXTFIELD w="75" title="Entity ID">entity_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Employee ID">employee_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Department Role ID">department_role_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Pay Scale ID">pay_scale_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Pay Group ID">pay_group_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Location ID">location_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Surname">surname</TEXTFIELD>
+		<TEXTFIELD w="75" title="First Name">first_name</TEXTFIELD>
+		<TEXTFIELD w="75" title="Middle Name">middle_name</TEXTFIELD>
+		<TEXTDATE w="75" title="Date Of Birth">date_of_birth</TEXTDATE>
+		<TEXTFIELD w="75" title="Gender">gender</TEXTFIELD>
+		<TEXTFIELD w="75" title="Nationality">nationality</TEXTFIELD>
+		<TEXTFIELD w="75" title="Marital Status">marital_status</TEXTFIELD>
+		<TEXTDATE w="75" title="Appointment Date">appointment_date</TEXTDATE>
+		<TEXTDATE w="75" title="Current Appointment">current_appointment</TEXTDATE>
+		<TEXTDATE w="75" title="Exit Date">exit_date</TEXTDATE>
+		<CHECKBOX w="75" title="Contract">contract</CHECKBOX>
+		<TEXTFIELD w="75" title="Contract Period">contract_period</TEXTFIELD>
+		<TEXTFIELD w="75" title="Employment Terms">employment_terms</TEXTFIELD>
+		<TEXTFIELD w="75" title="Identity Card">identity_card</TEXTFIELD>
+		<TEXTDECIMAL w="75" title="Basic Salary">basic_salary</TEXTDECIMAL>
+		<TEXTFIELD w="75" title="Bank Branch ID">bank_branch_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Bank Account">bank_account</TEXTFIELD>
+		<CHECKBOX w="75" title="Active">active</CHECKBOX>
+		<TEXTFIELD w="75" title="Language">language</TEXTFIELD>
+		<TEXTFIELD w="75" title="Desg Code">desg_code</TEXTFIELD>
+		<TEXTFIELD w="75" title="Inc Mth">inc_mth</TEXTFIELD>
+		<TEXTFIELD w="75" title="Previous Sal Point">previous_sal_point</TEXTFIELD>
+		<TEXTFIELD w="75" title="Current Sal Point">current_sal_point</TEXTFIELD>
+		<TEXTFIELD w="75" title="Halt Point">halt_point</TEXTFIELD>
+		<TEXTFIELD w="75" title="Interests">interests</TEXTFIELD>
+		<TEXTFIELD w="75" title="Objective">objective</TEXTFIELD>
+		<TEXTFIELD w="75" title="Details">details</TEXTFIELD>
+		<EXPORT name="Employees" keyfield="entity_id" table="employees">
+			<TEXTFIELD w="75" title="Entity ID">entity_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Employee ID">employee_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Department Role ID">department_role_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Pay Scale ID">pay_scale_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Pay Group ID">pay_group_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Location ID">location_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Surname">surname</TEXTFIELD>
+			<TEXTFIELD w="75" title="First Name">first_name</TEXTFIELD>
+			<TEXTFIELD w="75" title="Middle Name">middle_name</TEXTFIELD>
+			<TEXTDATE w="75" title="Date Of Birth">date_of_birth</TEXTDATE>
+			<TEXTFIELD w="75" title="Gender">gender</TEXTFIELD>
+			<TEXTFIELD w="75" title="Nationality">nationality</TEXTFIELD>
+			<TEXTFIELD w="75" title="Marital Status">marital_status</TEXTFIELD>
+			<TEXTDATE w="75" title="Appointment Date">appointment_date</TEXTDATE>
+			<TEXTDATE w="75" title="Current Appointment">current_appointment</TEXTDATE>
+			<TEXTDATE w="75" title="Exit Date">exit_date</TEXTDATE>
+			<CHECKBOX w="75" title="Contract">contract</CHECKBOX>
+			<TEXTFIELD w="75" title="Contract Period">contract_period</TEXTFIELD>
+			<TEXTFIELD w="75" title="Employment Terms">employment_terms</TEXTFIELD>
+			<TEXTFIELD w="75" title="Identity Card">identity_card</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Basic Salary">basic_salary</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Bank Branch ID">bank_branch_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Bank Account">bank_account</TEXTFIELD>
+			<CHECKBOX w="75" title="Active">active</CHECKBOX>
+			<TEXTFIELD w="75" title="Language">language</TEXTFIELD>
+			<TEXTFIELD w="75" title="Desg Code">desg_code</TEXTFIELD>
+			<TEXTFIELD w="75" title="Inc Mth">inc_mth</TEXTFIELD>
+			<TEXTFIELD w="75" title="Previous Sal Point">previous_sal_point</TEXTFIELD>
+			<TEXTFIELD w="75" title="Current Sal Point">current_sal_point</TEXTFIELD>
+			<TEXTFIELD w="75" title="Halt Point">halt_point</TEXTFIELD>
+			<TEXTFIELD w="75" title="Interests">interests</TEXTFIELD>
+			<TEXTFIELD w="75" title="Objective">objective</TEXTFIELD>
+			<TEXTFIELD w="75" title="Details">details</TEXTFIELD>
+		</EXPORT>
+	</IMPORT>
+
+	<IMPORT name="Adjustments" keyfield="adjustment_id" table="adjustments">
+		<TEXTFIELD w="75" title="Adjustment ID">adjustment_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Org ID">org_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Adjustment Name">adjustment_name</TEXTFIELD>
+		<TEXTFIELD w="75" title="Adjustment Type">adjustment_type</TEXTFIELD>
+		<TEXTFIELD w="75" title="Adjustment Order">adjustment_order</TEXTFIELD>
+		<TEXTFIELD w="75" title="Earning Code">earning_code</TEXTFIELD>
+		<TEXTFIELD w="75" title="Formural">formural</TEXTFIELD>
+		<CHECKBOX w="75" title="Monthly Update">monthly_update</CHECKBOX>
+		<CHECKBOX w="75" title="In Payroll">in_payroll</CHECKBOX>
+		<CHECKBOX w="75" title="In Tax">in_tax</CHECKBOX>
+		<CHECKBOX w="75" title="Visible">visible</CHECKBOX>
+		<CHECKBOX w="75" title="Running Balance">running_balance</CHECKBOX>
+		<CHECKBOX w="75" title="Reduce Balance">reduce_balance</CHECKBOX>
+		<TEXTFIELD w="75" title="Account Number">account_number</TEXTFIELD>
+		<TEXTFIELD w="75" title="Details">details</TEXTFIELD>
+		<EXPORT name="Adjustments" keyfield="new_adjustment_id" table="adjustments">
+			<TEXTFIELD w="75" fnct="(10000 * {org_id}) + adjustment_id" title="Adjustment ID">new_adjustment_id</TEXTFIELD>
+			<TEXTFIELD w="75" fnct="(1 * {org_id})" title="Org ID">new_org_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Adjustment Name">adjustment_name</TEXTFIELD>
+			<TEXTFIELD w="75" title="Adjustment Type">adjustment_type</TEXTFIELD>
+			<TEXTFIELD w="75" title="Adjustment Order">adjustment_order</TEXTFIELD>
+			<TEXTFIELD w="75" title="Earning Code">earning_code</TEXTFIELD>
+			<TEXTFIELD w="75" title="Formural">formural</TEXTFIELD>
+			<CHECKBOX w="75" title="Monthly Update">monthly_update</CHECKBOX>
+			<CHECKBOX w="75" title="In Payroll">in_payroll</CHECKBOX>
+			<CHECKBOX w="75" title="In Tax">in_tax</CHECKBOX>
+			<CHECKBOX w="75" title="Visible">visible</CHECKBOX>
+			<CHECKBOX w="75" title="Running Balance">running_balance</CHECKBOX>
+			<CHECKBOX w="75" title="Reduce Balance">reduce_balance</CHECKBOX>
+			<TEXTFIELD w="75" title="Account Number">account_number</TEXTFIELD>
+			<TEXTFIELD w="75" title="Details">details</TEXTFIELD>
+		</EXPORT>
+	</IMPORT>
+
+	<IMPORT name="Default Adjustments" keyfield="default_allowance_id" table="default_adjustments">
+		<TEXTFIELD w="75" title="Default Allowance ID">default_allowance_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Org ID">org_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Entity ID">entity_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Adjustment ID">adjustment_id</TEXTFIELD>
+		<TEXTDECIMAL w="75" title="Amount">amount</TEXTDECIMAL>
+		<TEXTDECIMAL w="75" title="Balance">balance</TEXTDECIMAL>
+		<TEXTDATE w="75" title="Final Date">final_date</TEXTDATE>
+		<CHECKBOX w="75" title="Active">active</CHECKBOX>
+		<TEXTFIELD w="75" title="Narrative">narrative</TEXTFIELD>
+		<EXPORT name="Default Adjustments" keyfield="new_default_allowance_id" table="default_adjustments">
+			<TEXTFIELD w="75" fnct="(10000 * {org_id}) + default_allowance_id" title="Default Allowance ID">new_default_allowance_id</TEXTFIELD>
+			<TEXTFIELD w="75" fnct="(1 * {org_id})" title="Org ID">new_org_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Entity ID">entity_id</TEXTFIELD>
+			<TEXTFIELD w="75" fnct="(10000 * {org_id}) + adjustment_id" title="Adjustment ID">new_adjustment_id</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Amount">amount</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Balance">balance</TEXTDECIMAL>
+			<TEXTDATE w="75" title="Final Date">final_date</TEXTDATE>
+			<CHECKBOX w="75" title="Active">active</CHECKBOX>
+			<TEXTFIELD w="75" title="Narrative">narrative</TEXTFIELD>
+		</EXPORT>
+	</IMPORT>
+
+	<IMPORT name="Periods" keyfield="period_id" table="periods">
+		<TEXTFIELD w="75" title="Period ID">period_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Org ID">org_id</TEXTFIELD>
+		<TEXTDATE w="75" title="Start Date">start_date</TEXTDATE>
+		<TEXTDATE w="75" title="End Date">end_date</TEXTDATE>
+		<TEXTDECIMAL w="75" title="Overtime Rate">overtime_rate</TEXTDECIMAL>
+		<TEXTDECIMAL w="75" title="Per Diem Tax Limit">per_diem_tax_limit</TEXTDECIMAL>
+		<CHECKBOX w="75" title="Activated">activated</CHECKBOX>
+		<CHECKBOX w="75" title="Closed">closed</CHECKBOX>
+		<TEXTFIELD w="75" title="Gl Payroll Account">gl_payroll_account</TEXTFIELD>
+		<TEXTFIELD w="75" title="Gl Bank Account">gl_bank_account</TEXTFIELD>
+		<CHECKBOX w="75" title="Posted">is_posted</CHECKBOX>
+		<CHECKBOX w="75" title="Loan Approval">loan_approval</CHECKBOX>
+		<TEXTFIELD w="75" title="Bank Header">bank_header</TEXTFIELD>
+		<TEXTFIELD w="75" title="Bank Address">bank_address</TEXTFIELD>
+		<TEXTFIELD w="75" title="Details">details</TEXTFIELD>
+		<EXPORT name="Periods" keyfield="new_period_id" table="periods">
+			<TEXTFIELD w="75" fnct="(10000 * {org_id}) + period_id" title="Period ID">new_period_id</TEXTFIELD>
+			<TEXTFIELD w="75" fnct="(1 * {org_id})" title="Org ID">new_org_id</TEXTFIELD>
+			<TEXTDATE w="75" title="Start Date">start_date</TEXTDATE>
+			<TEXTDATE w="75" title="End Date">end_date</TEXTDATE>
+			<TEXTDECIMAL w="75" title="Overtime Rate">overtime_rate</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Per Diem Tax Limit">per_diem_tax_limit</TEXTDECIMAL>
+			<CHECKBOX w="75" title="Activated">activated</CHECKBOX>
+			<CHECKBOX w="75" title="Closed">closed</CHECKBOX>
+			<TEXTFIELD w="75" title="Gl Payroll Account">gl_payroll_account</TEXTFIELD>
+			<TEXTFIELD w="75" title="Gl Bank Account">gl_bank_account</TEXTFIELD>
+			<CHECKBOX w="75" title="Posted">is_posted</CHECKBOX>
+			<CHECKBOX w="75" title="Loan Approval">loan_approval</CHECKBOX>
+			<TEXTFIELD w="75" title="Bank Header">bank_header</TEXTFIELD>
+			<TEXTFIELD w="75" title="Bank Address">bank_address</TEXTFIELD>
+			<TEXTFIELD w="75" title="Details">details</TEXTFIELD>
+		</EXPORT>
+	</IMPORT>
+
+	<IMPORT name="Period Tax Types" keyfield="period_tax_type_id" table="period_tax_types">
+		<TEXTFIELD w="75" title="Period Tax Type ID">period_tax_type_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Org ID">org_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Period ID">period_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Tax Type ID">tax_type_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Period Tax Type Name">period_tax_type_name</TEXTFIELD>
+		<TEXTDATE w="75" title="Pay Date">pay_date</TEXTDATE>
+		<TEXTFIELD w="75" title="Formural">formural</TEXTFIELD>
+		<TEXTDECIMAL w="75" title="Tax Relief">tax_relief</TEXTDECIMAL>
+		<CHECKBOX w="75" title="Percentage">percentage</CHECKBOX>
+		<CHECKBOX w="75" title="Linear">linear</CHECKBOX>
+		<TEXTFIELD w="75" title="Tax Type Order">tax_type_order</TEXTFIELD>
+		<TEXTFIELD w="75" title="Account Number">account_number</TEXTFIELD>
+		<CHECKBOX w="75" title="In Tax">in_tax</CHECKBOX>
+		<TEXTDECIMAL w="75" title="Employer">employer</TEXTDECIMAL>
+		<TEXTDECIMAL w="75" title="Employer Ps">employer_ps</TEXTDECIMAL>
+		<TEXTFIELD w="75" title="Details">details</TEXTFIELD>
+		<EXPORT name="Period Tax Types" keyfield="period_tax_type_id" table="period_tax_types">
+			<TEXTFIELD w="75" fnct="(10000 * {org_id}) + period_tax_type_id" title="Period Tax Type ID">new_period_tax_type_id</TEXTFIELD>
+			<TEXTFIELD w="75" fnct="(1 * {org_id})" title="Org ID">new_org_id</TEXTFIELD>
+			<TEXTFIELD w="75" fnct="(10000 * {org_id}) + period_id" title="Period ID">new_period_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Tax Type ID">tax_type_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Period Tax Type Name">period_tax_type_name</TEXTFIELD>
+			<TEXTDATE w="75" title="Pay Date">pay_date</TEXTDATE>
+			<TEXTFIELD w="75" title="Formural">formural</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Tax Relief">tax_relief</TEXTDECIMAL>
+			<CHECKBOX w="75" title="Percentage">percentage</CHECKBOX>
+			<CHECKBOX w="75" title="Linear">linear</CHECKBOX>
+			<TEXTFIELD w="75" title="Tax Type Order">tax_type_order</TEXTFIELD>
+			<TEXTFIELD w="75" title="Account Number">account_number</TEXTFIELD>
+			<CHECKBOX w="75" title="In Tax">in_tax</CHECKBOX>
+			<TEXTDECIMAL w="75" title="Employer">employer</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Employer Ps">employer_ps</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Details">details</TEXTFIELD>
+		</EXPORT>
+	</IMPORT>
+
+	<IMPORT name="Employee Month" keyfield="employee_month_id" table="employee_month">
+		<TEXTFIELD w="75" title="Employee Month ID">employee_month_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Org ID">org_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Entity ID">entity_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Period ID">period_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Bank Branch ID">bank_branch_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Pay Group ID">pay_group_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Department Role ID">department_role_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Bank Account">bank_account</TEXTFIELD>
+		<TEXTDECIMAL w="75" title="Basic Pay">basic_pay</TEXTDECIMAL>
+		<TEXTFIELD w="75" title="Details">details</TEXTFIELD>
+		<EXPORT name="Employee Month" keyfield="new_employee_month_id" table="employee_month">
+			<TEXTFIELD w="75" fnct="(10000 * {org_id}) + employee_month_id" title="Period ID">new_employee_month_id</TEXTFIELD>
+			<TEXTFIELD w="75" fnct="(1 * {org_id})" title="Org ID">new_org_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Entity ID">entity_id</TEXTFIELD>
+			<TEXTFIELD w="75" fnct="(10000 * {org_id}) + period_id" title="Period ID">new_period_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Bank Branch ID">bank_branch_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Pay Group ID">pay_group_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Department Role ID">department_role_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Bank Account">bank_account</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Basic Pay">basic_pay</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Details">details</TEXTFIELD>
+		</EXPORT>
+	</IMPORT>
+
+	<IMPORT name="Employee Tax Types" keyfield="employee_tax_type_id" table="employee_tax_types">
+		<TEXTFIELD w="75" title="Employee Tax Type ID">employee_tax_type_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Org ID">org_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Employee Month ID">employee_month_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Tax Type ID">tax_type_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Tax Identification">tax_identification</TEXTFIELD>
+		<CHECKBOX w="75" title="In Tax">in_tax</CHECKBOX>
+		<TEXTDECIMAL w="75" title="Amount">amount</TEXTDECIMAL>
+		<TEXTDECIMAL w="75" title="Additional">additional</TEXTDECIMAL>
+		<TEXTDECIMAL w="75" title="Employer">employer</TEXTDECIMAL>
+		<TEXTFIELD w="75" title="Narrative">narrative</TEXTFIELD>
+		<EXPORT name="Employee Tax Types" keyfield="new_employee_tax_type_id" table="employee_tax_types">
+			<TEXTFIELD w="75" fnct="(10000 * {org_id}) + employee_tax_type_id" title="Employee Tax Type ID">new_employee_tax_type_id</TEXTFIELD>
+			<TEXTFIELD w="75" fnct="(1 * {org_id})" title="Org ID">new_org_id</TEXTFIELD>
+			<TEXTFIELD w="75" fnct="(10000 * {org_id}) + employee_month_id" title="Employee Month ID">new_employee_month_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Tax Type ID">tax_type_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Tax Identification">tax_identification</TEXTFIELD>
+			<CHECKBOX w="75" title="In Tax">in_tax</CHECKBOX>
+			<TEXTDECIMAL w="75" title="Amount">amount</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Additional">additional</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Employer">employer</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Narrative">narrative</TEXTFIELD>
+		</EXPORT>
+	</IMPORT>
+
+	<IMPORT name="Employee Adjustments" keyfield="employee_adjustment_id" table="employee_adjustments">
+		<TEXTFIELD w="75" title="Employee Adjustment ID">employee_adjustment_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Org ID">org_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Employee Month ID">employee_month_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Adjustment ID">adjustment_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Adjustment Type">adjustment_type</TEXTFIELD>
+		<TEXTFIELD w="75" title="Adjustment Factor">adjustment_factor</TEXTFIELD>
+		<TEXTDATE w="75" title="Pay Date">pay_date</TEXTDATE>
+		<TEXTDECIMAL w="75" title="Amount">amount</TEXTDECIMAL>
+		<TEXTDECIMAL w="75" title="Balance">balance</TEXTDECIMAL>
+		<TEXTDECIMAL w="75" title="Paid Amount">paid_amount</TEXTDECIMAL>
+		<CHECKBOX w="75" title="In Payroll">in_payroll</CHECKBOX>
+		<CHECKBOX w="75" title="In Tax">in_tax</CHECKBOX>
+		<CHECKBOX w="75" title="Visible">visible</CHECKBOX>
+		<TEXTFIELD w="75" title="Narrative">narrative</TEXTFIELD>
+		<EXPORT name="Employee Adjustments" keyfield="new_employee_adjustment_id" table="employee_adjustments">
+			<TEXTFIELD w="75" fnct="(10000 * {org_id}) + employee_adjustment_id" title="Employee Tax Type ID">new_employee_adjustment_id</TEXTFIELD>
+			<TEXTFIELD w="75" fnct="(1 * {org_id})" title="Org ID">new_org_id</TEXTFIELD>
+			<TEXTFIELD w="75" fnct="(10000 * {org_id}) + employee_month_id" title="Period ID">new_employee_month_id</TEXTFIELD>
+			<TEXTFIELD w="75" fnct="(10000 * {org_id}) + adjustment_id" title="Adjustment ID">new_adjustment_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Adjustment Type">adjustment_type</TEXTFIELD>
+			<TEXTFIELD w="75" title="Adjustment Factor">adjustment_factor</TEXTFIELD>
+			<TEXTDATE w="75" title="Pay Date">pay_date</TEXTDATE>
+			<TEXTDECIMAL w="75" title="Amount">amount</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Balance">balance</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Paid Amount">paid_amount</TEXTDECIMAL>
+			<CHECKBOX w="75" title="In Payroll">in_payroll</CHECKBOX>
+			<CHECKBOX w="75" title="In Tax">in_tax</CHECKBOX>
+			<CHECKBOX w="75" title="Visible">visible</CHECKBOX>
+			<TEXTFIELD w="75" title="Narrative">narrative</TEXTFIELD>
+		</EXPORT>
+	</IMPORT>
+
+	<IMPORT name="Payroll Ledger" keyfield="payroll_ledger_id" table="payroll_ledger">
+		<TEXTFIELD w="75" title="Payroll Ledger ID">payroll_ledger_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Org ID">org_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Period ID">period_id</TEXTFIELD>
+		<TEXTDATE w="75" title="Posting Date">posting_date</TEXTDATE>
+		<TEXTFIELD w="75" title="Description">description</TEXTFIELD>
+		<TEXTFIELD w="75" title="Payroll Account">payroll_account</TEXTFIELD>
+		<TEXTDECIMAL w="75" title="Dr Amt">dr_amt</TEXTDECIMAL>
+		<TEXTDECIMAL w="75" title="Cr Amt">cr_amt</TEXTDECIMAL>
+		<CHECKBOX w="75" title="Posted">posted</CHECKBOX>
+		<EXPORT name="Payroll Ledger" keyfield="new_payroll_ledger_id" table="payroll_ledger">
+			<TEXTFIELD w="75" fnct="(10000 * {org_id}) + payroll_ledger_id" title="Employee Tax Type ID">new_payroll_ledger_id</TEXTFIELD>
+			<TEXTFIELD w="75" fnct="(1 * {org_id})" title="Org ID">new_org_id</TEXTFIELD>
+			<TEXTFIELD w="75" fnct="(10000 * {org_id}) + period_id" title="Period ID">new_period_id</TEXTFIELD>
+			<TEXTDATE w="75" title="Posting Date">posting_date</TEXTDATE>
+			<TEXTFIELD w="75" title="Description">description</TEXTFIELD>
+			<TEXTFIELD w="75" title="Payroll Account">payroll_account</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Dr Amt">dr_amt</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Cr Amt">cr_amt</TEXTDECIMAL>
+			<CHECKBOX w="75" title="Posted">posted</CHECKBOX>
+		</EXPORT>
+	</IMPORT>
+
+
+</MIGRATE_ORG>
+

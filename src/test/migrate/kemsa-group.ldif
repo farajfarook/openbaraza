@@ -1,0 +1,27 @@
+mgmanJoinability: NONE
+mgmanMemberVisibility: ANYONE
+mgmanHidden: no
+mailHost: mail.kemsa.co.ke
+icsDoublebooking: 0
+icsTimezone: Europe/Moscow
+icsDWPHost: mail.kemsa.co.ke
+inetCOS: standardGroupMailCalendar
+objectClass: daventity
+objectClass: icscalendargroup
+objectClass: inetmailgroup
+objectClass: inetlocalmailrecipient
+objectClass: top
+objectClass: groupofuniquenames
+objectClass: ipgroup
+objectClass: inetmailgroupmanagement
+objectClass: inetgroup
+icsStatus: active
+icsAutoaccept: 0
+inetMailGroupStatus: active
+mgrpBroadcasterPolicy: NO_REQUIREMENTS
+mailDeferProcessing: No
+mailDeliveryOption: members
+inetgroupstatus: active
+owner: uid=sysadmin,ou=People,o=kemsa.co.ke,dc=kemsa,dc=co,dc=ke
+
+

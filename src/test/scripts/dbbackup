@@ -1,0 +1,20 @@
+#!/bin/sh
+
+export PGUSER="root"
+export PGPASSWORD="invent"
+
+pg_dump -h localhost -Fc mhealth > /var/lib/pgsql/backups/mhealth.backup
+
+mount -t smbfs //192.168.1.1/Whostudy/ /mnt/backup/ -o username=whostudy,password=Research1
+
+NOW=$(date +"%Y.%m.%d")
+FILE="/var/lib/pgsql/backups/days/mhealth.$NOW.backup"
+BKFILE="/mnt/backup/mhealth.$NOW.backup"
+
+cp /var/lib/pgsql/backups/mhealth.backup $BKFILE -f
+
+pg_dump -h localhost -Fc mhealth > $FILE
+
+sleep 10
+
+umount /mnt/backup

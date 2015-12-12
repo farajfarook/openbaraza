@@ -1,0 +1,80 @@
+Features
+	Human Resource Management
+		- Departmental definations
+		- Job role definations
+		- Full Employee profile with automated CV Generation
+		- Job application and Evaluation
+		- Internship and Casuals Management
+		- Leave management
+	Payroll
+		- Allowances, Deductions and Taxes calculations
+		- Payslip generation
+		- Customisable payroll management
+	Project Management
+		- Project defination
+		- Phase and task defination and allocation
+		- Time sheet base on task
+		- Budget estimation
+		- Expenditure management
+
+Setup
+
+1. install Postgresql http://www.postgresql.org/ above version 9.0
+	Linux Installation
+	- yum install postgresql-server
+	- service postgresql initdb - (Optional - will clear all databases)
+	- service postgresql start
+
+	Windows Installation
+	- Download the setup file and install
+
+	{ To make the installation easier you can set the password for user postgres durting the installation to Baraza2011 }
+	{ Remember to change it for a live deployment }
+
+2. install Java http://www.oracle.com/technetwork/java/javase/downloads/index.html version 1.6.30 and above
+
+3. Download hr.app.2.8.4.zip and unzip it on any folder
+
+4. Run the Setup
+	cd ./hr.app.2.8.4/
+	Linux : ./setup.sh
+	Windows : double click on setup.bat in app folder
+
+5. Click on 
+	Test Connection - {To test connection to the database}
+	Save Configutations - {In case you change user name or password connecting to the database }
+	Create New - {Create a new blank database}
+	Create Demo - {Create a demo database}
+
+6. Running the appplication
+	Web Application
+	Linux : sh server.sh
+	Windows : baraza.bar
+	got to browser http://localhost:9090/
+
+	Application
+	Linux : sh baraza.sh
+	Windows : baraza.bar
+
+	IDE
+	Application
+	Linux : sh ide.sh
+	Windows : ide.bar
+
+7. If you have many application to run in tomcat downlaod the 
+	No DB configuration will be needed. There is a README file for the .war in the war folder
+
+USER PASSWORDS
+username root
+password baraza
+
+DEMO Accounts
+Applicants
+amteja@mteja.me.ke - enter
+joseph.kamau@gmail.com - enter
+
+Employees
+jdoe - enter
+jtinga - enter
+
+

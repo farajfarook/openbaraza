@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="IpnWebRetrieval" targetNamespace="http://ipn/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ipn/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://ipn/" xmlns:tns="http://ipn/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="retrieveTransaction" type="tns:retrieveTransaction"/>
+  <xs:element name="retrieveTransactionResponse" type="tns:retrieveTransactionResponse"/>
+  <xs:element name="retrieveTransactionsByDate" type="tns:retrieveTransactionsByDate"/>
+  <xs:element name="retrieveTransactionsByDateResponse" type="tns:retrieveTransactionsByDateResponse"/>
+  <xs:complexType name="retrieveTransactionsByDate">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="terminalMsisdn" type="xs:string"/>
+      <xs:element minOccurs="0" name="trxDate" type="xs:string"/>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="retrieveTransactionsByDateResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="transaction" type="tns:tblmpesa"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="tblmpesa">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="messageId" type="xs:int"/>
+      <xs:element minOccurs="0" name="mpesaAccountnumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="mpesaAllocated" type="xs:int"/>
+      <xs:element minOccurs="0" name="mpesaAmount" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="mpesaBalance" type="xs:decimal"/>
+      <xs:element minOccurs="0" name="mpesaDatetime" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="mpesaId" type="xs:int"/>
+      <xs:element minOccurs="0" name="mpesaOriginaltext" type="xs:string"/>
+      <xs:element minOccurs="0" name="mpesaSendermobile" type="xs:string"/>
+      <xs:element minOccurs="0" name="mpesaSendername" type="xs:string"/>
+      <xs:element minOccurs="0" name="mpesaTerminal" type="xs:string"/>
+      <xs:element minOccurs="0" name="mpesaTxcode" type="xs:string"/>
+      <xs:element minOccurs="0" name="mpesaTxdate" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="retrieveTransaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="transactionCode" type="xs:string"/>
+      <xs:element minOccurs="0" name="senderMsisdn" type="xs:string"/>
+      <xs:element minOccurs="0" name="terminalMsisdn" type="xs:string"/>
+      <xs:element minOccurs="0" name="password" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="retrieveTransactionResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="transaction" type="tns:tblmpesa"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InvalidCredentialsFault" type="tns:InvalidCredentialsFault"/>
+  <xs:complexType name="InvalidCredentialsFault">
+    <xs:sequence/>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="retrieveTransactionResponse">
+    <wsdl:part element="tns:retrieveTransactionResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="retrieveTransactionsByDate">
+    <wsdl:part element="tns:retrieveTransactionsByDate" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="InvalidCredentialsFault">
+    <wsdl:part element="tns:InvalidCredentialsFault" name="InvalidCredentialsFault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="retrieveTransaction">
+    <wsdl:part element="tns:retrieveTransaction" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="retrieveTransactionsByDateResponse">
+    <wsdl:part element="tns:retrieveTransactionsByDateResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="RetrieveData">
+    <wsdl:operation name="retrieveTransactionsByDate">
+      <wsdl:input message="tns:retrieveTransactionsByDate" name="retrieveTransactionsByDate">
+    </wsdl:input>
+      <wsdl:output message="tns:retrieveTransactionsByDateResponse" name="retrieveTransactionsByDateResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:InvalidCredentialsFault" name="InvalidCredentialsFault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveTransaction">
+      <wsdl:input message="tns:retrieveTransaction" name="retrieveTransaction">
+    </wsdl:input>
+      <wsdl:output message="tns:retrieveTransactionResponse" name="retrieveTransactionResponse">
+    </wsdl:output>
+      <wsdl:fault message="tns:InvalidCredentialsFault" name="InvalidCredentialsFault">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="IpnWebRetrievalSoapBinding" type="tns:RetrieveData">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="retrieveTransactionsByDate">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="retrieveTransactionsByDate">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="retrieveTransactionsByDateResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidCredentialsFault">
+        <soap:fault name="InvalidCredentialsFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveTransaction">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="retrieveTransaction">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="retrieveTransactionResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="InvalidCredentialsFault">
+        <soap:fault name="InvalidCredentialsFault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="IpnWebRetrieval">
+    <wsdl:port binding="tns:IpnWebRetrievalSoapBinding" name="RetrieveDataPort">
+      <soap:address location="https://www.safaricom.co.ke/IPN/IpnWebRetrieval"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

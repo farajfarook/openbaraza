@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AgencyPNRBFDisplay_7_9>
+    <DocProdDisplayStoredQuote>
+        <ErrorCode>0003</ErrorCode>
+        <FareNumInfo>
+            <FareNumAry>
+                <FareNum>1</FareNum>
+            </FareNumAry>
+        </FareNumInfo>
+        <GenQuoteDetails>
+            <UniqueKey>0001</UniqueKey>
+            <QuoteNum>1</QuoteNum>
+            <QuoteType>G</QuoteType>
+            <LastTkDt />
+            <QuoteDt>20140716</QuoteDt>
+            <IntlSaleInd />
+            <BaseFareCurrency>USD</BaseFareCurrency>
+            <BaseFareAmt>21800</BaseFareAmt>
+            <LowestOrNUCFare>0</LowestOrNUCFare>
+            <BaseDecPos>2</BaseDecPos>
+            <EquivCurrency>KES</EquivCurrency>
+            <EquivAmt>19555</EquivAmt>
+            <EquivDecPos>0</EquivDecPos>
+            <TotCurrency>KES</TotCurrency>
+            <TotAmt>30065</TotAmt>
+            <TotDecPos>0</TotDecPos>
+            <ITNum />
+            <RteBasedQuote>N</RteBasedQuote>
+            <M0>N</M0>
+            <M5>N</M5>
+            <M10>N</M10>
+            <M15>N</M15>
+            <M20>N</M20>
+            <M25>N</M25>
+            <Spare1>N</Spare1>
+            <PrivFQd>N</PrivFQd>
+            <PFOverrides>N</PFOverrides>
+            <FlatFQd>N</FlatFQd>
+            <DirMinApplied>N</DirMinApplied>
+            <VATIncInd>N</VATIncInd>
+            <PenApplies>N</PenApplies>
+            <QuoteBasis>NN</QuoteBasis>
+            <TaxDataAry>
+                <TaxData>
+                    <Country>KE</Country>
+                    <Amt><![CDATA[1000]]></Amt>
+                </TaxData>
+                <TaxData>
+                    <Country>YQ</Country>
+                    <Amt><![CDATA[180]]></Amt>
+                </TaxData>
+                <TaxData>
+                    <Country>YR</Country>
+                    <Amt><![CDATA[9330]]></Amt>
+                </TaxData>
+            </TaxDataAry>
+        </GenQuoteDetails>
+        <ExtendedQuoteInformation>
+            <UniqueKey>1</UniqueKey>
+            <QuoteNum>1</QuoteNum>
+            <ETkInd>N</ETkInd>
+            <PaperTkInd>Y</PaperTkInd>
+            <PlatingInd>Y</PlatingInd>
+            <NetFareInd>N</NetFareInd>
+            <TkFareInd>N</TkFareInd>
+            <Spares1>NNN</Spares1>
+            <Spares2>NNNNNNNN</Spares2>
+            <NetFareCrncy />
+            <NetFareAmt>0</NetFareAmt>
+            <NetFareNumDecs>0</NetFareNumDecs>
+            <EquivNetFareCrcy />
+            <EquivNetFareAmt>0</EquivNetFareAmt>
+            <EquivNumDecs>0</EquivNumDecs>
+            <TotNetCrcy />
+            <TotNetAmt>0</TotNetAmt>
+            <TotNetNumDecs>0</TotNetNumDecs>
+            <TkFareCrcy />
+            <TkFareAmt>0</TkFareAmt>
+            <TkNumDecs>0</TkNumDecs>
+            <EquivTkCrncy />
+            <EquivTkAmt>0</EquivTkAmt>
+            <EquivTkNumDecs>0</EquivTkNumDecs>
+            <TotTkCrncy />
+            <TotTkAmt>0</TotTkAmt>
+            <TotTkNumDecs>0</TotTkNumDecs>
+        </ExtendedQuoteInformation>
+        <AgntEnteredPsgrDescInfo>
+            <UniqueKey>0001</UniqueKey>
+            <AgntEnteredPsgrDesc>ADT</AgntEnteredPsgrDesc>
+            <QuotedPsgrDesc />
+            <PFCApplies>N</PFCApplies>
+            <Spare1>NNNNNNN</Spare1>
+            <ApplesToAry>
+                <AppliesTo>
+                    <LNameNum>0</LNameNum>
+                    <FNameNum>0</FNameNum>
+                    <AbsNameNum>1</AbsNameNum>
+                </AppliesTo>
+            </ApplesToAry>
+        </AgntEnteredPsgrDescInfo>
+        <AssocSegs>
+            <SegNumAry>
+                <SegNum>1</SegNum>
+            </SegNumAry>
+        </AssocSegs>
+        <AssocSegs>
+            <SegNumAry>
+                <SegNum>2</SegNum>
+            </SegNumAry>
+        </AssocSegs>
+        <PlatingAirVMod>
+            <AirV>KQ</AirV>
+        </PlatingAirVMod>
+        <DocumentSelect>
+            <TkOnlyInd />
+            <ETInd>P</ETInd>
+            <CouponCnt />
+            <DestInd />
+            <ForceInd />
+            <MIRInd />
+            <Locn />
+            <PCC />
+            <ItinInd />
+            <FaxInd />
+            <ItinOptInd />
+            <SepInd />
+            <PocketItinCnt />
+            <PocketItinsDestInd />
+            <DeliveryDocsInd />
+        </DocumentSelect>
+        <AdditionalPsgrFareInfo>
+            <FareGuarCode>G</FareGuarCode>
+            <Status>U</Status>
+            <TkNum />
+            <TkType />
+            <LNameNum>0</LNameNum>
+            <PsgrNum>0</PsgrNum>
+            <AbsNameNum>1</AbsNameNum>
+            <UnableTkStatus />
+        </AdditionalPsgrFareInfo>
+    </DocProdDisplayStoredQuote>
+</AgencyPNRBFDisplay_7_9>

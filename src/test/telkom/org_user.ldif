@@ -1,0 +1,20 @@
+preferredLanguage: en
+mailHost: msgbe.orange-business.co.ke
+inetCOS: OrangeMailUser
+psIncludeInGAB: true
+objectClass: inetmailUser
+objectClass: inetsubscriber
+objectClass: userpresenceprofile
+objectClass: inetlocalmailrecipient
+objectClass: top
+objectClass: person
+objectClass: inetorgperson
+objectClass: ipuser
+objectClass: organizationalperson
+objectClass: inetuser
+objectClass: inetadmin
+mailUserStatus: active
+mailDeferProcessing: No
+mailAutoReplyMode: reply
+inetUserStatus: active
+

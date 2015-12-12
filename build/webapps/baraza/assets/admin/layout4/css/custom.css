@@ -1,0 +1,294 @@
+/* here you can put your own css to customize and override the theme */
+
+/***
+Rounded Portlets
+***/
+/*
+.portlet {
+	border-radius: 4px !important;
+}
+
+.portlet .portlet-title {
+	border-radius: 4px 4px 0px 0px !important;
+}
+
+.portlet .portlet-body,
+.portlet .portlet-body .form-actions  {
+	border-radius: 0px 0px 4px 4px !important;
+}
+*/
+
+/*GENERAL MODIFICAATIONS*/
+body {
+  font-size: 12px;
+
+}
+
+.page-header.navbar {
+  width: 100%;
+  padding: 0 2px 0 2px;
+  height: 60px;
+  min-height: 60px;
+}
+
+
+.page-header-fixed .page-container {
+  margin-top: 60px;
+}
+
+.page-header.navbar .page-logo {
+  float: left;
+  display: block;
+  width: 200px;
+  height: 60px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+
+
+
+.page-header.navbar .page-top {
+  height: 60px;
+  float: right;
+}
+
+.page-header.navbar .top-menu .navbar-nav > li.dropdown {
+  margin: 0px;
+  padding: 0px;
+  height: 60px;
+}
+
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle {
+  padding: 10px 10px 18px 10px;
+}
+
+.page-header.navbar .top-menu .navbar-nav > li.dropdown-user .dropdown-toggle > .username {
+  font-size: 12px;
+}
+
+@media (max-width: 767px){
+    .page-header.navbar .page-top {
+      background: #FFFFFF;
+    }
+}
+@media (max-width: 767px){
+    .page-header.navbar .page-top {
+        padding: 0;
+        display: block;
+        clear: both;
+        width: 100%;
+    }
+}
+
+
+
+.page-container {
+  margin: 0px;
+  padding: 0px 20px 0 0px;
+  position: relative;
+}
+
+
+
+
+.page-sidebar .page-sidebar-menu > li > a > .title, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a > .title {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.page-sidebar .page-sidebar-menu > li > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu > li > a {
+  padding: 7px 15px;
+}
+
+.page-sidebar .page-sidebar-menu .sub-menu li > a, .page-sidebar-closed.page-sidebar-fixed .page-sidebar:hover .page-sidebar-menu .sub-menu li > a {
+  display: block;
+  margin: 0;
+  padding: 4px 4px 4px 25px;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 400;
+  background: none;
+}
+
+@media (min-width: 992px){
+    
+    .page-sidebar {
+      width: 200px;
+    }
+    .page-content-wrapper .page-content {
+      margin-left: 200px;
+      margin-top: 0px;
+      min-height: 600px;
+      padding: 5px 0 0 20px;
+    }
+}
+
+@media (max-width: 767px){
+    .page-header.navbar .page-top {
+      background: #FFFFFF;
+    }
+    .page-container {
+        margin: 0 !important;
+        padding: 0;
+    }
+    .page-header.navbar .page-top {
+        padding: 0;
+        display: block;
+        clear: both;
+        width: 100%;
+    }
+}
+
+
+
+label {
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.form-control {
+    font-size: 12px;
+    height: 27px;
+    padding: 1px;
+    margin-top: 3px;
+}
+
+.input-group {
+    height: 26px;
+}
+
+.input-group-btn:last-child>.btn, .input-group-btn:last-child>.btn-group {
+  margin-left: -1px;
+  height: 27px;
+  margin-top: 1px;
+}
+
+select.form-control{
+    padding:1px;
+}
+
+
+/*END GENERAL MODIFICAATIONS*/
+
+
+
+.portlet.box > .portlet-body {
+  background-color: #fff;
+  padding: 5px;
+}
+
+
+.nav>li>a {
+  position: relative;
+  display: block;
+  padding: 5px 10px;
+}
+
+.nav-tabs > li > a, .nav-pills > li > a {
+  font-size: 12px;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  -ms-border-radius: 4px 4px 0 0;
+  -o-border-radius: 4px 4px 0 0;
+  border-radius: 4px 4px 0 0;
+}
+
+
+.nav-tabs, .nav-pills {
+   margin-bottom: 0px; 
+}
+
+
+.table-scrollable {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border: 0px solid #dddddd;
+  margin: 0px 0 !important;
+}
+
+.ui-widget {
+  font-family: "Open Sans", sans-serif !important;
+  font-size: 1.1em;
+}
+
+ui-widget-content {
+    font-family: "Open Sans", sans-serif !important;
+    border: 0px solid #ddd; 
+    background: #ffffff !important;
+    background: #ffffff;
+}
+
+/*@media="screen"
+.ui-widget-content {
+  border: 1px solid #ddd;
+  background: #ffffff;
+  color: #333;
+}*/
+
+.ui-jqgrid .ui-jqgrid-btable {
+  table-layout: fixed;
+    /*width: 100%;*/
+  margin: 0;
+  outline-style: none;
+  border-collapse: separate;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+  padding: 8px;
+  line-height: 1.42857143;
+  vertical-align: top;
+  border-top: 0px solid #ddd; 
+}
+
+
+.table-bordered {
+   border: 1px solid #ddd; 
+}
+
+.table-bordered>tbody>tr>td, .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>td, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>thead>tr>th {
+  border: 0px solid #ddd; 
+}
+
+
+
+/*  begin total ui widget overwrite */
+
+/*.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
+    border: 0px solid #ccc;
+    background: #ffffff;
+    font-weight: bold;
+    color: #1c94c4
+}
+
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight, .ui-state-hover {
+  border: 0px solid #fed22f;
+  background: #8e5fa2;
+  color: #ffffff; 
+}
+
+
+.ui-state-hover,
+.ui-widget-content .ui-state-hover,
+.ui-widget-header .ui-state-hover,
+.ui-state-focus,
+.ui-widget-content .ui-state-focus,
+.ui-widget-header .ui-state-focus {
+    border: 0px solid #fbcb09;
+    background: #8e5fa2;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+
+.ui-state-hover a,
+.ui-state-hover a:hover,
+.ui-state-hover a:link,
+.ui-state-hover a:visited {
+    color: #8e5fa2;
+    text-decoration: none
+}*/

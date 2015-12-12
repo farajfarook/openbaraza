@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="vw_employee_appraisal_partVI_subreport1" language="groovy" pageWidth="572" pageHeight="752" whenNoDataType="BlankPage" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="filterid" class="java.lang.String">
+		<defaultValueExpression><![CDATA["1"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="organd" class="java.lang.String"><defaultValueExpression><![CDATA[""]]></defaultValueExpression></parameter>
+	<parameter name="orgwhere" class="java.lang.String"><defaultValueExpression><![CDATA[""]]></defaultValueExpression></parameter>
+	<queryString>
+		<![CDATA[SELECT * FROM vw_career_development
+WHERE (job_review_id = '$P!{filterid}')
+$P!{organd};]]>
+	</queryString>
+	<field name="entity_id" class="java.lang.Integer"/>
+	<field name="entity_name" class="java.lang.String"/>
+	<field name="job_review_id" class="java.lang.Integer"/>
+	<field name="total_points" class="java.lang.Integer"/>
+	<field name="review_date" class="java.sql.Date"/>
+	<field name="review_done" class="java.lang.Boolean"/>
+	<field name="recomendation" class="java.lang.String"/>
+	<field name="reviewer_comments" class="java.lang.String"/>
+	<field name="approve_status" class="java.lang.String"/>
+	<field name="workflow_table_id" class="java.lang.Integer"/>
+	<field name="application_date" class="java.sql.Timestamp"/>
+	<field name="action_date" class="java.sql.Timestamp"/>
+	<field name="career_development_id" class="java.lang.Integer"/>
+	<field name="career_development_name" class="java.lang.String"/>
+	<field name="career_development_details" class="java.lang.String"/>
+	<field name="org_id" class="java.lang.Integer"/>
+	<field name="evaluation_point_id" class="java.lang.Integer"/>
+	<field name="points" class="java.lang.Integer"/>
+	<field name="reviewer_points" class="java.lang.Integer"/>
+	<field name="reviewer_narrative" class="java.lang.String"/>
+	<field name="narrative" class="java.lang.String"/>
+	<field name="details" class="java.lang.String"/>
+	<variable name="variable1" class="java.lang.Integer" resetType="Group" resetGroup="career_development_id" incrementType="Group" incrementGroup="evaluation_point_id" calculation="Count">
+		<variableExpression><![CDATA[$F{evaluation_point_id}]]></variableExpression>
+	</variable>
+	<group name="career_development_id">
+		<groupExpression><![CDATA[$F{career_development_id}]]></groupExpression>
+		<groupHeader>
+			<band height="82">
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="11" y="0" width="561" height="20"/>
+					<box>
+						<bottomPen lineWidth="0.75"/>
+					</box>
+					<textElement>
+						<font fontName="Times New Roman" size="11" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{career_development_name}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="25" y="42" width="537" height="20"/>
+					<textElement>
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{career_development_details}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="25" y="21" width="537" height="20"/>
+					<box>
+						<bottomPen lineWidth="0.5" lineColor="#E7E7E7"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Details]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="25" y="62" width="537" height="20"/>
+					<box>
+						<bottomPen lineWidth="0.5" lineColor="#E7E7E7"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Narrative]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="evaluation_point_id">
+		<groupExpression><![CDATA[$F{evaluation_point_id}]]></groupExpression>
+		<groupHeader>
+			<band height="21">
+				<textField isStretchWithOverflow="true">
+					<reportElement positionType="Float" x="25" y="0" width="537" height="21"/>
+					<textElement>
+						<font fontName="Times New Roman"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{narrative}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="35" splitType="Stretch"/>
+	</columnHeader>
+</jasperReport>

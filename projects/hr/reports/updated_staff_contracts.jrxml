@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="updated_staff_contracts" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="368804a9-dc6a-4189-b315-116cac374de9">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="fromDate" class="java.lang.String">
+		<defaultValueExpression><![CDATA["2011-01-01"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="organd" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="orgwhere" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT vw_contracting.entity_id, vw_contracting.contract_type_name, vw_contracting.entity_name, vw_contracting.job_description,
+vw_contracting.opening_date,
+vw_contracting.closing_date,
+vw_contracting.contract_date,
+vw_contracting.contract_start,
+vw_contracting.contract_close,
+employees.basic_salary,(CASE WHEN employees.gender = 'M' THEN 'Male' ELSE 'Female' END) as gender,
+employees.date_of_birth,
+employees.appointment_date As first_appointment_date,
+vw_employees.department_role_name AS job_title,
+vw_departments.ln_department_name AS reporting_to,
+locations.location_name,
+vw_employees.sys_country_name
+FROM vw_contracting
+INNER JOIN employees ON employees.entity_id = vw_contracting.entity_id
+INNER JOIN vw_employees ON vw_employees.entity_id = vw_contracting.entity_id
+INNER JOIN vw_departments ON vw_departments.department_id = vw_employees.department_id
+INNER JOIN locations ON locations.location_id = employees.location_id
+
+WHERE vw_contracting.contract_start >= '$P!{fromDate}'::date
+$P!{organd}
+
+GROUP BY vw_contracting.entity_id,
+vw_contracting.contract_type_name, vw_contracting.entity_name, vw_contracting.job_description, vw_contracting.opening_date,
+vw_contracting.closing_date,
+vw_contracting.contract_date,
+vw_contracting.contract_start,
+vw_contracting.contract_close,
+employees.basic_salary,employees.gender,
+employees.date_of_birth,
+employees.appointment_date ,
+vw_employees.department_role_name ,
+vw_departments.ln_department_name,
+locations.location_name,
+vw_employees.sys_country_name]]>
+	</queryString>
+	<field name="entity_id" class="java.lang.Integer"/>
+	<field name="contract_type_name" class="java.lang.String"/>
+	<field name="entity_name" class="java.lang.String"/>
+	<field name="job_description" class="java.lang.String"/>
+	<field name="opening_date" class="java.sql.Date"/>
+	<field name="closing_date" class="java.sql.Date"/>
+	<field name="contract_date" class="java.sql.Date"/>
+	<field name="contract_start" class="java.sql.Date"/>
+	<field name="contract_close" class="java.sql.Date"/>
+	<field name="basic_salary" class="java.lang.Float"/>
+	<field name="gender" class="java.lang.String"/>
+	<field name="date_of_birth" class="java.sql.Date"/>
+	<field name="first_appointment_date" class="java.sql.Date"/>
+	<field name="job_title" class="java.lang.String"/>
+	<field name="reporting_to" class="java.lang.String"/>
+	<field name="location_name" class="java.lang.String"/>
+	<field name="sys_country_name" class="java.lang.String"/>
+	<group name="entity_id">
+		<groupExpression><![CDATA[$F{entity_id}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" x="200" y="1" width="190" height="19" uuid="e14881da-57c8-4020-8671-69351d4f6160"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font fontName="Times New Roman" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{entity_name}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement positionType="Float" mode="Opaque" x="26" y="1" width="172" height="17" backcolor="#FFFFFF" uuid="5cc3d7ad-a07e-4505-8a82-9509e99b9fb1"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font fontName="Times New Roman" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[EMPLOYEE NAME ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" mode="Opaque" x="390" y="3" width="149" height="17" backcolor="#FFFFFF" uuid="d122a658-388d-44c2-8ad3-cbd7553526ed"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font fontName="Times New Roman" size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[COUNTRY ]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" x="544" y="3" width="190" height="17" uuid="e2fee524-b757-4e8b-ac25-4fddc8e797b2"/>
+					<textElement textAlignment="Left" verticalAlignment="Bottom">
+						<font fontName="Times New Roman" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[": " + $F{sys_country_name}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="55" splitType="Stretch">
+			<staticText>
+				<reportElement x="13" y="0" width="784" height="53" uuid="bf2cf368-aaa6-4b08-9d4c-fb5aef131177"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Updated Staff Contracts]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="50">
+			<textField>
+				<reportElement positionType="Float" x="126" y="10" width="671" height="20" uuid="8cae44b8-8739-43c9-b4b4-e6a3c303c1aa"/>
+				<box>
+					<bottomPen lineWidth="2.0" lineColor="#F4F4F4"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fromDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="26" y="10" width="100" height="20" uuid="aaf598eb-2bc1-492f-9298-c6dd67168c2d"/>
+				<box>
+					<bottomPen lineWidth="2.0" lineColor="#F4F4F4"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Date From:]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="157" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="200" y="34" width="190" height="17" uuid="db9fe708-82f5-4b33-b929-ce4a1eccbea0"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": " + $F{job_title}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="200" y="51" width="190" height="17" uuid="bb7cd847-3c69-447e-80a6-534c0518fc15"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": " + $F{contract_type_name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="200" y="0" width="190" height="17" uuid="fbd8275d-99d3-4d57-92b3-05feb18e9a2c"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": " + $F{date_of_birth}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="200" y="17" width="190" height="17" uuid="5147c894-b26b-4312-88fb-c8aaf4d220fb"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": " + $F{location_name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="200" y="89" width="190" height="17" uuid="92086391-19cf-4110-a381-3a83a59bd114"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": " + $F{first_appointment_date}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd MMMMM yyyy" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="200" y="106" width="190" height="17" uuid="41bc4a92-c8b9-472e-b7ff-0870d2a1a300"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": " + $F{contract_start}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="544" y="105" width="190" height="17" uuid="d240e866-20ed-4f1e-a7a0-974bbbe73d2f"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": " + $F{contract_close}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="200" y="68" width="190" height="21" uuid="04ba5e53-bf7f-473f-ac80-2ae8f816fbb0"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": " + $F{reporting_to}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="544" y="54" width="190" height="17" uuid="3f8d9eae-8184-41bf-aecc-f0e744f4e0af"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": " + $F{basic_salary}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="26" y="34" width="172" height="17" backcolor="#FFFFFF" uuid="e085ec74-9324-4f15-8ef3-e760d31333ff"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[JOB TITLE ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="26" y="51" width="172" height="17" backcolor="#FFFFFF" uuid="4841caf1-0537-4f8e-b88b-2fe162f7da71"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TYPE OF CONTRACT ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="26" y="0" width="172" height="17" backcolor="#FFFFFF" uuid="4aadce5a-d21e-41ae-aeb6-a8732d6e1fa3"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[D.O.B ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="390" y="0" width="149" height="17" backcolor="#FFFFFF" uuid="2f16691e-e67f-4591-b3f2-1da1347cf292"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SEX ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" x="544" y="0" width="190" height="17" uuid="90001e67-d150-4337-9b17-3b4d7ca50871"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[": " +  $F{gender}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="26" y="17" width="172" height="17" backcolor="#FFFFFF" uuid="fbbb0546-4daa-4947-9765-a8590a6ddd6a"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LOCATION ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="26" y="89" width="172" height="17" backcolor="#FFFFFF" uuid="708120ed-f2b9-4d9b-8553-aed6605fc046"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DATE OF 1ST APPT ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="26" y="106" width="172" height="17" backcolor="#FFFFFF" uuid="bf12734a-5214-45b6-99bb-0776a9b3723e"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[START DATE OF CONTRACT ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="390" y="105" width="149" height="17" backcolor="#FFFFFF" uuid="0e79904c-e0f3-408e-a421-4879a18fb3dc"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[END DATE OF CONTRACT ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="26" y="68" width="172" height="17" backcolor="#FFFFFF" uuid="76ad5981-d5b5-498c-8f7f-0e8c92c423cd"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[SUPERVISOR ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="26" y="123" width="172" height="17" backcolor="#FFFFFF" uuid="a4b11291-5792-4975-811d-2e9a07760be3"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CATEGORY ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" mode="Opaque" x="390" y="54" width="149" height="17" backcolor="#FFFFFF" uuid="9fba2a96-574f-4018-b369-8ebe9559b0f6"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CURRENT SALARY ]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="26" y="149" width="771" height="1" uuid="d4d27965-4d51-43fa-8972-c14d38623b59"/>
+				<graphicElement>
+					<pen lineWidth="1.25" lineStyle="Dotted" lineColor="#E5E5E5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="50">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="22" width="802" height="28" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="2a2d1eb0-f87a-46be-bb01-8a4a5ddfd71e"/>
+				<textField pattern="EEE, d MMM yyyy HH:mm:ss Z" isBlankWhenNull="true">
+					<reportElement mode="Transparent" x="7" y="1" width="160" height="22" forecolor="#736343" uuid="0661fc09-8a6c-4493-8558-8044644b6e19"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Transparent" x="680" y="6" width="80" height="19" forecolor="#736343" uuid="17ab46f8-b0af-4005-b664-0c5a7b11e356"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Report">
+					<reportElement mode="Transparent" x="760" y="6" width="40" height="19" forecolor="#736343" uuid="77675ba8-dcfe-4ae2-a804-8c867cefd1af"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

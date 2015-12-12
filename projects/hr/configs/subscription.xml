@@ -1,0 +1,41 @@
+<APP name="Human Capital Management" org="org_id" password="change_password">
+	<MENU name="Human Capital Management">
+		<MENU name="Subscription">1</MENU>
+	</MENU>
+
+	<DESK w="700" name="Subscriptions" key="1" h="500">
+		<FORM cols="2" name="Subscription" keyfield="subscription_id" table="subscriptions" new="true" edit="false" delete="false" audit="false" fornew="true" save.button="Subscribe">
+			<DEFAULT default="0">org_id</DEFAULT>
+			<TEXTFIELD w="150" required="true" title="Business Name *" h="20" y="70" x="10" span="true">business_name</TEXTFIELD>
+			<TEXTFIELD w="150" title="Business Address" h="20" y="70" x="290">business_address</TEXTFIELD>
+			<TEXTFIELD w="150" required="true" title="City *" h="20" y="90" x="10" span="true">city</TEXTFIELD>
+			<TEXTFIELD w="150" title="State" h="20" y="90" x="290">state</TEXTFIELD>
+			<COMBOBOX w="430" required="true" title="Country *" noorg="true" lptable="sys_countrys" lpkey="sys_country_id" h="20" y="110" lpfield="sys_country_name" x="10">country_id</COMBOBOX>
+			<COMBOBOX w="430" required="true" title="Industry *" lptable="industry" h="20" y="10" lpfield="industry_name" x="10"  span="true">industry_id</COMBOBOX>
+			<TEXTFIELD w="150" required="true" title="Number Of Employees *" h="20" y="130" x="10">number_of_employees</TEXTFIELD>
+			<TEXTFIELD w="150" required="true" title="Telephone *" h="20" y="130" x="290" span="true">telephone</TEXTFIELD>
+			<TEXTFIELD w="430" title="Website" h="20" y="150" x="10">website</TEXTFIELD>
+			<TEXTFIELD w="430" required="true" title="Primary Contact *" h="20" y="170" x="10" span="true">primary_contact</TEXTFIELD>
+			<TEXTFIELD w="430" required="true" title="Job Title *" h="20" y="190" x="10">job_title</TEXTFIELD>
+			<TEXTFIELD w="430" required="true" title="Primary Email *" h="20" y="210" x="10" span="true">primary_email</TEXTFIELD>
+			<TEXTFIELD w="430" required="true" title="Confirm Email *" h="20" y="210" x="10">confirm_email</TEXTFIELD>
+			<TEXTAREA w="430" title="Details" h="70" y="290" x="10">details</TEXTAREA>
+			<FORMVIEW name="Subscription" keyfield="subscription_id" linkfield="subscription_id" table="vw_subscriptions">
+				<TEXTFIELD w="430" fnct="'Data submited check your email for details'::text" title="Submit" y="110" h="20" x="10">disp</TEXTFIELD>
+				<TEXTFIELD w="150" title="Business Name" h="20" y="70" x="10">business_name</TEXTFIELD>
+				<TEXTFIELD w="150" title="Business Address" h="20" y="70" x="290">business_address</TEXTFIELD>
+				<TEXTFIELD w="150" title="City" h="20" y="90" x="10">city</TEXTFIELD>
+				<TEXTFIELD w="150" title="State" h="20" y="90" x="290">state</TEXTFIELD>
+				<TEXTFIELD w="430" title="Country" h="20" y="110" lpfield="sys_country_name" x="10">sys_country_name</TEXTFIELD>
+				<TEXTFIELD w="430" title="Industry" h="20" y="10" x="10">industry_name</TEXTFIELD>
+				<TEXTFIELD w="150" title="Number Of Employees" h="20" y="130" x="10">number_of_employees</TEXTFIELD>
+				<TEXTFIELD w="150" title="Telephone" h="20" y="130" x="290">telephone</TEXTFIELD>
+				<TEXTFIELD w="430" title="Website" h="20" y="150" x="10">website</TEXTFIELD>
+				<TEXTFIELD w="430" title="Primary Contact" h="20" y="170" x="10">primary_contact</TEXTFIELD>
+				<TEXTFIELD w="430" title="Job Title" h="20" y="190" x="10">job_title</TEXTFIELD>
+				<TEXTFIELD w="430" title="Primary Email" h="20" y="210" x="10">primary_email</TEXTFIELD>
+			</FORMVIEW>
+		</FORM>
+	</DESK>
+
+</APP>

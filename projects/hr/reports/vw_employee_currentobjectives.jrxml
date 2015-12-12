@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="vw_employee_objectives_current2" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="BlankPage" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="0" uuid="01e48e05-5d84-490e-a20f-a0b5393d11e5">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#D3D3D3">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFBFBF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="ds_objective_details" uuid="2e0f62c4-b8cb-448b-8843-a7cefe55aed0">
+		<queryString language="SQL">
+			<![CDATA[SELECT vw_objectives.objective_id, vw_objectives.objective_name,
+vw_objective_details.objective_id, vw_objective_details.objective_name, vw_objective_details.objective_completed, vw_objective_details.objective_detail_id,
+vw_objective_details.objective_detail_name, vw_objective_details.success_indicator, vw_objective_details.achievements,vw_objective_details.objective_ps, vw_objective_details.resources_required, vw_objective_details.completed, vw_objective_details.completion_date, vw_objective_details.details
+
+FROM vw_objective_details
+INNER JOIN vw_objectives ON vw_objectives.objective_id = vw_objective_details.objective_id
+WHERE vw_objective_details.objective_id = vw_objectives.objective_id ;]]>
+		</queryString>
+		<field name="objective_detail_name" class="java.lang.String"/>
+		<field name="success_indicator" class="java.lang.String"/>
+		<field name="completion_date" class="java.sql.Date"/>
+		<field name="resources_required" class="java.lang.String"/>
+		<group name="objective_detail_name">
+			<groupExpression><![CDATA[$F{objective_detail_name}]]></groupExpression>
+		</group>
+	</subDataset>
+	<parameter name="filterid" class="java.lang.String">
+		<defaultValueExpression><![CDATA["1"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="organd" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="orgwhere" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT vw_objectives.employee_objective_id,
+vw_objectives.objective_type_id, vw_objectives.objective_type_name, vw_objectives.objective_id, vw_objectives.date_set, vw_objectives.objective_ps, vw_objectives.objective_name,vw_objectives. objective_completed,
+
+
+vw_objectives.entity_id, vw_objectives.entity_name, vw_objectives.employee_objective_id,
+vw_objectives.employee_objective_name,
+EXTRACT(YEAR FROM objective_date) as year_set
+
+FROM vw_objectives
+
+WHERE (vw_objectives.employee_objective_id = '$P!{filterid}')
+$P!{organd}
+
+ORDER BY vw_objectives.objective_id ASC]]>
+	</queryString>
+	<field name="employee_objective_id" class="java.lang.Integer"/>
+	<field name="objective_type_id" class="java.lang.Integer"/>
+	<field name="objective_type_name" class="java.lang.String"/>
+	<field name="objective_id" class="java.lang.Integer"/>
+	<field name="date_set" class="java.sql.Date"/>
+	<field name="objective_ps" class="java.lang.Float"/>
+	<field name="objective_name" class="java.lang.String"/>
+	<field name="objective_completed" class="java.lang.Boolean"/>
+	<field name="entity_id" class="java.lang.Integer"/>
+	<field name="entity_name" class="java.lang.String"/>
+	<field name="employee_objective_name" class="java.lang.String"/>
+	<field name="year_set" class="java.lang.Double"/>
+	<variable name="variable1" class="java.lang.String"/>
+	<group name="Objective_type">
+		<groupExpression><![CDATA[$F{objective_type_id}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement x="103" y="0" width="452" height="20" uuid="ab63fa81-7182-49dd-a733-827becdee0b9"/>
+					<box>
+						<bottomPen lineWidth="0.0" lineColor="#E7E7E7"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{objective_type_name}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="1" y="0" width="102" height="20" uuid="6b67b193-720a-484f-9a2b-5b38d961d383"/>
+					<box leftPadding="5">
+						<bottomPen lineWidth="0.0" lineColor="#E7E7E7"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" isBold="true" pdfFontName="Times-Roman"/>
+					</textElement>
+					<text><![CDATA[Objective Type :]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="123" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="1" y="37" width="554" height="44" uuid="99aa28fd-6ceb-4e99-82e8-dc1301fa0e27"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="18" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Employee Objectives]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="82" width="100" height="20" uuid="a4b6ebeb-3671-4107-a23f-58ee6bca85f3"/>
+				<box>
+					<bottomPen lineWidth="0.75" lineColor="#F2F2F2"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Employee Name : ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="100" y="82" width="456" height="20" uuid="eea11e8e-fa1d-44cf-b925-49138607e2b9"/>
+				<box>
+					<bottomPen lineWidth="0.75" lineColor="#F2F2F2"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{entity_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="2" y="103" width="45" height="20" backcolor="#E6DAC3" uuid="ca8237b3-46a4-411a-b705-8a0b8a9f7756"/>
+				<box>
+					<bottomPen lineWidth="0.75" lineColor="#F2F2F2"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[   Title : ]]></text>
+			</staticText>
+			<textField pattern="###0;###0-" isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="489" y="103" width="67" height="20" backcolor="#E6DAC3" uuid="5fd260fa-ef55-4386-896b-1c2cce75f28a"/>
+				<box>
+					<bottomPen lineWidth="0.75" lineColor="#F2F2F2"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{year_set}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="453" y="103" width="36" height="20" backcolor="#E6DAC3" uuid="f7710b57-0948-46fb-8793-66138c7ae442"/>
+				<box>
+					<bottomPen lineWidth="0.75" lineColor="#F2F2F2"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Year : ]]></text>
+			</staticText>
+			<textField pattern="###0;###0-" isBlankWhenNull="true">
+				<reportElement mode="Opaque" x="47" y="103" width="406" height="20" backcolor="#E6DAC3" uuid="1f27c0f5-f867-40f9-a1cb-f7d0f3135577"/>
+				<box>
+					<bottomPen lineWidth="0.75" lineColor="#F2F2F2"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{employee_objective_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="4" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="64" splitType="Stretch">
+			<subreport>
+				<reportElement x="26" y="44" width="530" height="20" uuid="5fd6f10b-dc82-4761-ad5a-239f31295293"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="objective_id">
+					<subreportParameterExpression><![CDATA[$F{objective_id}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="objective_ps">
+					<subreportParameterExpression><![CDATA[$F{objective_ps}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="filterid"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "vw_current_objective_details.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="26" y="4" width="102" height="20" uuid="abdc30d9-f395-4a8d-90de-6695753241cd"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#E7E7E7"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Objective Name]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="128" y="4" width="428" height="20" uuid="bbb4ed38-5ce7-4540-b38b-97cd1d96da86"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#E7E7E7"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{objective_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="26" y="24" width="102" height="20" uuid="01c1c5c3-3210-4735-bbb1-df5c3e187393">
+					<printWhenExpression><![CDATA[$F{objective_ps} > 0]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Percentage :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="128" y="24" width="26" height="20" uuid="10f1df39-26eb-40ba-a0f3-fc7ba7a29d2a">
+					<printWhenExpression><![CDATA[$F{objective_ps} > 0]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{objective_ps}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="334" y="24" width="79" height="20" uuid="5a6536aa-fd92-4ddf-85b9-70fd39247c8c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Date Set : ]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement x="413" y="24" width="143" height="20" uuid="0511c5a8-fd70-4edf-8373-c461800440f8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date_set}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="4" width="25" height="20" uuid="59614b49-7718-4caa-ad8b-316726c208d2"/>
+				<box>
+					<topPen lineWidth="0.5" lineColor="#E7E7E7"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="154" y="24" width="21" height="20" uuid="119d01e3-36c2-49ba-a1e4-81c43a270bea">
+					<printWhenExpression><![CDATA[$F{objective_ps} > 0]]></printWhenExpression>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[  %]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="36">
+			<frame>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="5" width="554" height="24" forecolor="#D0B48E" backcolor="#F2EBDF" uuid="2f16bfc5-733f-449e-9061-c819464514eb"/>
+				<textField evaluationTime="Report">
+					<reportElement x="513" y="1" width="40" height="20" forecolor="#736343" uuid="75354049-c37b-4ca0-a8c6-fe2814cb9893"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="10" isBold="false" pdfFontName="Times-Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="432" y="1" width="80" height="20" forecolor="#736343" uuid="e7fc0320-e70e-4420-96e8-92d3329aa01b"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="10" isBold="false" pdfFontName="Times-Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE, d MMMMM yyyy HH:mm:ss Z">
+					<reportElement x="5" y="1" width="197" height="20" forecolor="#736343" uuid="7d6415ea-0db9-49b5-a0fa-e8ed526ffd3a"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="10" isBold="false" pdfFontName="Times-Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+</jasperReport>

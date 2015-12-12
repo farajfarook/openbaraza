@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="QueryService" targetNamespace="http://ws.etz.com/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://ws.etz.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://ws.etz.com/" version="1.0" xmlns:tns="http://ws.etz.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="query" type="tns:query"/>
+<xs:element name="queryResponse" type="tns:queryResponse"/>
+<xs:complexType name="query">
+<xs:sequence>
+<xs:element minOccurs="0" name="terminalId" type="xs:string"/>
+<xs:element minOccurs="0" name="transId" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+<xs:complexType name="queryResponse">
+<xs:sequence>
+<xs:element minOccurs="0" name="return" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="query">
+    <wsdl:part element="tns:query" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queryResponse">
+    <wsdl:part element="tns:queryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="Query">
+    <wsdl:operation name="query">
+      <wsdl:input message="tns:query" name="query">
+    </wsdl:input>
+      <wsdl:output message="tns:queryResponse" name="queryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="QueryServiceSoapBinding" type="tns:Query">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="query">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="query">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="QueryService">
+    <wsdl:port binding="tns:QueryServiceSoapBinding" name="QueryPort">
+      <soap:address location="https://www.etranzact.net/WebConnectPlusWS/Query"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

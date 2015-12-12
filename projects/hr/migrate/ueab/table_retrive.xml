@@ -1,0 +1,4 @@
+<MIGRATE_TABLES dbpath="jdbc:interbase://192.168.0.179/C:/Programs/Database/UEABPAYROLL.GDB" 
+	dbclass="interbase.interclient.Driver" dbusername="SYSDBA" dbpassword="masterkey" readonly="true">
+
+</MIGRATE_TABLES>

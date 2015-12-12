@@ -1,0 +1,46 @@
+
+
+
+- Change password function
+- Switch only to children organisation
+- Review subscription flow
+
+
+- Limit internship and intake application numbers on the funtion
+- Add maximum limit for tax exemption on deduction
+- Review HR, Payroll, Projects : requirements and come up with new system requirements
+
+- Compute contribution balances 
+- Loans module : loan approved in period by a function
+- Review the payslip to have logo
+- Review the leave report
+
+- Add a Training module
+- Work flow on approvals
+
+- Better  of company structure
+
+
+On Leave Applications;
+<xxx> has applied for leave for <x> number of days beginning <date>
+
+On Leave Approval;
+Your Leave request number <xxx> has been approved
+
+On Leave Decline;
+Your Leave request number <xxx> has been declined due to the following reason "xxxx"
+
+On Payroll Approval Request;
+Kindly approve Payroll for the Month of <xxx,  ><year>
+
+On Payroll Approval;
+Payroll for the Month of <xxx,  ><year> has been approved
+
+I also want a calendar of Approved Leave showing who is on leave and when they are resuming duty. This should be viewable monthly and in agenda/list format.
+These are not anything new as you already implemented these at the Judiciary.
+
+
+
+
+
+

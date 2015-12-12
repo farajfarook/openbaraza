@@ -1,0 +1,12 @@
+#/bin/sh
+
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore ../dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO tomcat-dbcp.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore ../dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO tomcat-embed-core.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore ../dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO tomcat-embed-jasper.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore ../dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO tomcat-embed-logging-juli.jar dewciskeystore
+jarsigner -tsa https://timestamp.geotrust.com/tsa -keystore ../dewciskeystore.jks -storepass Baraza9NBO -keypass Baraza9NBO tomcat-embed-logging-log4j.jar dewciskeystore
+
+
+
+
+

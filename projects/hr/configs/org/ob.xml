@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<DATA dbpassword="tegeme0" dbpath="jdbc:postgresql://localhost/finance" dbclass="org.postgresql.Driver" dbusername="tegemeo" noaudit="true">
+	<EXPORT name="Users" table="vw_entity_employees" update="entitys" keyfield="entity_id" marker="is_picked">
+			<TEXTFIELD w="75" title="Entity ID">entity_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="user Name">user_name</TEXTFIELD>
+			<TEXTFIELD w="75" title="Full Name">entity_name</TEXTFIELD>	
+			<TEXTFIELD w="75" title="First Name">first_name</TEXTFIELD>
+			<TEXTFIELD w="75" title="Last Name">surname</TEXTFIELD>
+			<TEXTFIELD w="75" title="E-Mail">primary_email</TEXTFIELD>
+		<INTO table="dc_users" keyfield="dc_user_id" noaudit="true">
+			<TEXTFIELD w="75" title="Entity ID">dc_entity_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="User  Name">dc_user_name</TEXTFIELD>
+			<TEXTFIELD w="75" title="Full Name">dc_full_name</TEXTFIELD>
+			<TEXTFIELD w="75" title="First Name">dc_first_name</TEXTFIELD>
+			<TEXTFIELD w="75" title="Last Name">dc_last_name</TEXTFIELD>
+			<TEXTFIELD w="75" title="E-Mail">dc_primary_email</TEXTFIELD>
+		</INTO>
+	</EXPORT>
+
+	<EXPORT name="Payroll Ledger" table="payroll_ledger" keyfield="payroll_ledger_id" marker="posted">
+		<TEXTFIELD w="75" title="Payroll Ledger ID">payroll_ledger_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Period ID">period_id</TEXTFIELD>
+		<TEXTFIELD w="75" title="Ledger ID" fnct="70100 + period_id">ledger_id</TEXTFIELD>
+		<TEXTDATE w="75" title="Posting Date">posting_date</TEXTDATE>
+		<TEXTFIELD w="75" title="Description">description</TEXTFIELD>
+		<TEXTFIELD w="75" title="Payroll Account">payroll_account</TEXTFIELD>
+		<TEXTDECIMAL w="75" title="Debit Amount">dr_amt</TEXTDECIMAL>
+		<TEXTDECIMAL w="75" title="Credit Amount">cr_amt</TEXTDECIMAL>
+		<INTO table="dc_ledger" keyfield="dc_ledger_id" noaudit="true">
+			<TEXTFIELD w="75" title="Ledger ID">dc_ledger_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Period ID">period_id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Ledger ID">ledger_id</TEXTFIELD>
+			<TEXTDATE w="75" title="Posting Date">posting_date</TEXTDATE>
+			<TEXTFIELD w="75" title="Description">description</TEXTFIELD>
+			<TEXTFIELD w="75" title="Payroll Account">payroll_account</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Debit Amount">dr_amt</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Credit Amount">cr_amt</TEXTDECIMAL>
+		</INTO>
+	</EXPORT>
+
+</DATA>
+

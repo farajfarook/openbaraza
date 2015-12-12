@@ -1,0 +1,26 @@
+Baraza Project
+
+Objective: Create a business unit applet and servlet application based on XML
+
+The project is divided into four large parts which are subdivided
+
+1. Applet application
+a. application, login and main menu
+b. input forms - form, grid, filter
+c. reports
+d. process management
+
+2. Servlet Application
+a. The application which has the login and the main menu structure
+b. the report and hyperlink tables or action event tables
+c. the input forms
+
+3. Server
+a. Mail server
+b. Process server
+c. webserver
+
+4. IDE
+a. XML Integrated Development Enviroment
+
+

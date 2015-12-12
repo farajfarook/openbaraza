@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="vw_employee_appraisal_partVI" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4efeec09-5adb-4834-b310-63cbbb223817">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="filterid" class="java.lang.String">
+		<defaultValueExpression><![CDATA["1"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/opt/baraza/projects/hr/reports/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="organd" class="java.lang.String"><defaultValueExpression><![CDATA[""]]></defaultValueExpression></parameter>
+	<parameter name="orgwhere" class="java.lang.String"><defaultValueExpression><![CDATA[""]]></defaultValueExpression></parameter>
+	<queryString>
+		<![CDATA[SELECT * FROM vw_career_development
+WHERE (job_review_id = '$P!{filterid}')
+$P!{organd}
+ORDER BY career_development_id ASC;]]>
+	</queryString>
+	<field name="entity_id" class="java.lang.Integer"/>
+	<field name="entity_name" class="java.lang.String"/>
+	<field name="job_review_id" class="java.lang.Integer"/>
+	<field name="total_points" class="java.lang.Integer"/>
+	<field name="review_date" class="java.sql.Date"/>
+	<field name="review_done" class="java.lang.Boolean"/>
+	<field name="recomendation" class="java.lang.String"/>
+	<field name="reviewer_comments" class="java.lang.String"/>
+	<field name="approve_status" class="java.lang.String"/>
+	<field name="workflow_table_id" class="java.lang.Integer"/>
+	<field name="application_date" class="java.sql.Timestamp"/>
+	<field name="action_date" class="java.sql.Timestamp"/>
+	<field name="career_development_id" class="java.lang.Integer"/>
+	<field name="career_development_name" class="java.lang.String"/>
+	<field name="career_development_details" class="java.lang.String"/>
+	<field name="org_id" class="java.lang.Integer"/>
+	<field name="evaluation_point_id" class="java.lang.Integer"/>
+	<field name="points" class="java.lang.Integer"/>
+	<field name="reviewer_points" class="java.lang.Integer"/>
+	<field name="reviewer_narrative" class="java.lang.String"/>
+	<field name="narrative" class="java.lang.String"/>
+	<field name="details" class="java.lang.String"/>
+	<group name="career_development_id">
+		<groupExpression><![CDATA[$F{career_development_id}]]></groupExpression>
+		<groupHeader>
+			<band height="93">
+				<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+					<reportElement positionType="Float" x="10" y="11" width="20" height="20" uuid="dec1128b-40a7-4a51-9a76-51f7ecef6f37"/>
+					<box>
+						<bottomPen lineWidth="0.75"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="11" isBold="true" pdfFontName="Times-Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{REPORT_COUNT} + 1]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="30" y="52" width="516" height="21" uuid="26125c22-6984-4f9e-b0b6-2bf30521425a"/>
+					<textElement>
+						<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{career_development_details}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="30" y="10" width="516" height="21" uuid="cd7b6bc4-19ee-4560-80a4-650e05ebdfec"/>
+					<box>
+						<bottomPen lineWidth="0.75"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="11" isBold="true" pdfFontName="Times-Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{career_development_name}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement positionType="Float" x="30" y="72" width="516" height="21" uuid="d2c15fef-1c40-4771-958d-bb7fa88a51ab"/>
+					<box>
+						<bottomPen lineWidth="0.5" lineColor="#E7E7E7"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" isBold="true" pdfFontName="Times-Roman"/>
+					</textElement>
+					<text><![CDATA[Narrative]]></text>
+				</staticText>
+				<staticText>
+					<reportElement positionType="Float" x="30" y="31" width="516" height="21" uuid="6dee3b51-5e79-4289-9835-d527bce8eff5"/>
+					<box>
+						<bottomPen lineWidth="0.5" lineColor="#E7E7E7"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" isBold="true" pdfFontName="Times-Roman"/>
+					</textElement>
+					<text><![CDATA[Details]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="evalutation_point_id">
+		<groupExpression><![CDATA[$F{evaluation_point_id}]]></groupExpression>
+		<groupHeader>
+			<band height="22">
+				<textField isStretchWithOverflow="true">
+					<reportElement positionType="Float" x="30" y="0" width="516" height="22" uuid="9b348d25-2690-435a-824b-c284793016da"/>
+					<textElement>
+						<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{narrative}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="0" width="546" height="20" uuid="a6be3137-67f2-48af-b8d1-e87a9ce17bbb"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Section VI : Career development Planinng]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="47" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="0" y="6" width="546" height="41" uuid="87071132-b5aa-4346-8139-97c57861d85f"/>
+				<box leftPadding="10">
+					<bottomPen lineWidth="0.75" lineColor="#F2F2F2"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[This section is a summary of the entire review form, and is a guide for you to think about your own development at APHRC. Please comment upon your strengths, and indicate areas needing improvement. At the end of the exercise, complete the carrer development plan with your supervisor. Also through your career interests, please share your vision of where you want to be in future at APHRC.
+]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+</jasperReport>

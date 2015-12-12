@@ -1,0 +1,324 @@
+<MIGRATE dbpath="jdbc:postgresql://localhost/hr" dbclass="org.postgresql.Driver" dbusername="root" dbpassword="invent">
+	<SOURCE noaudit="true" dbpath="jdbc:sqlserver://192.168.0.195:1433;databaseName=Hrm;selectMethod=cursor" dbclass="org.postgresql.Driver" dbusername="sa" dbpassword="galileo">
+
+		<IMPORT noaudit="true" name="Tbldepartment" keyfield="Dept_Id" table="tblDepartment">
+			<TEXTFIELD w="75" title="Cmp ID">Cmp_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Dept ID">Dept_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Dept Def ID">Dept_Def_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Dept Code">Dept_Code</TEXTFIELD>
+			<TEXTFIELD w="75" title="Dept Name">Dept_Name</TEXTFIELD>
+			<TEXTFIELD w="75" title="Dept Desc">Dept_Desc</TEXTFIELD>
+			<TEXTFIELD w="75" title="Login C ID">Login_C_Id</TEXTFIELD>
+			<TEXTTIMESTAMP w="75" title="Csysdate">CSysDate</TEXTTIMESTAMP>
+			<TEXTFIELD w="75" title="Login U ID">Login_U_Id</TEXTFIELD>
+			<TEXTTIMESTAMP w="75" title="Usysdate">USysDate</TEXTTIMESTAMP>
+			<TEXTFIELD w="75" title="Login D ID">Login_D_Id</TEXTFIELD>
+			<TEXTTIMESTAMP w="75" title="Dsysdate">DSysDate</TEXTTIMESTAMP>
+			<TEXTFIELD w="75" title="Deleted">Is_Deleted</TEXTFIELD>
+			<TEXTFIELD w="75" title="Rowguid">Rowguid</TEXTFIELD>
+			<TEXTFIELD w="75" title="Form ID">Form_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Max No Of Emp">Max_No_Of_Emp</TEXTFIELD>
+			<EXPORT name="Tbldepartment" keyfield="Dept_Id" table="tblDepartment">
+				<TEXTFIELD w="75" title="Cmp ID">Cmp_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Dept ID">Dept_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Dept Def ID">Dept_Def_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Dept Code">Dept_Code</TEXTFIELD>
+				<TEXTFIELD w="75" title="Dept Name">Dept_Name</TEXTFIELD>
+				<TEXTFIELD w="75" title="Dept Desc">Dept_Desc</TEXTFIELD>
+				<TEXTFIELD w="75" title="Login C ID">Login_C_Id</TEXTFIELD>
+				<TEXTTIMESTAMP w="75" title="Csysdate">CSysDate</TEXTTIMESTAMP>
+				<TEXTFIELD w="75" title="Login U ID">Login_U_Id</TEXTFIELD>
+				<TEXTTIMESTAMP w="75" title="Usysdate">USysDate</TEXTTIMESTAMP>
+				<TEXTFIELD w="75" title="Login D ID">Login_D_Id</TEXTFIELD>
+				<TEXTTIMESTAMP w="75" title="Dsysdate">DSysDate</TEXTTIMESTAMP>
+				<TEXTFIELD w="75" title="Deleted">Is_Deleted</TEXTFIELD>
+				<TEXTFIELD w="75" title="Rowguid">Rowguid</TEXTFIELD>
+				<TEXTFIELD w="75" title="Form ID">Form_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Max No Of Emp">Max_No_Of_Emp</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Tblsubdepartment" keyfield="SubDepartment_Id" table="tblSubDepartment">
+			<TEXTFIELD w="75" title="Cmp ID">Cmp_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Subdepartment ID">SubDepartment_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Subdepartment Def ID">SubDepartment_Def_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Subdepartment Code">SubDepartment_Code</TEXTFIELD>
+			<TEXTFIELD w="75" title="Subdepartment Name">SubDepartment_Name</TEXTFIELD>
+			<TEXTFIELD w="75" title="Dept ID">Dept_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Subdepartment Desc">SubDepartment_Desc</TEXTFIELD>
+			<TEXTFIELD w="75" title="Login C ID">Login_C_Id</TEXTFIELD>
+			<TEXTTIMESTAMP w="75" title="Csysdate">CSysDate</TEXTTIMESTAMP>
+			<TEXTFIELD w="75" title="Login U ID">Login_U_Id</TEXTFIELD>
+			<TEXTTIMESTAMP w="75" title="Usysdate">USysDate</TEXTTIMESTAMP>
+			<TEXTFIELD w="75" title="Login D ID">Login_D_Id</TEXTFIELD>
+			<TEXTTIMESTAMP w="75" title="Dsysdate">DSysDate</TEXTTIMESTAMP>
+			<TEXTFIELD w="75" title="Deleted">Is_Deleted</TEXTFIELD>
+			<TEXTFIELD w="75" title="Rowguid">Rowguid</TEXTFIELD>
+			<TEXTFIELD w="75" title="Form ID">Form_Id</TEXTFIELD>
+			<EXPORT name="Tblsubdepartment" keyfield="SubDepartment_Id" table="tblSubDepartment">
+				<TEXTFIELD w="75" title="Cmp ID">Cmp_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Subdepartment ID">SubDepartment_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Subdepartment Def ID">SubDepartment_Def_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Subdepartment Code">SubDepartment_Code</TEXTFIELD>
+				<TEXTFIELD w="75" title="Subdepartment Name">SubDepartment_Name</TEXTFIELD>
+				<TEXTFIELD w="75" title="Dept ID">Dept_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Subdepartment Desc">SubDepartment_Desc</TEXTFIELD>
+				<TEXTFIELD w="75" title="Login C ID">Login_C_Id</TEXTFIELD>
+				<TEXTTIMESTAMP w="75" title="Csysdate">CSysDate</TEXTTIMESTAMP>
+				<TEXTFIELD w="75" title="Login U ID">Login_U_Id</TEXTFIELD>
+				<TEXTTIMESTAMP w="75" title="Usysdate">USysDate</TEXTTIMESTAMP>
+				<TEXTFIELD w="75" title="Login D ID">Login_D_Id</TEXTFIELD>
+				<TEXTTIMESTAMP w="75" title="Dsysdate">DSysDate</TEXTTIMESTAMP>
+				<TEXTFIELD w="75" title="Deleted">Is_Deleted</TEXTFIELD>
+				<TEXTFIELD w="75" title="Rowguid">Rowguid</TEXTFIELD>
+				<TEXTFIELD w="75" title="Form ID">Form_Id</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Tbldesignation" keyfield="Desig_Id" table="tblDesignation">
+			<TEXTFIELD w="75" title="Cmp ID">Cmp_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Desig ID">Desig_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Desig Def ID">Desig_Def_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Desig Code">Desig_Code</TEXTFIELD>
+			<TEXTFIELD w="75" title="Desig Name">Desig_Name</TEXTFIELD>
+			<TEXTFIELD w="75" title="Desig Under ID">Desig_Under_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Desig Desc">Desig_Desc</TEXTFIELD>
+			<TEXTFIELD w="75" title="Login C ID">Login_C_Id</TEXTFIELD>
+			<TEXTTIMESTAMP w="75" title="Csysdate">CSysDate</TEXTTIMESTAMP>
+			<TEXTFIELD w="75" title="Login U ID">Login_U_Id</TEXTFIELD>
+			<TEXTTIMESTAMP w="75" title="Usysdate">USysDate</TEXTTIMESTAMP>
+			<TEXTFIELD w="75" title="Login D ID">Login_D_Id</TEXTFIELD>
+			<TEXTTIMESTAMP w="75" title="Dsysdate">DSysDate</TEXTTIMESTAMP>
+			<TEXTFIELD w="75" title="Deleted">Is_Deleted</TEXTFIELD>
+			<TEXTFIELD w="75" title="Rowguid">Rowguid</TEXTFIELD>
+			<TEXTFIELD w="75" title="Form ID">Form_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Job Profile">Job_Profile</TEXTFIELD>
+			<EXPORT name="Tbldesignation" keyfield="Desig_Id" table="tblDesignation">
+				<TEXTFIELD w="75" title="Cmp ID">Cmp_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Desig ID">Desig_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Desig Def ID">Desig_Def_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Desig Code">Desig_Code</TEXTFIELD>
+				<TEXTFIELD w="75" title="Desig Name">Desig_Name</TEXTFIELD>
+				<TEXTFIELD w="75" title="Desig Under ID">Desig_Under_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Desig Desc">Desig_Desc</TEXTFIELD>
+				<TEXTFIELD w="75" title="Login C ID">Login_C_Id</TEXTFIELD>
+				<TEXTTIMESTAMP w="75" title="Csysdate">CSysDate</TEXTTIMESTAMP>
+				<TEXTFIELD w="75" title="Login U ID">Login_U_Id</TEXTFIELD>
+				<TEXTTIMESTAMP w="75" title="Usysdate">USysDate</TEXTTIMESTAMP>
+				<TEXTFIELD w="75" title="Login D ID">Login_D_Id</TEXTFIELD>
+				<TEXTTIMESTAMP w="75" title="Dsysdate">DSysDate</TEXTTIMESTAMP>
+				<TEXTFIELD w="75" title="Deleted">Is_Deleted</TEXTFIELD>
+				<TEXTFIELD w="75" title="Rowguid">Rowguid</TEXTFIELD>
+				<TEXTFIELD w="75" title="Form ID">Form_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Job Profile">Job_Profile</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Tblemployee" keyfield="Emp_Id" table="tblEmployee">
+			<TEXTFIELD w="75" title="Cmp ID">Cmp_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Branch ID">Branch_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp ID">Emp_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp Def ID">Emp_Def_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp Code">Emp_Code</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp Payroll No">Emp_Payroll_No</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp Title">Emp_Title</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp First Name">Emp_First_Name</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp Middle Name">Emp_Middle_Name</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp Last Name">Emp_Last_Name</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp Name">Emp_Name</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp Gender">Emp_Gender</TEXTFIELD>
+			<TEXTTIMESTAMP w="75" title="Emp Join Date">Emp_Join_Date</TEXTTIMESTAMP>
+			<TEXTFIELD w="75" title="Emp Dept ID">Emp_Dept_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp Subdepartment ID">Emp_SubDepartment_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp Location ID">Emp_Location_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp Desig ID">Emp_Desig_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Employment Type">Employment_Type</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp Reportingmanager ID">Emp_ReportingManager_Id</TEXTFIELD>
+			<TEXTTIMESTAMP w="75" title="Emp Birth Date">Emp_Birth_Date</TEXTTIMESTAMP>
+			<TEXTFIELD w="75" title="Emp Religion ID">Emp_Religion_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp Tribe ID">Emp_Tribe_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp Maritalstatus ID">Emp_MaritalStatus_Id</TEXTFIELD>
+			<TEXTTIMESTAMP w="75" title="Emp Anneversary Date">Emp_Anneversary_Date</TEXTTIMESTAMP>
+			<TEXTFIELD w="75" title="Emp Children">Emp_Children</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp Dependents">Emp_Dependents</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp Nationality ID">Emp_Nationality_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp Mothertongue ID">Emp_MotherTongue_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp Ethnicity ID">Emp_Ethnicity_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Login C ID">Login_C_Id</TEXTFIELD>
+			<TEXTTIMESTAMP w="75" title="Csysdate">CSysDate</TEXTTIMESTAMP>
+			<TEXTFIELD w="75" title="Login U ID">Login_U_Id</TEXTFIELD>
+			<TEXTTIMESTAMP w="75" title="Usysdate">USysDate</TEXTTIMESTAMP>
+			<TEXTFIELD w="75" title="Login D ID">Login_D_Id</TEXTFIELD>
+			<TEXTTIMESTAMP w="75" title="Dsysdate">DSysDate</TEXTTIMESTAMP>
+			<TEXTFIELD w="75" title="Active">Is_Active</TEXTFIELD>
+			<TEXTFIELD w="75" title="Deleted">Is_Deleted</TEXTFIELD>
+			<TEXTFIELD w="75" title="Rowguid">Rowguid</TEXTFIELD>
+			<TEXTFIELD w="75" title="Form ID">Form_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Paymaster Cmp ID">Paymaster_Cmp_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp Class ID">Emp_Class_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Separate">Is_Separate</TEXTFIELD>
+			<TEXTFIELD w="75" title="Ooinameofinstitution">OOINameOfInstitution</TEXTFIELD>
+			<TEXTFIELD w="75" title="Ooilrno">OOILRNo</TEXTFIELD>
+			<TEXTFIELD w="75" title="Ooioccupationdate">OOIOccupationDate</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Insurancepremium">InsurancePremium</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Nationalidppno">NationalIDPPNo</TEXTFIELD>
+			<TEXTFIELD w="75" title="Nationalidcountry">NationalIDCountry</TEXTFIELD>
+			<CHECKBOX w="75" title="Nobenefits">NoBenefits</CHECKBOX>
+			<TEXTFIELD w="75" title="Newshiftcode">NewShiftCode</TEXTFIELD>
+			<TEXTTIMESTAMP w="75" title="Newshiftfrom">NewShiftFrom</TEXTTIMESTAMP>
+			<TEXTFIELD w="75" title="Newweekoff">NewWeekOff</TEXTFIELD>
+			<TEXTTIMESTAMP w="75" title="Newweekofffrom">NewWeekOffFrom</TEXTTIMESTAMP>
+			<TEXTDECIMAL w="75" title="Absenteesmcalchrs">AbsenteesmCalcHrs</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Otcalchrs">OTCalcHrs</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Bankcode">BankCode</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Pensionopbalanceemployee">PensionOPBalanceEmployee</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Pensionopbalanceemployer">PensionOPBalanceEmployer</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Reliefopbalance">ReliefOPBalance</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Workhours">WorkHours</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Universityno">UniversityNo</TEXTFIELD>
+			<TEXTFIELD w="75" title="Universityname">UniversityName</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Pensionpf">PensionPF</TEXTDECIMAL>
+			<CHECKBOX w="75" title="Deductinsurancesalary">DeductInsuranceSalary</CHECKBOX>
+			<TEXTDECIMAL w="75" title="Voluntarynssf">VoluntaryNSSF</TEXTDECIMAL>
+			<CHECKBOX w="75" title="Lastjobinkenyaforexpatriate">LastJobInKenyaForExpatriate</CHECKBOX>
+			<TEXTFIELD w="75" title="Salarygradecode">SalaryGradeCode</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Maxautoloandedamount">MaxAutoLoanDedAmount</TEXTDECIMAL>
+			<CHECKBOX w="75" title="Deductpensionfromsalary">DeductPensionFromSalary</CHECKBOX>
+			<CHECKBOX w="75" title="Isblacklisted">IsBlackListed</CHECKBOX>
+			<TEXTDECIMAL w="75" title="Minmonthlyworkhrs">MinMonthlyWorkHrs</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Mindailyworkhrs">MinDailyWorkHrs</TEXTFIELD>
+			<TEXTFIELD w="75" title="Minsatworkhrs">MinSatWorkHrs</TEXTFIELD>
+			<TEXTFIELD w="75" title="Tribe">Tribe</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Ot1ratecalchrs">OT1RateCalcHrs</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Ot2ratecalchrs">OT2RateCalcHrs</TEXTDECIMAL>
+			<CHECKBOX w="75" title="Enforceminworkhrs">EnforceMinWorkHrs</CHECKBOX>
+			<CHECKBOX w="75" title="Useproratedsalary">UseProratedSalary</CHECKBOX>
+			<CHECKBOX w="75" title="Usedoj">UseDOJ</CHECKBOX>
+			<TEXTTIMESTAMP w="75" title="Proratadate">ProrataDate</TEXTTIMESTAMP>
+			<CHECKBOX w="75" title="Excludesunday">ExcludeSunday</CHECKBOX>
+			<CHECKBOX w="75" title="Excludesaturday">ExcludeSaturday</CHECKBOX>
+			<TEXTFIELD w="75" title="Costcentercode">CostCenterCode</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Pensionopbalancevoluntary">PensionOPBalanceVoluntary</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Glcode">GLCODE</TEXTFIELD>
+			<TEXTTIMESTAMP w="75" title="Leaveopbasondate">LeaveOpbAsOnDate</TEXTTIMESTAMP>
+			<TEXTFIELD w="75" title="Saccono">SACCONO</TEXTFIELD>
+			<CHECKBOX w="75" title="Chargenssfbyemployer">ChargeNSSFByEmployer</CHECKBOX>
+			<CHECKBOX w="75" title="Usedailybasic">UseDailyBasic</CHECKBOX>
+			<TEXTDECIMAL w="75" title="Fixednssfamount">FixedNSSFAmount</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Fixednhifamount">FixedNHIFAmount</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Target">Target</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Empleavebasic">EmpLeaveBasic</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Mastercode">MasterCode</TEXTFIELD>
+			<TEXTFIELD w="75" title="Mastertwocode">MasterTwoCode</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp Isblacklist">Emp_IsBlackList</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp Blacklistreason">Emp_BlackListReason</TEXTFIELD>
+			<TEXTFIELD w="75" title="Icardno">ICardNo</TEXTFIELD>
+			<TEXTFIELD w="75" title="Category ID">Category_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Emp Weekoff Type">Emp_WeekOff_Type</TEXTFIELD>
+			<TEXTFIELD w="75" title="Company Calendar ID">Company_Calendar_Id</TEXTFIELD>
+			<TEXTFIELD w="75" title="Org Unit ID">Org_Unit_Id</TEXTFIELD>
+			<EXPORT name="Tblemployee" keyfield="Emp_Id" table="tblEmployee">
+				<TEXTFIELD w="75" title="Cmp ID">Cmp_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Branch ID">Branch_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp ID">Emp_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp Def ID">Emp_Def_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp Code">Emp_Code</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp Payroll No">Emp_Payroll_No</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp Title">Emp_Title</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp First Name">Emp_First_Name</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp Middle Name">Emp_Middle_Name</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp Last Name">Emp_Last_Name</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp Name">Emp_Name</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp Gender">Emp_Gender</TEXTFIELD>
+				<TEXTTIMESTAMP w="75" title="Emp Join Date">Emp_Join_Date</TEXTTIMESTAMP>
+				<TEXTFIELD w="75" title="Emp Dept ID">Emp_Dept_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp Subdepartment ID">Emp_SubDepartment_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp Location ID">Emp_Location_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp Desig ID">Emp_Desig_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Employment Type">Employment_Type</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp Reportingmanager ID">Emp_ReportingManager_Id</TEXTFIELD>
+				<TEXTTIMESTAMP w="75" title="Emp Birth Date">Emp_Birth_Date</TEXTTIMESTAMP>
+				<TEXTFIELD w="75" title="Emp Religion ID">Emp_Religion_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp Tribe ID">Emp_Tribe_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp Maritalstatus ID">Emp_MaritalStatus_Id</TEXTFIELD>
+				<TEXTTIMESTAMP w="75" title="Emp Anneversary Date">Emp_Anneversary_Date</TEXTTIMESTAMP>
+				<TEXTFIELD w="75" title="Emp Children">Emp_Children</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp Dependents">Emp_Dependents</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp Nationality ID">Emp_Nationality_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp Mothertongue ID">Emp_MotherTongue_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp Ethnicity ID">Emp_Ethnicity_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Login C ID">Login_C_Id</TEXTFIELD>
+				<TEXTTIMESTAMP w="75" title="Csysdate">CSysDate</TEXTTIMESTAMP>
+				<TEXTFIELD w="75" title="Login U ID">Login_U_Id</TEXTFIELD>
+				<TEXTTIMESTAMP w="75" title="Usysdate">USysDate</TEXTTIMESTAMP>
+				<TEXTFIELD w="75" title="Login D ID">Login_D_Id</TEXTFIELD>
+				<TEXTTIMESTAMP w="75" title="Dsysdate">DSysDate</TEXTTIMESTAMP>
+				<TEXTFIELD w="75" title="Active">Is_Active</TEXTFIELD>
+				<TEXTFIELD w="75" title="Deleted">Is_Deleted</TEXTFIELD>
+				<TEXTFIELD w="75" title="Rowguid">Rowguid</TEXTFIELD>
+				<TEXTFIELD w="75" title="Form ID">Form_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Paymaster Cmp ID">Paymaster_Cmp_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp Class ID">Emp_Class_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Separate">Is_Separate</TEXTFIELD>
+				<TEXTFIELD w="75" title="Ooinameofinstitution">OOINameOfInstitution</TEXTFIELD>
+				<TEXTFIELD w="75" title="Ooilrno">OOILRNo</TEXTFIELD>
+				<TEXTFIELD w="75" title="Ooioccupationdate">OOIOccupationDate</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Insurancepremium">InsurancePremium</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Nationalidppno">NationalIDPPNo</TEXTFIELD>
+				<TEXTFIELD w="75" title="Nationalidcountry">NationalIDCountry</TEXTFIELD>
+				<CHECKBOX w="75" title="Nobenefits">NoBenefits</CHECKBOX>
+				<TEXTFIELD w="75" title="Newshiftcode">NewShiftCode</TEXTFIELD>
+				<TEXTTIMESTAMP w="75" title="Newshiftfrom">NewShiftFrom</TEXTTIMESTAMP>
+				<TEXTFIELD w="75" title="Newweekoff">NewWeekOff</TEXTFIELD>
+				<TEXTTIMESTAMP w="75" title="Newweekofffrom">NewWeekOffFrom</TEXTTIMESTAMP>
+				<TEXTDECIMAL w="75" title="Absenteesmcalchrs">AbsenteesmCalcHrs</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Otcalchrs">OTCalcHrs</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Bankcode">BankCode</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Pensionopbalanceemployee">PensionOPBalanceEmployee</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Pensionopbalanceemployer">PensionOPBalanceEmployer</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Reliefopbalance">ReliefOPBalance</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Workhours">WorkHours</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Universityno">UniversityNo</TEXTFIELD>
+				<TEXTFIELD w="75" title="Universityname">UniversityName</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Pensionpf">PensionPF</TEXTDECIMAL>
+				<CHECKBOX w="75" title="Deductinsurancesalary">DeductInsuranceSalary</CHECKBOX>
+				<TEXTDECIMAL w="75" title="Voluntarynssf">VoluntaryNSSF</TEXTDECIMAL>
+				<CHECKBOX w="75" title="Lastjobinkenyaforexpatriate">LastJobInKenyaForExpatriate</CHECKBOX>
+				<TEXTFIELD w="75" title="Salarygradecode">SalaryGradeCode</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Maxautoloandedamount">MaxAutoLoanDedAmount</TEXTDECIMAL>
+				<CHECKBOX w="75" title="Deductpensionfromsalary">DeductPensionFromSalary</CHECKBOX>
+				<CHECKBOX w="75" title="Isblacklisted">IsBlackListed</CHECKBOX>
+				<TEXTDECIMAL w="75" title="Minmonthlyworkhrs">MinMonthlyWorkHrs</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Mindailyworkhrs">MinDailyWorkHrs</TEXTFIELD>
+				<TEXTFIELD w="75" title="Minsatworkhrs">MinSatWorkHrs</TEXTFIELD>
+				<TEXTFIELD w="75" title="Tribe">Tribe</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Ot1ratecalchrs">OT1RateCalcHrs</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Ot2ratecalchrs">OT2RateCalcHrs</TEXTDECIMAL>
+				<CHECKBOX w="75" title="Enforceminworkhrs">EnforceMinWorkHrs</CHECKBOX>
+				<CHECKBOX w="75" title="Useproratedsalary">UseProratedSalary</CHECKBOX>
+				<CHECKBOX w="75" title="Usedoj">UseDOJ</CHECKBOX>
+				<TEXTTIMESTAMP w="75" title="Proratadate">ProrataDate</TEXTTIMESTAMP>
+				<CHECKBOX w="75" title="Excludesunday">ExcludeSunday</CHECKBOX>
+				<CHECKBOX w="75" title="Excludesaturday">ExcludeSaturday</CHECKBOX>
+				<TEXTFIELD w="75" title="Costcentercode">CostCenterCode</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Pensionopbalancevoluntary">PensionOPBalanceVoluntary</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Glcode">GLCODE</TEXTFIELD>
+				<TEXTTIMESTAMP w="75" title="Leaveopbasondate">LeaveOpbAsOnDate</TEXTTIMESTAMP>
+				<TEXTFIELD w="75" title="Saccono">SACCONO</TEXTFIELD>
+				<CHECKBOX w="75" title="Chargenssfbyemployer">ChargeNSSFByEmployer</CHECKBOX>
+				<CHECKBOX w="75" title="Usedailybasic">UseDailyBasic</CHECKBOX>
+				<TEXTDECIMAL w="75" title="Fixednssfamount">FixedNSSFAmount</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Fixednhifamount">FixedNHIFAmount</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Target">Target</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Empleavebasic">EmpLeaveBasic</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Mastercode">MasterCode</TEXTFIELD>
+				<TEXTFIELD w="75" title="Mastertwocode">MasterTwoCode</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp Isblacklist">Emp_IsBlackList</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp Blacklistreason">Emp_BlackListReason</TEXTFIELD>
+				<TEXTFIELD w="75" title="Icardno">ICardNo</TEXTFIELD>
+				<TEXTFIELD w="75" title="Category ID">Category_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Emp Weekoff Type">Emp_WeekOff_Type</TEXTFIELD>
+				<TEXTFIELD w="75" title="Company Calendar ID">Company_Calendar_Id</TEXTFIELD>
+				<TEXTFIELD w="75" title="Org Unit ID">Org_Unit_Id</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+	</SOURCE>
+</MIGRATE>
+

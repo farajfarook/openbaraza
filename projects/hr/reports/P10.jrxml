@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="P10" pageWidth="595" pageHeight="842" whenNoDataType="BlankPage" columnWidth="535" leftMargin="30" rightMargin="30" topMargin="20" bottomMargin="20" uuid="9b791139-8d32-4863-a547-d373f9dee868">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="71"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="employeeid" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["0"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="periodyear" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["2008"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="reportpath" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="organd" class="java.lang.String"><defaultValueExpression><![CDATA[""]]></defaultValueExpression></parameter>
+	<parameter name="orgwhere" class="java.lang.String"><defaultValueExpression><![CDATA[""]]></defaultValueExpression></parameter>
+	<queryString>
+		<![CDATA[SELECT vw_employee_month.month_id, vw_employee_month.period_year, vw_employee_month.period_month,
+max(Period_Tax_Types.Pay_Date) as Pay_Date, sum(Employee_Tax_Types.Amount) as totaltax,
+orgs.org_name, orgs.pin
+
+FROM orgs, (vw_employee_month INNER JOIN Employee_Tax_Types ON vw_employee_month.Employee_Month_ID = Employee_Tax_Types.Employee_Month_ID
+	INNER JOIN Period_Tax_Types ON (vw_employee_month.Period_ID = Period_Tax_Types.Period_ID)
+	AND (Employee_Tax_Types.Tax_Type_ID = Period_Tax_Types.Tax_Type_ID))
+
+WHERE ((Employee_Tax_Types.Tax_Type_ID = 1)
+	OR (Employee_Tax_Types.Tax_Type_ID = 4))
+AND (vw_employee_month.period_year = '$P!{periodyear}')
+$P!{organd}
+
+GROUP BY vw_employee_month.month_id, vw_employee_month.period_year, vw_employee_month.period_month, orgs.org_name, orgs.pin
+ORDER BY vw_employee_month.month_id;]]>
+	</queryString>
+	<field name="month_id" class="java.lang.Double"/>
+	<field name="period_year" class="java.lang.String"/>
+	<field name="period_month" class="java.lang.String"/>
+	<field name="pay_date" class="java.sql.Date"/>
+	<field name="totaltax" class="java.lang.Double"/>
+	<field name="org_name" class="java.lang.String"/>
+	<field name="pin" class="java.lang.String"/>
+	<variable name="sumcalcpaye" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{totaltax}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="258" splitType="Stretch">
+			<image scaleImage="RetainShape" hAlign="Center">
+				<reportElement key="image-1" x="137" y="0" width="260" height="75" uuid="d6b1aa20-8244-4150-8ed5-602e83b8f7e8"/>
+				<imageExpression><![CDATA[$P{reportpath} + "kralogo.jpg"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement key="staticText-9" x="201" y="75" width="140" height="17" uuid="f4d20d5b-703e-4f63-a2ee-5c3ded09d17f"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Income Tax Department]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-10" x="27" y="47" width="39" height="17" uuid="64ff9acc-1594-430c-99f9-e62d828ec1e2"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[P. 10]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-12" x="138" y="95" width="238" height="17" uuid="48d138e8-ced6-4323-a046-005cfe80e689"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[P.A.Y.E – EMPLOYER’S CERTIFICATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-13" x="149" y="112" width="55" height="17" uuid="491c88c9-bcb2-405c-8511-7bea8d98a2f8"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[YEAR ]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement key="textField-4" x="204" y="112" width="96" height="17" uuid="63216cc8-1ce5-406f-b342-da5ab41a52af"/>
+				<box leftPadding="2" rightPadding="2">
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.5" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{period_year}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-14" x="8" y="167" width="506" height="88" uuid="ed539611-52f3-4a09-ad37-d62dd734c81e"/>
+				<textElement markup="html">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[<b>To Senior Assistant Commissioner </b>
+<br><b>……………………………………… </b>
+<br><br>
+We/I forward herewith......................Tax Deduction Cards (P9A/P9B) showing the total tax deducted (as listed
+on P.10A) amounting to Kshs
+<br><br>
+This total tax has been paid as follows:
+]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" evaluationTime="Report" pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement key="textField-6" x="137" y="212" width="76" height="18" uuid="33c3560e-ee60-4289-a701-ede22ac02663"/>
+				<box leftPadding="2" rightPadding="2">
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dotted" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Dotted" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="10" isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumcalcpaye}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement key="textField-4" x="104" y="195" width="51" height="17" uuid="252e4c0d-b22a-4709-9d6f-41eaee17a06b"/>
+				<box leftPadding="2" rightPadding="2">
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="10" isBold="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{period_year}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-11" x="58" y="131" width="135" height="17" uuid="1fa737d9-c662-4ba6-9c37-fa2b8128a295"/>
+				<textElement markup="html">
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[EMPLOYER'S NAME :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-11" x="58" y="148" width="135" height="17" uuid="aa4a4c7e-9c72-4667-9e95-14a42b60bc46"/>
+				<textElement markup="html">
+					<font fontName="Times New Roman" size="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[EMPLOYER'S PIN :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="193" y="131" width="313" height="17" uuid="6af68486-cf49-4f04-84c2-185c303056b7"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{org_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="193" y="148" width="313" height="17" uuid="ea33e3a2-2064-45cd-a11b-1e818acfe402"/>
+				<textElement>
+					<font fontName="Times New Roman" size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pin}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement key="staticText-1" x="8" y="0" width="96" height="36" uuid="023e63d6-8570-4dd0-92b9-7b0882f29cbb"/>
+				<box>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[MONTH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-2" x="104" y="0" width="92" height="36" uuid="a402103b-bb39-476d-a956-2fb259d3e237"/>
+				<box>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[PAYE
+(KSHS.)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-3" x="196" y="0" width="118" height="36" uuid="6f72b3d1-b41e-4f96-beb8-27d876c00e7d"/>
+				<box>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[AUDIT TAX,
+INTEREST/PENALTY
+(KSHS.)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-4" x="314" y="0" width="105" height="36" uuid="a4421c87-c0a1-446b-a4c6-03b5c16ac8f3"/>
+				<box>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[FRIDGE BENEFIT
+TAX
+(KSHS.)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-5" x="419" y="0" width="105" height="36" uuid="c2b6afa1-0d1c-4517-8b6f-469a13533270"/>
+				<box>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[DATE PAID PER
+(RECEIVING BANK)]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="14" splitType="Stretch">
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
+				<reportElement key="textField-1" x="8" y="0" width="96" height="14" uuid="e9a71940-67e8-46ec-8eb8-1b28519516cd"/>
+				<box leftPadding="2" rightPadding="2">
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{period_month}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement key="textField-2" x="104" y="0" width="92" height="14" uuid="e7d5b8b1-7af4-4ca2-a1f2-1c88c4cf9be1"/>
+				<box leftPadding="2" rightPadding="2">
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totaltax}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-6" x="196" y="4" width="118" height="10" uuid="fc86ed5b-72d3-49f7-9995-714dcc834de8"/>
+				<text><![CDATA[Static Text]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-7" x="196" y="0" width="118" height="14" uuid="f9e38d38-d003-4903-9975-dcd1b50ce42c"/>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-8" x="314" y="0" width="105" height="14" uuid="1de9d034-a452-4a09-8544-f608ada2fe41"/>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="dd/MM/yyyy" isBlankWhenNull="true">
+				<reportElement key="textField-3" x="419" y="0" width="105" height="14" uuid="8b22ebb8-47b3-40f4-974a-cf801994fbf8"/>
+				<box leftPadding="2" rightPadding="2">
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pay_date}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="219" splitType="Stretch">
+			<staticText>
+				<reportElement key="staticText-18" x="8" y="5" width="516" height="194" uuid="098376bd-5f03-440e-bdf5-3063d4b764d4"/>
+				<textElement markup="html">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<text><![CDATA[<b>NOTE:-</b>
+
+<br><br>
+(1) Attach Photostat copies of <b>ALL the Pay-In Credit Slips (P11s)</b> for the year
+<br>(4) Complete this certificate in triplicate sending the top two copies with the enclosures to your <b>Income
+<br>     Tax Office not later than 28TH FEBRUARY. </b>
+<br>(5) Provide Statistical information required by Central Bureau of Statistics.
+<br><br>
+We/I certify that the particulars entered above are correct.
+<br>
+<br><b>NAME OF EMPLOYER : <u>DEW CIS SOLUTIONS LTD</u>
+<br>ADDRESS : <u>P.O. Box 45689, Nairobi - 00100</u>
+<br><br><br>SIGNATURE………………………………………………………………………………………….
+<br><br>DATE………………………………………………………………………………………………….. </b>
+]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement key="staticText-15" x="8" y="0" width="96" height="18" uuid="33c3a201-269e-41e9-8027-1da1b67eb8ed"/>
+				<box>
+					<topPen lineWidth="0.25" lineStyle="Solid"/>
+					<leftPen lineWidth="0.25" lineStyle="Solid"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font fontName="Times New Roman" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[MONTH]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement key="textField-5" x="104" y="0" width="92" height="18" uuid="3b6d2b0c-af3e-49ed-9765-3ca7db0bd11c"/>
+				<box leftPadding="2" rightPadding="2">
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="10" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumcalcpaye}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-16" x="196" y="0" width="118" height="18" uuid="67cc78d7-f5f0-4819-ba45-ba395cf0f822"/>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-17" x="314" y="0" width="105" height="18" uuid="0d526e80-7e09-4a27-bbed-d7b9d174721f"/>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Solid"/>
+					<rightPen lineWidth="0.25" lineStyle="Solid"/>
+				</box>
+				<textElement>
+					<font isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

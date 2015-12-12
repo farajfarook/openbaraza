@@ -1,0 +1,635 @@
+<MIGRATE dbpath="jdbc:postgresql://localhost/hri" dbclass="org.postgresql.Driver" dbusername="root" dbpassword="invent" >
+	<SOURCE dbpath="jdbc:interbase://192.168.0.179/C:/Programs/Database/UEABPAYROLL.GDB" 
+		dbclass="interbase.interclient.Driver" dbusername="SYSDBA" dbpassword="masterkey" readonly="true" >
+
+		<IMPORT noaudit="true" name="Qtable" keyfield="QNAME" table="QTABLE">
+			<TEXTFIELD w="75" title="Qname">QNAME</TEXTFIELD>
+			<TEXTTIMESTAMP w="75" title="Qdate">QDATE</TEXTTIMESTAMP>
+			<TEXTFIELD w="75" title="Qtext">QTEXT</TEXTFIELD>
+			<TEXTFIELD w="75" title="Qwhere">QWHERE</TEXTFIELD>
+			<TEXTFIELD w="75" title="Qwhere1">QWHERE1</TEXTFIELD>
+			<TEXTFIELD w="75" title="Qwhere2">QWHERE2</TEXTFIELD>
+			<TEXTFIELD w="75" title="Qgroupby">QGROUPBY</TEXTFIELD>
+			<TEXTFIELD w="75" title="Qorderby">QORDERBY</TEXTFIELD>
+			<TEXTFIELD w="75" title="Quse">QUSE</TEXTFIELD>
+			<TEXTFIELD w="75" title="Qnum">QNUM</TEXTFIELD>
+			<EXPORT name="Qtable" keyfield="QNAME" table="QTABLE">
+				<TEXTFIELD w="75" title="Qname">QNAME</TEXTFIELD>
+				<TEXTTIMESTAMP w="75" title="Qdate">QDATE</TEXTTIMESTAMP>
+				<TEXTFIELD w="75" title="Qtext">QTEXT</TEXTFIELD>
+				<TEXTFIELD w="75" title="Qwhere">QWHERE</TEXTFIELD>
+				<TEXTFIELD w="75" title="Qwhere1">QWHERE1</TEXTFIELD>
+				<TEXTFIELD w="75" title="Qwhere2">QWHERE2</TEXTFIELD>
+				<TEXTFIELD w="75" title="Qgroupby">QGROUPBY</TEXTFIELD>
+				<TEXTFIELD w="75" title="Qorderby">QORDERBY</TEXTFIELD>
+				<TEXTFIELD w="75" title="Quse">QUSE</TEXTFIELD>
+				<TEXTFIELD w="75" title="Qnum">QNUM</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Transtable" keyfield="EMPLOYEEID" table="TRANSTABLE">
+			<TEXTFIELD w="75" title="Employeeid">EMPLOYEEID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Employeemonthid">EMPLOYEEMONTHID</TEXTFIELD>
+			<TEXTDATE w="75" title="Transdate">TRANSDATE</TEXTDATE>
+			<TEXTDECIMAL w="75" title="Amount">AMOUNT</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+			<EXPORT name="Transtable" keyfield="EMPLOYEEID" table="TRANSTABLE">
+				<TEXTFIELD w="75" title="Employeeid">EMPLOYEEID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Employeemonthid">EMPLOYEEMONTHID</TEXTFIELD>
+				<TEXTDATE w="75" title="Transdate">TRANSDATE</TEXTDATE>
+				<TEXTDECIMAL w="75" title="Amount">AMOUNT</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Loginlist" keyfield="LOGINNAME" table="LOGINLIST">
+			<TEXTFIELD w="75" title="Loginname">LOGINNAME</TEXTFIELD>
+			<TEXTFIELD w="75" title="Fullname">FULLNAME</TEXTFIELD>
+			<TEXTFIELD w="75" title="Userpass">USERPASS</TEXTFIELD>
+			<TEXTFIELD w="75" title="Userlevel">USERLEVEL</TEXTFIELD>
+			<TEXTTIMESTAMP w="75" title="Lastlogin">LASTLOGIN</TEXTTIMESTAMP>
+			<TEXTFIELD w="75" title="Isactive">ISACTIVE</TEXTFIELD>
+			<EXPORT name="Loginlist" keyfield="LOGINNAME" table="LOGINLIST">
+				<TEXTFIELD w="75" title="Loginname">LOGINNAME</TEXTFIELD>
+				<TEXTFIELD w="75" title="Fullname">FULLNAME</TEXTFIELD>
+				<TEXTFIELD w="75" title="Userpass">USERPASS</TEXTFIELD>
+				<TEXTFIELD w="75" title="Userlevel">USERLEVEL</TEXTFIELD>
+				<TEXTTIMESTAMP w="75" title="Lastlogin">LASTLOGIN</TEXTTIMESTAMP>
+				<TEXTFIELD w="75" title="Isactive">ISACTIVE</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Jobs" keyfield="JOBID" table="JOBS">
+			<TEXTFIELD w="75" title="Jobid">JOBID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Jobname">JOBNAME</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Basicrate">BASICRATE</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Accountnumber">ACCOUNTNUMBER</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Yearbudget">YEARBUDGET</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Details">DETAILS</TEXTFIELD>
+			<EXPORT name="Jobs" keyfield="JOBID" table="JOBS">
+				<TEXTFIELD w="75" title="Jobid">JOBID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Jobname">JOBNAME</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Basicrate">BASICRATE</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Accountnumber">ACCOUNTNUMBER</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Yearbudget">YEARBUDGET</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Details">DETAILS</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Departments" keyfield="DEPARTMENTID" table="DEPARTMENTS">
+			<TEXTFIELD w="75" title="Departmentid">DEPARTMENTID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Departmentname">DEPARTMENTNAME</TEXTFIELD>
+			<TEXTFIELD w="75" title="Accountnumber">ACCOUNTNUMBER</TEXTFIELD>
+			<TEXTFIELD w="75" title="Taxaccount">TAXACCOUNT</TEXTFIELD>
+			<TEXTFIELD w="75" title="Nhifaccount">NHIFACCOUNT</TEXTFIELD>
+			<TEXTFIELD w="75" title="Nssfaccount">NSSFACCOUNT</TEXTFIELD>
+			<TEXTFIELD w="75" title="Retirementaccount">RETIREMENTACCOUNT</TEXTFIELD>
+			<TEXTFIELD w="75" title="Details">DETAILS</TEXTFIELD>
+			<TEXTFIELD w="75" title="Depfunction">DEPFUNCTION</TEXTFIELD>
+			<TEXTFIELD w="75" title="Deptproject">DEPTPROJECT</TEXTFIELD>
+			<EXPORT name="Departments" keyfield="DEPARTMENTID" table="DEPARTMENTS">
+				<TEXTFIELD w="75" title="Departmentid">DEPARTMENTID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Departmentname">DEPARTMENTNAME</TEXTFIELD>
+				<TEXTFIELD w="75" title="Accountnumber">ACCOUNTNUMBER</TEXTFIELD>
+				<TEXTFIELD w="75" title="Taxaccount">TAXACCOUNT</TEXTFIELD>
+				<TEXTFIELD w="75" title="Nhifaccount">NHIFACCOUNT</TEXTFIELD>
+				<TEXTFIELD w="75" title="Nssfaccount">NSSFACCOUNT</TEXTFIELD>
+				<TEXTFIELD w="75" title="Retirementaccount">RETIREMENTACCOUNT</TEXTFIELD>
+				<TEXTFIELD w="75" title="Details">DETAILS</TEXTFIELD>
+				<TEXTFIELD w="75" title="Depfunction">DEPFUNCTION</TEXTFIELD>
+				<TEXTFIELD w="75" title="Deptproject">DEPTPROJECT</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Banks" keyfield="BANKID" table="BANKS">
+			<TEXTFIELD w="75" title="Bankid">BANKID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Bankname">BANKNAME</TEXTFIELD>
+			<TEXTFIELD w="75" title="Accountnumber">ACCOUNTNUMBER</TEXTFIELD>
+			<TEXTFIELD w="75" title="Isbanked">ISBANKED</TEXTFIELD>
+			<TEXTFIELD w="75" title="Narrative">NARRATIVE</TEXTFIELD>
+			<EXPORT name="Banks" keyfield="BANKID" table="BANKS">
+				<TEXTFIELD w="75" title="Bankid">BANKID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Bankname">BANKNAME</TEXTFIELD>
+				<TEXTFIELD w="75" title="Accountnumber">ACCOUNTNUMBER</TEXTFIELD>
+				<TEXTFIELD w="75" title="Isbanked">ISBANKED</TEXTFIELD>
+				<TEXTFIELD w="75" title="Narrative">NARRATIVE</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Branch" keyfield="BRANCHID" table="BRANCH">
+			<TEXTFIELD w="75" title="Branchid">BRANCHID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Branchname">BRANCHNAME</TEXTFIELD>
+			<TEXTFIELD w="75" title="Branch">BRANCH</TEXTFIELD>
+			<TEXTFIELD w="75" title="Narrative">NARRATIVE</TEXTFIELD>
+			<EXPORT name="Branch" keyfield="BRANCHID" table="BRANCH">
+				<TEXTFIELD w="75" title="Branchid">BRANCHID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Branchname">BRANCHNAME</TEXTFIELD>
+				<TEXTFIELD w="75" title="Branch">BRANCH</TEXTFIELD>
+				<TEXTFIELD w="75" title="Narrative">NARRATIVE</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Deductions" keyfield="DEDUCTIONID" table="DEDUCTIONS">
+			<TEXTFIELD w="75" title="Deductionid">DEDUCTIONID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Deductionname">DEDUCTIONNAME</TEXTFIELD>
+			<TEXTFIELD w="75" title="Accountnumber">ACCOUNTNUMBER</TEXTFIELD>
+			<TEXTFIELD w="75" title="Taxexempt">TAXEXEMPT</TEXTFIELD>
+			<TEXTFIELD w="75" title="Dispcolumn">DISPCOLUMN</TEXTFIELD>
+			<TEXTFIELD w="75" title="Details">DETAILS</TEXTFIELD>
+			<TEXTFIELD w="75" title="Aproject">APROJECT</TEXTFIELD>
+			<TEXTFIELD w="75" title="Afunction">AFUNCTION</TEXTFIELD>
+			<EXPORT name="Deductions" keyfield="DEDUCTIONID" table="DEDUCTIONS">
+				<TEXTFIELD w="75" title="Deductionid">DEDUCTIONID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Deductionname">DEDUCTIONNAME</TEXTFIELD>
+				<TEXTFIELD w="75" title="Accountnumber">ACCOUNTNUMBER</TEXTFIELD>
+				<TEXTFIELD w="75" title="Taxexempt">TAXEXEMPT</TEXTFIELD>
+				<TEXTFIELD w="75" title="Dispcolumn">DISPCOLUMN</TEXTFIELD>
+				<TEXTFIELD w="75" title="Details">DETAILS</TEXTFIELD>
+				<TEXTFIELD w="75" title="Aproject">APROJECT</TEXTFIELD>
+				<TEXTFIELD w="75" title="Afunction">AFUNCTION</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Allowances" keyfield="ALLOWANCEID" table="ALLOWANCES">
+			<TEXTFIELD w="75" title="Allowanceid">ALLOWANCEID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Allowancename">ALLOWANCENAME</TEXTFIELD>
+			<TEXTFIELD w="75" title="Taxable">TAXABLE</TEXTFIELD>
+			<TEXTFIELD w="75" title="Dispcolumn">DISPCOLUMN</TEXTFIELD>
+			<TEXTFIELD w="75" title="Details">DETAILS</TEXTFIELD>
+			<EXPORT name="Allowances" keyfield="ALLOWANCEID" table="ALLOWANCES">
+				<TEXTFIELD w="75" title="Allowanceid">ALLOWANCEID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Allowancename">ALLOWANCENAME</TEXTFIELD>
+				<TEXTFIELD w="75" title="Taxable">TAXABLE</TEXTFIELD>
+				<TEXTFIELD w="75" title="Dispcolumn">DISPCOLUMN</TEXTFIELD>
+				<TEXTFIELD w="75" title="Details">DETAILS</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Taxrates" keyfield="TAXRATEID" table="TAXRATES">
+			<TEXTFIELD w="75" title="Taxrateid">TAXRATEID</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Lowerrange">LOWERRANGE</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Upperrange">UPPERRANGE</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Taxrate">TAXRATE</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Taxrelief">TAXRELIEF</TEXTDECIMAL>
+			<EXPORT name="Taxrates" keyfield="TAXRATEID" table="TAXRATES">
+				<TEXTFIELD w="75" title="Taxrateid">TAXRATEID</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Lowerrange">LOWERRANGE</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Upperrange">UPPERRANGE</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Taxrate">TAXRATE</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Taxrelief">TAXRELIEF</TEXTDECIMAL>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Nhifrates" keyfield="NHISRATEID" table="NHIFRATES">
+			<TEXTFIELD w="75" title="Nhisrateid">NHISRATEID</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Lowerrange">LOWERRANGE</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Upperrange">UPPERRANGE</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Amount">AMOUNT</TEXTDECIMAL>
+			<EXPORT name="Nhifrates" keyfield="NHISRATEID" table="NHIFRATES">
+				<TEXTFIELD w="75" title="Nhisrateid">NHISRATEID</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Lowerrange">LOWERRANGE</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Upperrange">UPPERRANGE</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Amount">AMOUNT</TEXTDECIMAL>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Nssfrates" keyfield="NSSFRATEID" table="NSSFRATES">
+			<TEXTFIELD w="75" title="Nssfrateid">NSSFRATEID</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Lowerrange">LOWERRANGE</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Nssfrate">NSSFRATE</TEXTDECIMAL>
+			<EXPORT name="Nssfrates" keyfield="NSSFRATEID" table="NSSFRATES">
+				<TEXTFIELD w="75" title="Nssfrateid">NSSFRATEID</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Lowerrange">LOWERRANGE</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Nssfrate">NSSFRATE</TEXTDECIMAL>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Monthrates" keyfield="MONTHRATEID" table="MONTHRATES">
+			<TEXTFIELD w="75" title="Monthrateid">MONTHRATEID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Ryear">RYEAR</TEXTFIELD>
+			<TEXTFIELD w="75" title="Rmonth">RMONTH</TEXTFIELD>
+			<TEXTFIELD w="75" title="Accperiod">ACCPERIOD</TEXTFIELD>
+			<TEXTDATE w="75" title="Startdate">STARTDATE</TEXTDATE>
+			<TEXTDATE w="75" title="Enddate">ENDDATE</TEXTDATE>
+			<TEXTDECIMAL w="75" title="Overtime">OVERTIME</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Specialtime">SPECIALTIME</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Workhours">WORKHOURS</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Nhifallowance">NHIFALLOWANCE</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Nssfallowance">NSSFALLOWANCE</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Taxallowance">TAXALLOWANCE</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Nhifaccount">NHIFACCOUNT</TEXTFIELD>
+			<TEXTFIELD w="75" title="Nssfaccount">NSSFACCOUNT</TEXTFIELD>
+			<TEXTFIELD w="75" title="Taxaccount">TAXACCOUNT</TEXTFIELD>
+			<TEXTFIELD w="75" title="Hrentaccount">HRENTACCOUNT</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Retirecontrib">RETIRECONTRIB</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Activated">ACTIVATED</TEXTFIELD>
+			<TEXTFIELD w="75" title="Ispolulated">ISPOLULATED</TEXTFIELD>
+			<TEXTFIELD w="75" title="Isallow">ISALLOW</TEXTFIELD>
+			<TEXTFIELD w="75" title="Isdeduct">ISDEDUCT</TEXTFIELD>
+			<TEXTFIELD w="75" title="Activities">ACTIVITIES</TEXTFIELD>
+			<TEXTFIELD w="75" title="Istithe">ISTITHE</TEXTFIELD>
+			<TEXTFIELD w="75" title="Jv1">JV1</TEXTFIELD>
+			<TEXTFIELD w="75" title="Jv2">JV2</TEXTFIELD>
+			<TEXTFIELD w="75" title="Chq">CHQ</TEXTFIELD>
+			<TEXTFIELD w="75" title="Bankaccount">BANKACCOUNT</TEXTFIELD>
+			<TEXTFIELD w="75" title="Isloans">ISLOANS</TEXTFIELD>
+			<TEXTFIELD w="75" title="Interestacc">INTERESTACC</TEXTFIELD>
+			<TEXTFIELD w="75" title="Pchq">PCHQ</TEXTFIELD>
+			<EXPORT name="Monthrates" keyfield="MONTHRATEID" table="MONTHRATES">
+				<TEXTFIELD w="75" title="Monthrateid">MONTHRATEID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Ryear">RYEAR</TEXTFIELD>
+				<TEXTFIELD w="75" title="Rmonth">RMONTH</TEXTFIELD>
+				<TEXTFIELD w="75" title="Accperiod">ACCPERIOD</TEXTFIELD>
+				<TEXTDATE w="75" title="Startdate">STARTDATE</TEXTDATE>
+				<TEXTDATE w="75" title="Enddate">ENDDATE</TEXTDATE>
+				<TEXTDECIMAL w="75" title="Overtime">OVERTIME</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Specialtime">SPECIALTIME</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Workhours">WORKHOURS</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Nhifallowance">NHIFALLOWANCE</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Nssfallowance">NSSFALLOWANCE</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Taxallowance">TAXALLOWANCE</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Nhifaccount">NHIFACCOUNT</TEXTFIELD>
+				<TEXTFIELD w="75" title="Nssfaccount">NSSFACCOUNT</TEXTFIELD>
+				<TEXTFIELD w="75" title="Taxaccount">TAXACCOUNT</TEXTFIELD>
+				<TEXTFIELD w="75" title="Hrentaccount">HRENTACCOUNT</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Retirecontrib">RETIRECONTRIB</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Activated">ACTIVATED</TEXTFIELD>
+				<TEXTFIELD w="75" title="Ispolulated">ISPOLULATED</TEXTFIELD>
+				<TEXTFIELD w="75" title="Isallow">ISALLOW</TEXTFIELD>
+				<TEXTFIELD w="75" title="Isdeduct">ISDEDUCT</TEXTFIELD>
+				<TEXTFIELD w="75" title="Activities">ACTIVITIES</TEXTFIELD>
+				<TEXTFIELD w="75" title="Istithe">ISTITHE</TEXTFIELD>
+				<TEXTFIELD w="75" title="Jv1">JV1</TEXTFIELD>
+				<TEXTFIELD w="75" title="Jv2">JV2</TEXTFIELD>
+				<TEXTFIELD w="75" title="Chq">CHQ</TEXTFIELD>
+				<TEXTFIELD w="75" title="Bankaccount">BANKACCOUNT</TEXTFIELD>
+				<TEXTFIELD w="75" title="Isloans">ISLOANS</TEXTFIELD>
+				<TEXTFIELD w="75" title="Interestacc">INTERESTACC</TEXTFIELD>
+				<TEXTFIELD w="75" title="Pchq">PCHQ</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Bankbranch" keyfield="BANKBRANCHID" table="BANKBRANCH">
+			<TEXTFIELD w="75" title="Bankbranchid">BANKBRANCHID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Bankid">BANKID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Branchid">BRANCHID</TEXTFIELD>
+			<EXPORT name="Bankbranch" keyfield="BANKBRANCHID" table="BANKBRANCH">
+				<TEXTFIELD w="75" title="Bankbranchid">BANKBRANCHID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Bankid">BANKID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Branchid">BRANCHID</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Dayswork" keyfield="DAYSWORKID" table="DAYSWORK">
+			<TEXTFIELD w="75" title="Daysworkid">DAYSWORKID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Monthrateid">MONTHRATEID</TEXTFIELD>
+			<TEXTDATE w="75" title="Workdate">WORKDATE</TEXTDATE>
+			<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+			<EXPORT name="Dayswork" keyfield="DAYSWORKID" table="DAYSWORK">
+				<TEXTFIELD w="75" title="Daysworkid">DAYSWORKID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Monthrateid">MONTHRATEID</TEXTFIELD>
+				<TEXTDATE w="75" title="Workdate">WORKDATE</TEXTDATE>
+				<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Allowanceaccounts" keyfield="ALLOWANCEACCOUNTID" table="ALLOWANCEACCOUNTS">
+			<TEXTFIELD w="75" title="Allowanceaccountid">ALLOWANCEACCOUNTID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Allowanceid">ALLOWANCEID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Departmentid">DEPARTMENTID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Accountnumber">ACCOUNTNUMBER</TEXTFIELD>
+			<TEXTFIELD w="75" title="Narrative">NARRATIVE</TEXTFIELD>
+			<EXPORT name="Allowanceaccounts" keyfield="ALLOWANCEACCOUNTID" table="ALLOWANCEACCOUNTS">
+				<TEXTFIELD w="75" title="Allowanceaccountid">ALLOWANCEACCOUNTID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Allowanceid">ALLOWANCEID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Departmentid">DEPARTMENTID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Accountnumber">ACCOUNTNUMBER</TEXTFIELD>
+				<TEXTFIELD w="75" title="Narrative">NARRATIVE</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Jobrates" keyfield="JOBRATEID" table="JOBRATES">
+			<TEXTFIELD w="75" title="Jobrateid">JOBRATEID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Jobid">JOBID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Monthrateid">MONTHRATEID</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Rate">RATE</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Overtimerate">OVERTIMERATE</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Specialtimerate">SPECIALTIMERATE</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Monthbudget">MONTHBUDGET</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+			<EXPORT name="Jobrates" keyfield="JOBRATEID" table="JOBRATES">
+				<TEXTFIELD w="75" title="Jobrateid">JOBRATEID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Jobid">JOBID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Monthrateid">MONTHRATEID</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Rate">RATE</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Overtimerate">OVERTIMERATE</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Specialtimerate">SPECIALTIMERATE</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Monthbudget">MONTHBUDGET</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Employees" keyfield="EMPLOYEEID" table="EMPLOYEES">
+			<TEXTFIELD w="75" title="Employeeid">EMPLOYEEID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Departmentid">DEPARTMENTID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Bankid">BANKID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Branchid">BRANCHID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Employeename">EMPLOYEENAME</TEXTFIELD>
+			<TEXTFIELD w="75" title="Accountno">ACCOUNTNO</TEXTFIELD>
+			<TEXTFIELD w="75" title="Idnumber">IDNUMBER</TEXTFIELD>
+			<TEXTFIELD w="75" title="Nationality">NATIONALITY</TEXTFIELD>
+			<TEXTFIELD w="75" title="Post">POST</TEXTFIELD>
+			<TEXTFIELD w="75" title="Education">EDUCATION</TEXTFIELD>
+			<TEXTFIELD w="75" title="Workertype">WORKERTYPE</TEXTFIELD>
+			<TEXTTIMESTAMP w="75" title="Birthdate">BIRTHDATE</TEXTTIMESTAMP>
+			<TEXTFIELD w="75" title="Grade">GRADE</TEXTFIELD>
+			<TEXTFIELD w="75" title="Address">ADDRESS</TEXTFIELD>
+			<TEXTFIELD w="75" title="Town">TOWN</TEXTFIELD>
+			<TEXTFIELD w="75" title="Telephone">TELEPHONE</TEXTFIELD>
+			<TEXTFIELD w="75" title="Mobile">MOBILE</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Basicsalary">BASICSALARY</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Nssf">NSSF</TEXTFIELD>
+			<TEXTFIELD w="75" title="Nhif">NHIF</TEXTFIELD>
+			<TEXTFIELD w="75" title="Pin">PIN</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Houserate">HOUSERATE</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Ishoused">ISHOUSED</TEXTFIELD>
+			<TEXTFIELD w="75" title="Ispermanent">ISPERMANENT</TEXTFIELD>
+			<TEXTFIELD w="75" title="Iscurrent">ISCURRENT</TEXTFIELD>
+			<TEXTFIELD w="75" title="Isnhif">ISNHIF</TEXTFIELD>
+			<TEXTFIELD w="75" title="Isnssf">ISNSSF</TEXTFIELD>
+			<TEXTFIELD w="75" title="Contractperiod">CONTRACTPERIOD</TEXTFIELD>
+			<TEXTFIELD w="75" title="Preservice">PRESERVICE</TEXTFIELD>
+			<TEXTDATE w="75" title="Dateemployed">DATEEMPLOYED</TEXTDATE>
+			<TEXTDATE w="75" title="Dateleft">DATELEFT</TEXTDATE>
+			<TEXTFIELD w="75" title="Employeesex">EMPLOYEESEX</TEXTFIELD>
+			<TEXTFIELD w="75" title="Maritalstatus">MARITALSTATUS</TEXTFIELD>
+			<TEXTFIELD w="75" title="Spousename">SPOUSENAME</TEXTFIELD>
+			<TEXTFIELD w="75" title="Range">RANGE</TEXTFIELD>
+			<TEXTFIELD w="75" title="Percentage">PERCENTAGE</TEXTFIELD>
+			<TEXTFIELD w="75" title="Jobdescription">JOBDESCRIPTION</TEXTFIELD>
+			<TEXTFIELD w="75" title="Details">DETAILS</TEXTFIELD>
+			<TEXTFIELD w="75" title="Bankaccount">BANKACCOUNT</TEXTFIELD>
+			<TEXTFIELD w="75" title="Retired">RETIRED</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Extranssf">EXTRANSSF</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Email">EMAIL</TEXTFIELD>
+			<TEXTFIELD w="75" title="Loanaccount">LOANACCOUNT</TEXTFIELD>
+			<EXPORT name="Employees" keyfield="EMPLOYEEID" table="EMPLOYEES">
+				<TEXTFIELD w="75" title="Employeeid">EMPLOYEEID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Departmentid">DEPARTMENTID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Bankid">BANKID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Branchid">BRANCHID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Employeename">EMPLOYEENAME</TEXTFIELD>
+				<TEXTFIELD w="75" title="Accountno">ACCOUNTNO</TEXTFIELD>
+				<TEXTFIELD w="75" title="Idnumber">IDNUMBER</TEXTFIELD>
+				<TEXTFIELD w="75" title="Nationality">NATIONALITY</TEXTFIELD>
+				<TEXTFIELD w="75" title="Post">POST</TEXTFIELD>
+				<TEXTFIELD w="75" title="Education">EDUCATION</TEXTFIELD>
+				<TEXTFIELD w="75" title="Workertype">WORKERTYPE</TEXTFIELD>
+				<TEXTTIMESTAMP w="75" title="Birthdate">BIRTHDATE</TEXTTIMESTAMP>
+				<TEXTFIELD w="75" title="Grade">GRADE</TEXTFIELD>
+				<TEXTFIELD w="75" title="Address">ADDRESS</TEXTFIELD>
+				<TEXTFIELD w="75" title="Town">TOWN</TEXTFIELD>
+				<TEXTFIELD w="75" title="Telephone">TELEPHONE</TEXTFIELD>
+				<TEXTFIELD w="75" title="Mobile">MOBILE</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Basicsalary">BASICSALARY</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Nssf">NSSF</TEXTFIELD>
+				<TEXTFIELD w="75" title="Nhif">NHIF</TEXTFIELD>
+				<TEXTFIELD w="75" title="Pin">PIN</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Houserate">HOUSERATE</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Ishoused">ISHOUSED</TEXTFIELD>
+				<TEXTFIELD w="75" title="Ispermanent">ISPERMANENT</TEXTFIELD>
+				<TEXTFIELD w="75" title="Iscurrent">ISCURRENT</TEXTFIELD>
+				<TEXTFIELD w="75" title="Isnhif">ISNHIF</TEXTFIELD>
+				<TEXTFIELD w="75" title="Isnssf">ISNSSF</TEXTFIELD>
+				<TEXTFIELD w="75" title="Contractperiod">CONTRACTPERIOD</TEXTFIELD>
+				<TEXTFIELD w="75" title="Preservice">PRESERVICE</TEXTFIELD>
+				<TEXTDATE w="75" title="Dateemployed">DATEEMPLOYED</TEXTDATE>
+				<TEXTDATE w="75" title="Dateleft">DATELEFT</TEXTDATE>
+				<TEXTFIELD w="75" title="Employeesex">EMPLOYEESEX</TEXTFIELD>
+				<TEXTFIELD w="75" title="Maritalstatus">MARITALSTATUS</TEXTFIELD>
+				<TEXTFIELD w="75" title="Spousename">SPOUSENAME</TEXTFIELD>
+				<TEXTFIELD w="75" title="Range">RANGE</TEXTFIELD>
+				<TEXTFIELD w="75" title="Percentage">PERCENTAGE</TEXTFIELD>
+				<TEXTFIELD w="75" title="Jobdescription">JOBDESCRIPTION</TEXTFIELD>
+				<TEXTFIELD w="75" title="Details">DETAILS</TEXTFIELD>
+				<TEXTFIELD w="75" title="Bankaccount">BANKACCOUNT</TEXTFIELD>
+				<TEXTFIELD w="75" title="Retired">RETIRED</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Extranssf">EXTRANSSF</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Email">EMAIL</TEXTFIELD>
+				<TEXTFIELD w="75" title="Loanaccount">LOANACCOUNT</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Employeemonth" keyfield="EMPLOYEEMONTHID" table="EMPLOYEEMONTH">
+			<TEXTFIELD w="75" title="Employeemonthid">EMPLOYEEMONTHID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Employeeid">EMPLOYEEID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Monthrateid">MONTHRATEID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Bankid">BANKID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Branchid">BRANCHID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Departmentid">DEPARTMENTID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Ispermanent">ISPERMANENT</TEXTFIELD>
+			<TEXTFIELD w="75" title="Ishoused">ISHOUSED</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Houserate">HOUSERATE</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Grade">GRADE</TEXTFIELD>
+			<TEXTFIELD w="75" title="Minrange">MINRANGE</TEXTFIELD>
+			<TEXTFIELD w="75" title="Maxrange">MAXRANGE</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Percentage">PERCENTAGE</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Basicpay">BASICPAY</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Totalhourspay">TOTALHOURSPAY</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Allowances">ALLOWANCES</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Deductions">DEDUCTIONS</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Overtime">OVERTIME</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Nhifallow">NHIFALLOW</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Nssfallow">NSSFALLOW</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Taxallow">TAXALLOW</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Nhif">NHIF</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Nssf">NSSF</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Tax">TAX</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Isnhif">ISNHIF</TEXTFIELD>
+			<TEXTFIELD w="75" title="Isnssf">ISNSSF</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Advance">ADVANCE</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Finalpay">FINALPAY</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Paybalance">PAYBALANCE</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Retirecontrib">RETIRECONTRIB</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+			<TEXTFIELD w="75" title="Retired">RETIRED</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Extranssf">EXTRANSSF</TEXTDECIMAL>
+			<EXPORT name="Employeemonth" keyfield="EMPLOYEEMONTHID" table="EMPLOYEEMONTH">
+				<TEXTFIELD w="75" title="Employeemonthid">EMPLOYEEMONTHID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Employeeid">EMPLOYEEID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Monthrateid">MONTHRATEID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Bankid">BANKID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Branchid">BRANCHID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Departmentid">DEPARTMENTID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Ispermanent">ISPERMANENT</TEXTFIELD>
+				<TEXTFIELD w="75" title="Ishoused">ISHOUSED</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Houserate">HOUSERATE</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Grade">GRADE</TEXTFIELD>
+				<TEXTFIELD w="75" title="Minrange">MINRANGE</TEXTFIELD>
+				<TEXTFIELD w="75" title="Maxrange">MAXRANGE</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Percentage">PERCENTAGE</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Basicpay">BASICPAY</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Totalhourspay">TOTALHOURSPAY</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Allowances">ALLOWANCES</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Deductions">DEDUCTIONS</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Overtime">OVERTIME</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Nhifallow">NHIFALLOW</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Nssfallow">NSSFALLOW</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Taxallow">TAXALLOW</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Nhif">NHIF</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Nssf">NSSF</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Tax">TAX</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Isnhif">ISNHIF</TEXTFIELD>
+				<TEXTFIELD w="75" title="Isnssf">ISNSSF</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Advance">ADVANCE</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Finalpay">FINALPAY</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Paybalance">PAYBALANCE</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Retirecontrib">RETIRECONTRIB</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+				<TEXTFIELD w="75" title="Retired">RETIRED</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Extranssf">EXTRANSSF</TEXTDECIMAL>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Loanpayment" keyfield="LOANPAYMENTID" table="LOANPAYMENT">
+			<TEXTFIELD w="75" title="Loanpaymentid">LOANPAYMENTID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Employeemonthid">EMPLOYEEMONTHID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Loanaccount">LOANACCOUNT</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Amount">AMOUNT</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Interest">INTEREST</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Ischarged">ISCHARGED</TEXTFIELD>
+			<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+			<EXPORT name="Loanpayment" keyfield="LOANPAYMENTID" table="LOANPAYMENT">
+				<TEXTFIELD w="75" title="Loanpaymentid">LOANPAYMENTID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Employeemonthid">EMPLOYEEMONTHID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Loanaccount">LOANACCOUNT</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Amount">AMOUNT</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Interest">INTEREST</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Ischarged">ISCHARGED</TEXTFIELD>
+				<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Employeeleave" keyfield="EMPLOYEELEAVEID" table="EMPLOYEELEAVE">
+			<TEXTFIELD w="75" title="Employeeleaveid">EMPLOYEELEAVEID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Employeemonthid">EMPLOYEEMONTHID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Leavetype">LEAVETYPE</TEXTFIELD>
+			<TEXTDATE w="75" title="Leavefrom">LEAVEFROM</TEXTDATE>
+			<TEXTDATE w="75" title="Leaveto">LEAVETO</TEXTDATE>
+			<TEXTDECIMAL w="75" title="Amount">AMOUNT</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+			<EXPORT name="Employeeleave" keyfield="EMPLOYEELEAVEID" table="EMPLOYEELEAVE">
+				<TEXTFIELD w="75" title="Employeeleaveid">EMPLOYEELEAVEID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Employeemonthid">EMPLOYEEMONTHID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Leavetype">LEAVETYPE</TEXTFIELD>
+				<TEXTDATE w="75" title="Leavefrom">LEAVEFROM</TEXTDATE>
+				<TEXTDATE w="75" title="Leaveto">LEAVETO</TEXTDATE>
+				<TEXTDECIMAL w="75" title="Amount">AMOUNT</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Loans" keyfield="LOANID" table="LOANS">
+			<TEXTFIELD w="75" title="Loanid">LOANID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Employeeid">EMPLOYEEID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Deductionid">DEDUCTIONID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Loanaccount">LOANACCOUNT</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Amount">AMOUNT</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Interest">INTEREST</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Paymentperiod">PAYMENTPERIOD</TEXTFIELD>
+			<TEXTTIMESTAMP w="75" title="Dateborrowed">DATEBORROWED</TEXTTIMESTAMP>
+			<TEXTFIELD w="75" title="Ischarged">ISCHARGED</TEXTFIELD>
+			<TEXTFIELD w="75" title="Iscleared">ISCLEARED</TEXTFIELD>
+			<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+			<EXPORT name="Loans" keyfield="LOANID" table="LOANS">
+				<TEXTFIELD w="75" title="Loanid">LOANID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Employeeid">EMPLOYEEID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Deductionid">DEDUCTIONID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Loanaccount">LOANACCOUNT</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Amount">AMOUNT</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Interest">INTEREST</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Paymentperiod">PAYMENTPERIOD</TEXTFIELD>
+				<TEXTTIMESTAMP w="75" title="Dateborrowed">DATEBORROWED</TEXTTIMESTAMP>
+				<TEXTFIELD w="75" title="Ischarged">ISCHARGED</TEXTFIELD>
+				<TEXTFIELD w="75" title="Iscleared">ISCLEARED</TEXTFIELD>
+				<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Workhours" keyfield="WORKHOURID" table="WORKHOURS">
+			<TEXTFIELD w="75" title="Workhourid">WORKHOURID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Daysworkid">DAYSWORKID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Employeeid">EMPLOYEEID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Jobid">JOBID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Completed">COMPLETED</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Worked">WORKED</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Overtime">OVERTIME</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Specialtime">SPECIALTIME</TEXTDECIMAL>
+			<EXPORT name="Workhours" keyfield="WORKHOURID" table="WORKHOURS">
+				<TEXTFIELD w="75" title="Workhourid">WORKHOURID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Daysworkid">DAYSWORKID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Employeeid">EMPLOYEEID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Jobid">JOBID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Completed">COMPLETED</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Worked">WORKED</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Overtime">OVERTIME</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Specialtime">SPECIALTIME</TEXTDECIMAL>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Employeededuct" keyfield="EMPLOYEEDEDUCTID" table="EMPLOYEEDEDUCT">
+			<TEXTFIELD w="75" title="Employeedeductid">EMPLOYEEDEDUCTID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Employeemonthid">EMPLOYEEMONTHID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Deductionid">DEDUCTIONID</TEXTFIELD>
+			<TEXTDATE w="75" title="Paydate">PAYDATE</TEXTDATE>
+			<TEXTDECIMAL w="75" title="Amount">AMOUNT</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+			<EXPORT name="Employeededuct" keyfield="EMPLOYEEDEDUCTID" table="EMPLOYEEDEDUCT">
+				<TEXTFIELD w="75" title="Employeedeductid">EMPLOYEEDEDUCTID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Employeemonthid">EMPLOYEEMONTHID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Deductionid">DEDUCTIONID</TEXTFIELD>
+				<TEXTDATE w="75" title="Paydate">PAYDATE</TEXTDATE>
+				<TEXTDECIMAL w="75" title="Amount">AMOUNT</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Allowdefault" keyfield="ALLOWDEFAULTID" table="ALLOWDEFAULT">
+			<TEXTFIELD w="75" title="Allowdefaultid">ALLOWDEFAULTID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Employeeid">EMPLOYEEID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Allowanceid">ALLOWANCEID</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Amount">AMOUNT</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+			<EXPORT name="Allowdefault" keyfield="ALLOWDEFAULTID" table="ALLOWDEFAULT">
+				<TEXTFIELD w="75" title="Allowdefaultid">ALLOWDEFAULTID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Employeeid">EMPLOYEEID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Allowanceid">ALLOWANCEID</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Amount">AMOUNT</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Deductdefault" keyfield="DEDUCTDEFAULTID" table="DEDUCTDEFAULT">
+			<TEXTFIELD w="75" title="Deductdefaultid">DEDUCTDEFAULTID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Employeeid">EMPLOYEEID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Deductionid">DEDUCTIONID</TEXTFIELD>
+			<TEXTDECIMAL w="75" title="Amount">AMOUNT</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+			<EXPORT name="Deductdefault" keyfield="DEDUCTDEFAULTID" table="DEDUCTDEFAULT">
+				<TEXTFIELD w="75" title="Deductdefaultid">DEDUCTDEFAULTID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Employeeid">EMPLOYEEID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Deductionid">DEDUCTIONID</TEXTFIELD>
+				<TEXTDECIMAL w="75" title="Amount">AMOUNT</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Employeeot" keyfield="EMPLOYEEOTID" table="EMPLOYEEOT">
+			<TEXTFIELD w="75" title="Employeeotid">EMPLOYEEOTID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Employeemonthid">EMPLOYEEMONTHID</TEXTFIELD>
+			<TEXTDATE w="75" title="Otdate">OTDATE</TEXTDATE>
+			<TEXTDECIMAL w="75" title="Overtime">OVERTIME</TEXTDECIMAL>
+			<TEXTDECIMAL w="75" title="Specialtime">SPECIALTIME</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+			<EXPORT name="Employeeot" keyfield="EMPLOYEEOTID" table="EMPLOYEEOT">
+				<TEXTFIELD w="75" title="Employeeotid">EMPLOYEEOTID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Employeemonthid">EMPLOYEEMONTHID</TEXTFIELD>
+				<TEXTDATE w="75" title="Otdate">OTDATE</TEXTDATE>
+				<TEXTDECIMAL w="75" title="Overtime">OVERTIME</TEXTDECIMAL>
+				<TEXTDECIMAL w="75" title="Specialtime">SPECIALTIME</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+		<IMPORT noaudit="true" name="Employeeallow" keyfield="EMPLOYEEALLOWID" table="EMPLOYEEALLOW">
+			<TEXTFIELD w="75" title="Employeeallowid">EMPLOYEEALLOWID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Employeemonthid">EMPLOYEEMONTHID</TEXTFIELD>
+			<TEXTFIELD w="75" title="Allowanceid">ALLOWANCEID</TEXTFIELD>
+			<TEXTDATE w="75" title="Paydate">PAYDATE</TEXTDATE>
+			<TEXTDECIMAL w="75" title="Amount">AMOUNT</TEXTDECIMAL>
+			<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+			<EXPORT name="Employeeallow" keyfield="EMPLOYEEALLOWID" table="EMPLOYEEALLOW">
+				<TEXTFIELD w="75" title="Employeeallowid">EMPLOYEEALLOWID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Employeemonthid">EMPLOYEEMONTHID</TEXTFIELD>
+				<TEXTFIELD w="75" title="Allowanceid">ALLOWANCEID</TEXTFIELD>
+				<TEXTDATE w="75" title="Paydate">PAYDATE</TEXTDATE>
+				<TEXTDECIMAL w="75" title="Amount">AMOUNT</TEXTDECIMAL>
+				<TEXTFIELD w="75" title="Comments">COMMENTS</TEXTFIELD>
+			</EXPORT>
+		</IMPORT>
+	</SOURCE>
+</MIGRATE>
+

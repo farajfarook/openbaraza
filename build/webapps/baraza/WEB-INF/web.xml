@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app 
+    xmlns="http://java.sun.com/xml/ns/javaee" 
+    version="2.5" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema" 
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <display-name>Baraza Web</display-name>
+
+	<context-param>
+		<param-name>config_file</param-name>
+		<param-value>hr.xml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>web_title</param-name>
+		<param-value>Baraza Human Resource Management System</param-value>
+	</context-param>
+	<context-param>
+		<param-name>login_title</param-name>
+		<param-value>Baraza HRMS</param-value>
+	</context-param>
+	<context-param>
+		<param-name>app_db</param-name>
+		<param-value>hr</param-value>
+	</context-param>
+	<context-param>
+		<param-name>repository_url</param-name>
+		<param-value>http://localhost:8080/repository/webdav/pictures/</param-value>
+	</context-param>
+	<context-param>
+		<param-name>rep_username</param-name>
+		<param-value>repository</param-value>
+	</context-param>
+	<context-param>
+		<param-name>rep_password</param-name>
+		<param-value>baraza</param-value>
+	</context-param>
+	<context-param>
+		<param-name>photo_access</param-name>
+		<param-value>ob</param-value>
+	</context-param>
+
+	<resource-ref>
+		<description>postgreSQL Datasource for Baraza</description>
+		<res-ref-name>jdbc/database</res-ref-name>
+		<res-type>javax.sql.DataSource</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
+
+	<resource-ref>
+		<description>Mail Session</description>
+		<res-ref-name>mail/Session</res-ref-name>
+		<res-type>javax.mail.Session</res-type>
+		<res-auth>Container</res-auth>
+	</resource-ref>
+
+	<servlet>
+		<servlet-name>ImageServlet</servlet-name>
+		<servlet-class>net.sf.jasperreports.j2ee.servlets.ImageServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ImageServlet</servlet-name>
+		<url-pattern>/image</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BJSONData</servlet-name>
+		<servlet-class>org.baraza.web.BJSONData</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BJSONData</servlet-name>
+		<url-pattern>/jsondata</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BAppLauncher</servlet-name>
+		<servlet-class>org.baraza.web.BAppLauncher</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BAppLauncher</servlet-name>
+		<url-pattern>/app.hr</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>ShowReport</servlet-name>
+		<servlet-class>org.baraza.web.BShowReport</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ShowReport</servlet-name>
+		<url-pattern>/show_report</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>GridExport</servlet-name>
+		<servlet-class>org.baraza.web.BGridExport</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>GridExport</servlet-name>
+		<url-pattern>/grid_export</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BarazaFiles</servlet-name>
+		<servlet-class>org.baraza.web.BWebFiles</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BarazaFiles</servlet-name>
+		<url-pattern>/barazafiles</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>BarazaFiles</servlet-name>
+		<url-pattern>/putbarazafiles</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>BarazaFiles</servlet-name>
+		<url-pattern>/delbarazafiles</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>WebPictures</servlet-name>
+		<servlet-class>org.baraza.web.BWebPictures</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>WebPictures</servlet-name>
+		<url-pattern>/barazapictures</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>WebPictures</servlet-name>
+		<url-pattern>/delbarazapictures</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BarazaAJAX</servlet-name>
+		<servlet-class>org.baraza.web.Bajax</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>BarazaAJAX</servlet-name>
+		<url-pattern>/ajax</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>BarazaAJAX</servlet-name>
+		<url-pattern>/ajaxupdate</url-pattern>
+	</servlet-mapping>
+
+	<security-constraint>
+		<display-name>Users Security Constraint</display-name>
+		<web-resource-collection>
+			<web-resource-name>Users Protected Area</web-resource-name>
+			<url-pattern>/b_export.jsp</url-pattern>
+			<url-pattern>/b_passwordchange.jsp</url-pattern>
+			<url-pattern>/b_print.jsp</url-pattern>
+			<url-pattern>/b_report.jsp</url-pattern>
+			<url-pattern>/b_searchlist.jsp</url-pattern>
+			<url-pattern>/form.exel.jsp</url-pattern>
+			<url-pattern>/form.jsp</url-pattern>
+			<url-pattern>/form.report.jsp</url-pattern>
+			<url-pattern>/index.jsp</url-pattern>
+			<url-pattern>/show_report</url-pattern>
+			<url-pattern>/grid_export</url-pattern>
+			<url-pattern>/jsondata</url-pattern>
+			<url-pattern>/ajax</url-pattern>
+
+			<http-method>DELETE</http-method>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+			<http-method>PUT</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>user</role-name>
+			<role-name>client</role-name>
+			<role-name>staff</role-name>
+			<role-name>applicant</role-name>
+			<role-name>director</role-name>
+			<role-name>subscription</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<!-- Default login configuration uses form-based authentication -->
+	<login-config>
+		<auth-method>FORM</auth-method>
+		<realm-name>Form-Based Authentication Area</realm-name>
+		<form-login-config>
+			<form-login-page>/logon.jsp</form-login-page>
+			<form-error-page>/logonError.jsp</form-error-page>
+		</form-login-config>
+	</login-config>
+	
+	<!-- Security roles referenced by this web application -->
+	<security-role>
+		<role-name>user</role-name>
+		<role-name>client</role-name>
+		<role-name>staff</role-name>
+		<role-name>applicant</role-name>
+		<role-name>director</role-name>
+		<role-name>subscription</role-name>
+	</security-role>
+
+	<error-page>
+		<error-code>403</error-code>
+		<location>/logonError.jsp</location>
+	</error-page>
+    
+    <error-page>
+		<error-code>404</error-code>
+		<location>/assets/error/404.jsp</location>
+	</error-page>
+    <error-page>
+		<error-code>408</error-code>
+		<location>/assets/error/408.jsp</location>
+	</error-page>
+    <error-page>
+		<error-code>500</error-code>
+		<location>/assets/error/500.jsp</location>
+	</error-page>
+    
+    <error-page>
+		<error-code>401</error-code>
+		<location>/assets/error/401.jsp</location>
+	</error-page>
+
+</web-app>

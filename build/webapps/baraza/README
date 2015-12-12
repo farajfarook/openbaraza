@@ -1,0 +1,79 @@
+Features
+
+- Departmental definations
+- Job role definations
+- Full Employee profile with automated CV Generation
+- Job application and Evaluation
+- Internship and Casuals Management
+- Leave management
+- Allowances, Deductions and Taxes calculations
+- Payslip generation
+- Customisable payroll management
+
+Setup
+
+1. install Postgresql http://www.postgresql.org/ version 9.0 and above
+	Linux
+	yum install postgresql-server
+	service postgresql initdb - (Optional - wull clear all databases)
+	service postgresql start
+
+	Windows
+	Download the setup file and install
+
+2. install Java http://www.oracle.com/technetwork/java/javase/downloads/index.html version 1.6.30 and above
+
+3. install Tomcat http://tomcat.apache.org version 6.0.21
+	edit TOMCAT_HOME/bin/catalina.sh
+	add JAVA_HOME="/usr/java/default"
+
+4. Deploy hr.war
+	copy hr.war TOMCAT_HOME/webapps/
+	TOMCAT_HOME/bin/startup.sh 
+
+5. Edit app/hr/app/projects/config.xml and change dbusername and dbpassword to installed postgres credentials
+	edit TOMCAT_HOME/webapps/hr/app/projects/config.xml
+	Edit the file ./hr/app/projects/config.xml to change the progres username {{dbusername}} and password {{dbpassword}}
+
+6. Run the Setup
+	cd ./hr.app/
+	Linux : ./setup.sh
+	Windows : double click on setup.bat in app folder
+
+7. Click on 
+	Test Connection - {To test connection to the database}
+	Save Configutations - {In case you change user name or password connecting to the database }
+	Create New - {Create a new blank database}
+	Create Demo - {Create a demo database}
+
+
+8. Copy files on deploy folder to tomcat/lib and restart tomcat
+	Linux
+		TOMCAT_HOME/bin/shutdown.sh 
+		TOMCAT_HOME/bin/startup.sh 
+	Windows
+		TOMCAT_HOME\bin\shutdown.sh 
+		TOMCAT_HOME\bin\startup.sh 
+
+Running
+1. sh baraza.sh or baraza.bar for windows
+2. http://localhost:8080/hr
+3. http://localhost:8080/hr/app
+4. sh server.sh or server.bar for windows - for email processing
+5. sh ide.sh or ide.bar for windows - to cusomise
+
+USER PASSWORDS
+username root
+password baraza
+
+DEMO Accounts
+
+Applicants
+amteja@mteja.me.ke - enter
+joseph.kamau@gmail.com - enter
+
+Employees
+jdoe - enter
+jtinga - enter
+
+

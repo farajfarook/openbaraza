@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app 
+    xmlns="http://java.sun.com/xml/ns/javaee" 
+    version="2.5" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema" 
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+    <display-name>Baraza WebDav</display-name>
+
+	<servlet>
+	  <servlet-name>webdav</servlet-name>
+	  <servlet-class>org.apache.catalina.servlets.WebdavServlet</servlet-class>
+	  <init-param>
+		<param-name>debug</param-name>
+		<param-value>0</param-value>
+	  </init-param>
+	  <init-param>
+		<param-name>listings</param-name>
+		<param-value>true</param-value>
+	  </init-param>
+	  <init-param>
+		<param-name>readonly</param-name>
+		<param-value>false</param-value>
+	  </init-param>
+	</servlet>
+
+	<servlet-mapping>
+	  <servlet-name>webdav</servlet-name>
+	  <url-pattern>/webdav/*</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BarazaPictures</servlet-name>
+		<servlet-class>org.baraza.web.BWebPictures</servlet-class>
+
+		<init-param>
+			<param-name>repository_url</param-name>
+			<param-value>http://localhost:9090/repository/webdav/pictures/</param-value>
+		</init-param>
+		<init-param>
+			<param-name>rep_username</param-name>
+			<param-value>repository</param-value>
+		</init-param>
+		<init-param>
+			<param-name>rep_password</param-name>
+			<param-value>baraza</param-value>
+		</init-param>
+		<init-param>
+			<param-name>photo_access</param-name>
+			<param-value>enter2012</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>BarazaPictures</servlet-name>
+		<url-pattern>/barazapictures</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>BarazaPictures</servlet-name>
+		<url-pattern>/putbarazapictures</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>BarazaPictures</servlet-name>
+		<url-pattern>/delbarazapictures</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>BarazaFiles</servlet-name>
+		<servlet-class>org.baraza.web.BWebFiles</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>BarazaFiles</servlet-name>
+		<url-pattern>/barazafiles</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>BarazaFiles</servlet-name>
+		<url-pattern>/putbarazafiles</url-pattern>
+	</servlet-mapping>
+
+	<servlet-mapping>
+		<servlet-name>BarazaFiles</servlet-name>
+		<url-pattern>/delbarazafiles</url-pattern>
+	</servlet-mapping>
+
+	<security-constraint>
+		<display-name>Users Security Constraint</display-name>
+		<web-resource-collection>
+			<web-resource-name>Users Protected Area</web-resource-name>
+			<url-pattern>/webdav/*</url-pattern>
+			
+			<http-method>DELETE</http-method>
+			<http-method>GET</http-method>
+			<http-method>POST</http-method>
+			<http-method>PUT</http-method>
+
+			<http-method>GETLIB</http-method>
+			<http-method>COPY</http-method>
+			<http-method>MOVE</http-method>
+			<http-method>DELETE</http-method>
+			<http-method>PROPFIND</http-method>
+			<http-method>GET</http-method>
+			<http-method>HEAD</http-method>
+			<http-method>PUT</http-method>
+			<http-method>MKCOL</http-method>
+			<http-method>PROPPATCH</http-method>
+			<http-method>LOCK</http-method>
+			<http-method>UNLOCK</http-method>
+			<http-method>VERSION-CONTROL</http-method>
+			<http-method>CHECKIN</http-method>
+			<http-method>CHECKOUT</http-method>
+			<http-method>UNCHECKOUT</http-method>
+			<http-method>REPORT</http-method>
+			<http-method>UPDATE</http-method>
+			<http-method>CANCELUPLOAD</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>user</role-name>
+			<role-name>client</role-name>
+			<role-name>staff</role-name>
+			<role-name>applicant</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<!-- Default login configuration uses form-based authentication -->
+	<login-config>
+		<auth-method>BASIC</auth-method>
+		<realm-name>Basic-Based Authentication Area</realm-name>
+	</login-config>
+	
+	<!-- Security roles referenced by this web application -->
+	<security-role>
+		<role-name>user</role-name>
+		<role-name>client</role-name>
+		<role-name>staff</role-name>
+		<role-name>applicant</role-name>
+	</security-role>
+
+	<error-page>
+		<error-code>403</error-code>
+		<location>/logonError.jsp</location>
+	</error-page>
+</web-app>
+

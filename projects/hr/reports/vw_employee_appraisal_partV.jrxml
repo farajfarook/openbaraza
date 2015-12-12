@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="vw_employee_objectives" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="0" uuid="902b0910-f579-4a81-8f56-35fb72d272fb">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="50" isBold="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#736343" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<style name="Row" mode="Transparent">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style backcolor="#E6DAC3"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="filterid" class="java.lang.String">
+		<defaultValueExpression><![CDATA["1"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="organd" class="java.lang.String"><defaultValueExpression><![CDATA[""]]></defaultValueExpression></parameter>
+	<parameter name="orgwhere" class="java.lang.String"><defaultValueExpression><![CDATA[""]]></defaultValueExpression></parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["./"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT vw_objective_details.entity_id,vw_objective_details.entity_name, vw_objective_details.objective_type_id,
+	vw_objective_details.objective_type_name,vw_objective_details.objective_id, vw_objective_details.objective_name, vw_objective_details.date_set, vw_objective_details.objective_ps,
+	vw_objective_details.objective_detail_id, vw_objective_details.objective_detail_name,
+	vw_objective_details.success_indicator, vw_objective_details.resources_required,vw_objective_details.target_date,
+	job_reviews.entity_id, job_reviews.review_date,
+	EXTRACT(YEAR FROM vw_objective_details.date_set) as year_set
+
+FROM vw_objective_details INNER JOIN job_reviews
+ON vw_objective_details.entity_id = job_reviews.entity_id
+
+WHERE (job_reviews.job_review_id = '$P!{filterid}')
+	AND (EXTRACT(YEAR FROM vw_objective_details.objective_date) = (EXTRACT(YEAR FROM job_reviews.review_date))+1)
+	$P!{organd}
+GROUP BY
+
+
+
+vw_objective_details.objective_type_name,
+vw_objective_details.objective_type_id,
+
+vw_objective_details.objective_completed,
+vw_objective_details.date_set,
+
+vw_objective_details.objective_detail_id,
+vw_objective_details.objective_detail_name,
+vw_objective_details.success_indicator,
+vw_objective_details.resources_required,
+vw_objective_details.target_date,
+job_reviews.entity_id, job_reviews.review_date,
+
+vw_objective_details.objective_ps,
+vw_objective_details.entity_id,
+vw_objective_details.entity_name,
+vw_objective_details.objective_id,
+vw_objective_details.objective_name
+
+ORDER BY vw_objective_details.objective_id, objective_name, vw_objective_details.objective_detail_id ASC;]]>
+	</queryString>
+	<field name="entity_id" class="java.lang.Integer"/>
+	<field name="entity_name" class="java.lang.String"/>
+	<field name="objective_type_id" class="java.lang.Integer"/>
+	<field name="objective_type_name" class="java.lang.String"/>
+	<field name="objective_id" class="java.lang.Integer"/>
+	<field name="objective_name" class="java.lang.String"/>
+	<field name="date_set" class="java.sql.Date"/>
+	<field name="objective_ps" class="java.lang.Float"/>
+	<field name="objective_detail_id" class="java.lang.Integer"/>
+	<field name="objective_detail_name" class="java.lang.String"/>
+	<field name="success_indicator" class="java.lang.String"/>
+	<field name="resources_required" class="java.lang.String"/>
+	<field name="target_date" class="java.sql.Date"/>
+	<field name="review_date" class="java.sql.Date"/>
+	<field name="year_set" class="java.lang.Double"/>
+	<variable name="variable1" class="java.lang.Integer" resetType="Group" resetGroup="Objective Name" calculation="Count">
+		<initialValueExpression><![CDATA[0]]></initialValueExpression>
+	</variable>
+	<group name="Objective_type">
+		<groupExpression><![CDATA[$F{objective_type_id}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" x="103" y="0" width="452" height="20" uuid="15f17c8c-6d5a-461e-8998-fcc5a767d45d"/>
+					<box>
+						<bottomPen lineWidth="1.0" lineColor="#E7E7E7"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{objective_type_name}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement positionType="Float" x="1" y="0" width="102" height="20" uuid="528bc72f-fcbb-437b-9b0e-5d83373d7f3b"/>
+					<box>
+						<bottomPen lineWidth="1.0" lineColor="#E7E7E7"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" isBold="true" pdfFontName="Times-Roman"/>
+					</textElement>
+					<text><![CDATA[Objective Type :]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="Objective Name">
+		<groupExpression><![CDATA[$F{objective_name}]]></groupExpression>
+		<groupHeader>
+			<band height="66">
+				<staticText>
+					<reportElement positionType="Float" x="25" y="0" width="102" height="20" uuid="bcc2fb47-75b9-41c8-944b-81b948423424"/>
+					<box>
+						<topPen lineWidth="0.5" lineColor="#E7E7E7"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" isBold="true" pdfFontName="Times-Roman"/>
+					</textElement>
+					<text><![CDATA[Objective Name]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" x="127" y="0" width="428" height="20" uuid="f90a7bd8-14f0-4bd0-badb-9ae1e4008706"/>
+					<box>
+						<topPen lineWidth="0.5" lineColor="#E7E7E7"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{objective_name}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement positionType="Float" x="25" y="20" width="102" height="20" uuid="1c07f587-bd48-4f45-a084-4a7bc45f4f84"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" isBold="true" pdfFontName="Times-Roman"/>
+					</textElement>
+					<text><![CDATA[Percentage :]]></text>
+				</staticText>
+				<textField isBlankWhenNull="true">
+					<reportElement positionType="Float" x="127" y="20" width="26" height="20" uuid="b9fa1bbd-355a-4fb8-b395-5e7dded46084"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{objective_ps}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement positionType="Float" x="333" y="20" width="79" height="20" uuid="6c7f8bea-76ba-4718-ab60-1a7a218e1164"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" isBold="true" pdfFontName="Times-Roman"/>
+					</textElement>
+					<text><![CDATA[Date Set : ]]></text>
+				</staticText>
+				<textField pattern="dd/MM/yyyy" isBlankWhenNull="true">
+					<reportElement positionType="Float" x="412" y="20" width="143" height="20" uuid="b3c5fdcd-2f05-4c71-82f3-4dc4a1e8697f"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" pdfFontName="Times-Roman"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{date_set}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement positionType="Float" x="153" y="20" width="21" height="20" uuid="c18f1e06-6d85-42ae-92a3-93d3c5630bdf"/>
+					<textElement verticalAlignment="Middle">
+						<font pdfFontName="Times-Roman"/>
+					</textElement>
+					<text><![CDATA[  %]]></text>
+				</staticText>
+				<subreport>
+					<reportElement positionType="Float" x="26" y="40" width="530" height="20" uuid="27afb9ae-5a4e-4323-af5c-3143064ae39d"/>
+					<subreportParameter name="SUBREPORT_DIR">
+						<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="objective_id">
+						<subreportParameterExpression><![CDATA[$F{objective_id}]]></subreportParameterExpression>
+					</subreportParameter>
+					<subreportParameter name="filterid">
+						<subreportParameterExpression><![CDATA[$P{filterid}]]></subreportParameterExpression>
+					</subreportParameter>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "vw_objective_details_1.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="126" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" positionType="Float" x="0" y="38" width="555" height="20" uuid="89a7eaad-cf17-4517-ae06-a1d1890a3318"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Section V : Performance Planning  :  Objectives for the next year /  review period]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="73" width="556" height="53" uuid="0c519642-8f19-4ca9-a4f1-36e358625fe1"/>
+				<box leftPadding="10">
+					<bottomPen lineWidth="0.75" lineColor="#F2F2F2"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="false" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[Please include all planned objectives for the next review period. At the time of mid-term review, please use this section to assess your progress. Include your supervisor in  completeting the 'Resources Required column and enlist the support required.]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="9" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+</jasperReport>

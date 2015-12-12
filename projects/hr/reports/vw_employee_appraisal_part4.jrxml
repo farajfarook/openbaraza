@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="vw_employee_appraisal_part4" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="organd" class="java.lang.String"><defaultValueExpression><![CDATA[""]]></defaultValueExpression></parameter>
+	<parameter name="orgwhere" class="java.lang.String"><defaultValueExpression><![CDATA[""]]></defaultValueExpression></parameter>
+	<queryString language="SQL">
+		<![CDATA[select * from vw_employees $P!{orgwhere}]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="1" width="572" height="20"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Part IV - Overall Ratings and Comments]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="572" height="20"/>
+				<textElement/>
+				<text><![CDATA[Please use  the descriptions below as a guide to rate your overall performance for this review period. ]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="229" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="122" height="20" forecolor="#FFFFFF" backcolor="#800000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rating ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="123" y="0" width="447" height="20" forecolor="#FFFFFF" backcolor="#800000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rating ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="20" width="122" height="56"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[1. Significantly Exceeds Requirements]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="123" y="20" width="447" height="56"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[1. Significantly Exceeds Requirements]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

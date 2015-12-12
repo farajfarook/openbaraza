@@ -1,0 +1,8 @@
+<MIGRATE_GEN dbpath="jdbc:postgresql://localhost/hr" dbclass="org.postgresql.Driver" dbusername="root" dbpassword="invent">
+	<SOURCE noaudit="true" dbpath="jdbc:sqlserver://192.168.0.195:1433;databaseName=Hrm;selectMethod=cursor" dbclass="org.postgresql.Driver" dbusername="sa" dbpassword="galileo">
+		<TABLE>tblDepartment</TABLE>
+		<TABLE>tblSubDepartment</TABLE>
+		<TABLE>tblDesignation</TABLE>
+		<TABLE>tblEmployee</TABLE>
+	</SOURCE>
+</MIGRATE_GEN>

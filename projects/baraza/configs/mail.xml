@@ -1,0 +1,22 @@
+<ESCALATION imapssl="true" title="Baraza Mail" host="mail.tamshi.co.ke" smtppauth="true" mailuser="dennis.tamshi" inbox="INBOX" mailfrom="dennis@dennis.me.ke" sentbox="Sent" smtptls="true" processdelay="5" mailpassword="Invent2k">
+	<REPORT name="Approval Advice" keyfield="sys_emailed_id" action="Emailed" table="sys_emailed, vw_approvals" where="(vw_approvals.approval_id = sys_emailed.table_id) AND (sys_emailed.emailed = false)       AND (sys_emailed.table_name = 'approvals') AND (sys_emailed.email_type = 1)" actioncount="1">
+		<ADDRESS title="address">get_phase_email(vw_approvals.approval_entity_id)</ADDRESS>
+		<SUBJECT title="subject">vw_approvals.phase_narrative</SUBJECT>
+		<FIELD title="Body" basetable="vw_approvals">advice_email</FIELD>
+	</REPORT>
+	<REPORT name="Approval Notice" keyfield="sys_emailed_id" action="Emailed" table="sys_emailed, vw_approvals" where="(vw_approvals.approval_id = sys_emailed.table_id) AND (sys_emailed.emailed = false)      AND (sys_emailed.table_name = 'approvals') AND (sys_emailed.email_type = 2)" actioncount="1">
+		<ADDRESS title="address">vw_approvals.org_primary_email</ADDRESS>
+		<SUBJECT title="subject">vw_approvals.phase_narrative</SUBJECT>
+		<FIELD title="Body" basetable="vw_approvals">notice_email</FIELD>
+	</REPORT>
+	<REPORT name="WorkFlow Approval" keyfield="sys_emailed_id" action="Emailed" table="sys_emailed, vw_workflow_approvals" where="(vw_workflow_approvals.table_id = sys_emailed.table_id) AND (sys_emailed.emailed = false)       AND (sys_emailed.table_name = 'vw_workflow_approvals') AND (sys_emailed.email_type = 1)" actioncount="1">
+		<ADDRESS title="address">vw_workflow_approvals.org_primary_email</ADDRESS>
+		<SUBJECT title="subject">vw_workflow_approvals.workflow_narrative</SUBJECT>
+		<FIELD title="Body" basetable="vw_workflow_approvals">approve_email</FIELD>
+	</REPORT>
+	<REPORT name="WorkFlow Rejection" keyfield="sys_emailed_id" action="Emailed" table="sys_emailed, vw_workflow_approvals" where="(vw_workflow_approvals.table_id = sys_emailed.table_id) AND (sys_emailed.emailed = false)       AND (sys_emailed.table_name = 'vw_workflow_approvals') AND (sys_emailed.email_type = 2)" actioncount="1">
+		<ADDRESS title="address">vw_workflow_approvals.org_primary_email</ADDRESS>
+		<SUBJECT title="subject">vw_workflow_approvals.workflow_narrative</SUBJECT>
+		<FIELD title="Body" basetable="vw_workflow_approvals">reject_email</FIELD>
+	</REPORT>
+</ESCALATION>

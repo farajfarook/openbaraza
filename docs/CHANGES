@@ -1,0 +1,46 @@
+Version 0.1
+
+- Created a login which authenticates with the database
+
+Version 0.1
+
+- Implemented a TreeModel for puting the menu and drilldown tree
+- Create a faster responce on clicking and selecting tabs on upper and lower desks
+- Create a sub-key reference for the items in a desk which are put in a class DTabs
+- Link children on the same from on the tabs, with key reference.
+- Implemented a User level creation - Database based heavily based on postgres
+
+Version 0.3
+
+- There is a business and function processing engine which is database depedent.
+- There is a process heirachy in terms of process certification by higher management
+- There standard example and a proper documentation
+- Report links done for the sevlet
+- Created a calender component
+- Proper frame work definition
+- Have a user profile filter database based
+- Click on the grid order to sort the Grid
+
+Version 0.4
+- Baraza system documented
+- New GUI on the web system
+- process management server created
+- a new web feel added to the applet display - look and feel also add color to the grid Display.
+- added a text formatters {Date, time, Numbers percentages, decimals} components
+	XML Change for form to : TEXTDATE, TEXTTIME, DATESPIN, TIMESPIN, TEXTDECIMAL
+- Added error reporting through message dialogues
+- Menus Linked
+- Added an image server allowing for full HTML component
+- Servlet Report actions for edit or update
+- Data display formating
+- Sevlet Crosstabs
+- Get a filter implemented on top of the grid
+- Integrete image server to application with a server name alias on placehold description.
+
+
+Version 1.0
+- Grid width implementation + web
+- User Roles for menu
+- Add AUDIT table
+- logout
+

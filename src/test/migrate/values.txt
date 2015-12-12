@@ -1,0 +1,9 @@
+givenName: jatuti
+sn : Atuti
+userPassword : [B@17ce4e7
+uid : jatuti
+cn : Joel Atuti
+
+
+dn: uid=sysadmin,ou=People,o=ardhi.go.ke,dc=ardhi,dc=go,dc=ke
+

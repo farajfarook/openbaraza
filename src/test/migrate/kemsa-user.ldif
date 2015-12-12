@@ -1,0 +1,10 @@
+dn: uid=<USERID>,ou=People,o=kemsa.co.ke,dc=kemsa,dc=co,dc=ke
+cn: <USER-FULL-NAME>
+davuniqueid: <UUID>
+givenname: <USER-FIRST-NAME>
+icscalendar: <USERID>@kemsa.co.ke
+mail: <USER-EMAIL>
+psroot: ldap://mail.kemsa.co.ke:389/piPStoreOwner=<USERID>,o=kemsa.co.ke,o=PiServerDb
+sn: <USER-SURNAME>
+uid: <USERID>
+userpassword: <USER-PASSWORD>

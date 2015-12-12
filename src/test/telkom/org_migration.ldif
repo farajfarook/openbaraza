@@ -1,0 +1,68 @@
+o: domain.co.ke
+objectClass: top
+objectClass: organization
+objectClass: sunmanagedorganization
+objectClass: sunnamespace
+objectClass: sundelegatedorganization
+objectClass: inetdomainauthinfo
+objectClass: maildomain
+preferredLanguage: en
+mailDomainWelcomeMessage: Subject: Welcome to Orange Business Email Service $$  Dear Customer,     Welcome to Orange Business Email Service.  You may contact support  if you have further queries at http://portal.orange-business.co.ke
+mailDomainDiskQuota: -1
+mailClientAttachmentQuota: -1
+sunPreferredDomain: domain.co.ke
+sunOrgType: full
+preferredMailHost: msgbe.orange-business.co.ke
+sunMaxUsers: -1
+inetDomainStatus: active
+sunEnableGAB: true
+sunAvailableServices: OrangeGroupMail:25:-1
+sunAvailableServices: OrangeMailUser:25:-1
+mailDomainStatus: active
+mailAccessProxyPreAuth: no
+sunRegisteredServiceName: DomainMailService
+sunRegisteredServiceName: UserMailService
+sunRegisteredServiceName: GroupMailService
+sunMaxGroups: -1
+sunNameSpaceUniqueAttrs: uid
+sunNumUsers: 1
+sunNumGroups: 1
+dn: o=domain.co.ke
+
+objectClass: top
+objectClass: organizationalunit
+ou: People
+dn: ou=People,o=domain.co.ke
+
+objectClass: top
+objectClass: organizationalunit
+ou: Groups
+dn: ou=Groups,o=domain.co.ke
+
+objectClass: top
+objectClass: ldapsubentry
+objectClass: nsroledefinition
+objectClass: nssimpleroledefinition
+objectClass: nsmanagedroledefinition
+cn: Organization Admin Role
+dn: cn=Organization Admin Role,o=domain.co.ke
+
+cn: Postmaster
+mailAlternateAddress: postmast@domain.co.ke
+mgrpRFC822MailMember: admin_domain.co.ke@domain.co.ke
+objectClass: inetmailgroup
+objectClass: inetlocalmailrecipient
+objectClass: top
+objectClass: groupofuniquenames
+objectClass: ipgroup
+objectClass: inetmailgroupmanagement
+objectClass: inetgroup
+inetMailGroupStatus: active
+mailDeferProcessing: No
+mailDeliveryOption: members
+mgrpBroadcasterPolicy: NO_REQUIREMENTS
+inetgroupstatus: active
+mailHost: barua.orange-business.co.ke
+mail: postmaster@domain.co.ke
+dn: cn=Postmaster,ou=Groups,o=domain.co.ke
+
