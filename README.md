@@ -6,6 +6,7 @@ Human capital is a collection of resources—all the knowledge, talents, skills,
 
 Our system allows organizations to manage it's Human Capital optimally for highest optimal output to each individual and do this with clear organizational harmony to achieve value and profit for the organization.
 <hr/>
+
 ## Features
 
 #### Self Service Desk
