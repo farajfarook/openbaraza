@@ -1,3 +1,5 @@
+> This fork of openbaraza is archived. 
+
 # baraza
 Open source HR and Payroll system
 
