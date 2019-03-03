@@ -138,10 +138,6 @@ Our system allows organizations to manage it's Human Capital optimally for highe
 7. If you have many applications to run in tomcat downlaod the hcm.3.0.2.war 
 8. No DB configuration will be needed. There is a README file for the .war in the war folder
 
-### Demo Environment
-
-http://dev-payrol.proj.enbiso.com/hr
-
 #### USER PASSWORDS
 
 username `root`
